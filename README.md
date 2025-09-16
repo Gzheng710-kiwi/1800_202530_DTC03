@@ -57,7 +57,6 @@ elmo-hikes/
 ## Contributors
 
 - **Popal Daudzai** -loves to play sports and drive around the city.
-- **Teammate Name** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
 
