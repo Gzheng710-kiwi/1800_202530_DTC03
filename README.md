@@ -55,6 +55,8 @@ elmo-hikes/
 ---
 
 ## Contributors
+
+- **Ge Zheng** - BCIT CST Student, likes web development.
 - **Gustavo Rodriguez** - BCIT CST Student who loves playing and making games. Fun fact: Can solve a Rubik's Cube in under a minute.
 - **Popal Daudzai** -loves to play sports and drive around the city.
 
