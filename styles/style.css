@@ -1,1 +1,90 @@
+:root
+{
+    --text-color: #000000;
+    --highlighted-text-color: #333333;
+    
+    --bg-color: #FFFFFF;
+    --highlighted-bg-color: #CCCCFF;
 
+    --contrast-text-color: #FFFFFF;
+    --bg-color: #222222;
+}
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+body
+{
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav
+{
+    display: flex;
+    flex: 1 1;
+    flex-direction: row;
+    position: relative;
+    
+    justify-content: space-between;
+    height: 16vmin;
+    
+    background-color: lightcoral;
+    background: linear-gradient(to bottom, rgba(100, 100, 100, 1) 15%, rgba(255, 255, 255, 0) 95%)
+}
+
+button
+{
+    border: 0px;
+    transition-duration: 0.2s;
+}
+
+.interactible
+{
+    transition-duration: 0.2s;
+}
+
+.interactible:hover
+{
+    box-shadow: 0px 2px 5px black;
+    transition-duration: 0.2s;
+}
+
+.container
+{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.container *
+{
+    height: 100%;
+}
+
+img.logo
+{
+
+}
+
+.btn-square
+{
+    aspect-ratio: 1;
+    margin: 0px 2vw;
+}
+
+.btn-primary
+{
+
+}
+
+#burger-menu-button
+{
+    height: 50%;
+    background: rgba(255, 255, 255, 0.5);
+
+    border-radius: 10px;
+}
