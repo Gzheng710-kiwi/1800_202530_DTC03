@@ -14,11 +14,12 @@
 {
     margin: 0px;
     padding: 0px;
+
+    font-size: calc(12px + 1.5vmin);
 }
 
 body
 {
-    font-size: 16px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -32,22 +33,33 @@ nav
     justify-content: space-between;
     height: 16vmin;
     
-    background-color: lightcoral;
-    background: linear-gradient(to bottom, rgba(100, 100, 100, 1) 15%, rgba(255, 255, 255, 0) 95%)
+    /* background: linear-gradient(to bottom, rgba(100, 100, 100, 1) 15%, rgba(255, 255, 255, 0) 95%); */
+    box-shadow: 0px 0px 5px #AAAAAA;
+}
+
+#nav-content
+{
+    display: flex;
+    flex: 1 1;
+    flex-direction: row;
+    position: relative;
+
+    justify-content: space-between;
+    padding: 0.5em;
+    margin: 0.5em;
 }
 
 button
 {
     border: 0px;
-    transition-duration: 0.2s;
 }
 
-.interactible
+.dropshadow-interactible
 {
     transition-duration: 0.2s;
 }
 
-.interactible:hover
+.dropshadow-interactible:hover
 {
     box-shadow: 0px 2px 5px black;
     transition-duration: 0.2s;
@@ -60,31 +72,143 @@ button
     position: relative;
 }
 
-.container *
+.flex
 {
-    height: 100%;
+    display: flex;
 }
 
-img.logo
+.flex-row
 {
+    display: flex;
+    flex-direction: row;
+}
 
+.flex-col
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.container img
+{
+    height: 100%;
 }
 
 .btn-square
 {
     aspect-ratio: 1;
-    margin: 0px 2vw;
 }
 
-.btn-primary
+.btn-svg
 {
+    font-size: 0px;
+    padding: 1vmax;
 
+    border: 0px;
+    border-radius: 1vmax;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease;
+}
+
+.btn-svg:hover
+{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.nav-button
+{
+    display: flex;
+}
+
+.button-group
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1;
+}
+
+.button-group div
+{
+    flex: 0;
+}
+
+.button-group img
+{
+    max-height: 6vmax;
+}
+
+.button-group * svg
+{
+    display: flex;
+    flex: 1 1;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    height: 2vmax;
+    min-height: 24px;
+    width: auto;
+}
+
+.burger-button
+{
+    background-color: rgba(0, 0, 0, 0);
+    border: 5px solid black;
+    margin: 0.2em 0px;
+    padding: 1em;
+
+    flex: 1;
+
+    transition: 0.3s ease;
+}
+
+.burger-button:hover
+{
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 #burger-menu-button
 {
-    height: 50%;
-    background: rgba(255, 255, 255, 0.5);
+    height: 75%;
+    background: rgba(0, 0, 0, 0.1);
 
     border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+#burger-menu-button:hover
+{
+    height: 75%;
+    background: rgba(0, 0, 0, 0.2);
+
+    border-radius: 10px;
+}
+
+#logo-heading
+{
+    color: black;
+    font-size: 6vmin;
+}
+
+#burger-menu
+{
+    background-color: rgb(150, 150, 150);
+    height: 60vh;
+    width: 100%;
+
+    position: relative;
+    top: 0px;
+    /* right: -100vw; */
+}
+
+#burger-menu-content
+{
+    background-color: lightgreen;
+    
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    padding: 0.2em 1em;
 }
