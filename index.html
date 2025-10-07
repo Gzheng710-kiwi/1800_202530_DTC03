@@ -11,7 +11,8 @@
         <!-- Other libraries go here -->
 
         <!-- Link to styles of your own -->
-        <link rel="stylesheet" href="./styles/style.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
     </head>
 
@@ -21,11 +22,11 @@
         <!-- Your HTML Layout go here -->
         <!------------------------------>
         <!-- Stuff for body goes here -->
-        <nav>
-        <div id="nav-content">
-            <div class="container flex-row">
-            <img class="logo" src="images/cleanfridge-transparent.png" />
-            <h6 id="logo-heading" >Fridge Tracker</h6>
+        <nav class="flex flex-1 flex-row relative justify-between w-9">
+        <div class="flex flex-1 flex-row relative justify-between p-2 m-2">
+            <div class="flex flex-1 flex-row items-center">
+            <img class="" src="images/cleanfridge-transparent.png" />
+            <h6 class="text-2xl">Fridge Tracker</h6>
             </div>
             <div class="container">
             <button id="burger-menu-button" class="btn-square interactible">
