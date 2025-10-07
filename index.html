@@ -1,49 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta name="comp1800 template" content="My 1800 App">
-        <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <title>My BCIT Project</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <style>
+      .welcome-banner {
+        background-color: white;
+        padding: 100px 80px;
+      }
 
-        <!-- Other libraries go here -->
+      .welcome-text {
+        text-align: left;
+        max-width: none;
+        white-space: nowrap;
+      }
 
-        <!-- Link to styles of your own -->
-        <link rel="stylesheet" href="./styles/style.css">
+      .welcome-text h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #1a1a1a;
+      }
 
-    </head>
+      .welcome-text p {
+        font-size: 1.2rem;
+        color: #555;
+        margin-bottom: 30px;
+      }
 
-    <body>
+      .login-btn {
+        background: linear-gradient(135deg, #007bff, #3399ff);
+        color: white;
+        border: none;
+        padding: 10px 36px;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+        transition: all 0.3s ease;
+      }
 
-        <!------------------------------>
-        <!-- Your HTML Layout go here -->
-        <!------------------------------>
-        <!-- Stuff for body goes here -->
-         <nav>
-            <div class="container">
-                <img class="logo" src="images/logo-transparent.png">
-            </div>
-            <div class="container">
-                <button id="burger-menu-button" class="btn-square interactible">Burger menu</button>
-            </div>
-         </nav>
+      .login-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 14px rgba(0, 123, 255, 0.4);
+        background: linear-gradient(135deg, #0069d9, #2f89ff);
+      }
 
-         <main>
-            Download Thing!
-         </main>
+      @media (max-width: 768px) {
+        .welcome-banner {
+          padding: 60px 30px;
+        }
 
-         <footer>
-            Footer!
-         </footer>
+        .welcome-text h1 {
+          font-size: 2.2rem;
+          white-space: normal;
+        }
+      }
 
-        <!---------------------------------------------->
-        <!-- Your own JavaScript functions go here    -->
-        <!---------------------------------------------->
+      @media (max-width: 992px) {
+        .welcome-banner img {
+          display: none;
+        }
+      }
+    </style>
+  </head>
 
-        <!-- Link to scripts of your own -->
-        <!-- <script type="module" src="./src/main.js"></script> -->
+  <body>
+    <nav>
+      <div class="container">
+        <img class="logo" src="images/logo-transparent.png" />
+      </div>
+      <div class="container">
+        <button id="burger-menu-button" class="btn-square interactible">
+          Burger menu
+        </button>
+      </div>
+    </nav>
 
-    </body>
+    <main>
+      <section class="welcome-banner">
+        <div class="welcome-text">
+          <h1>
+            Welcome to
+            <span style="color: #0f7f4a; font-size: 3rem">Fridge Tracker</span>
+          </h1>
+          <p>Treasure every item in your fridge!</p>
+          <button class="login-btn">Login</button>
+        </div>
+        <img
+          src="images/Weixin Image_20251006223414_18_9.jpg"
+          alt="Fridge illustration"
+          style="
+            position: absolute;
+            right: 30px;
+            top: 55%;
+            transform: translateY(-50%);
+            width: 30%;
+            height: auto;
+          "
+        />
+      </section>
+      <section
+        class="project-video"
+        style="
+          padding: 50px;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 30px;
+          flex-wrap: wrap;
+        "
+      >
+        <div
+          style="
+            border: 3px solid #333aff;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 560px;
+          "
+        >
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/aI_F_rHp6HY"
+            title="Project Introduction Video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+        <div style="max-width: 400px">
+          <h2 style="color: #333; font-size: 2rem; margin-bottom: 15px">
+            Fridge Tracker Project
+          </h2>
+          <p style="color: #555; font-size: 1rem; line-height: 1.5">
+            Discover how our Fridge Tracker helps you manage your food
+            efficiently, reduce waste, and make your life easier. Watch the
+            video to see it in action!
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer style="background-color: #333; color: white; padding: 20px 0">
+      <div
+        style="
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 15px;
+          display: flex;
+          justify-content: space-between;
+          text-align: left;
+          flex-wrap: wrap;
+          gap: 20px;
+        "
+      >
+        <div style="flex: 1">
+          <h4 style="margin-bottom: 8px; font-size: 1rem">Contact</h4>
+          <p style="margin: 2px 0">
+            <a
+              href="mailto:info@fridgetracker.com"
+              style="color: #ff5733; text-decoration: none"
+              >info@fridgetracker.com</a
+            >
+          </p>
+          <p style="margin: 2px 0">
+            <a
+              href="tel:+16049874321"
+              style="color: #ff5733; text-decoration: none"
+              >604-987-4321</a
+            >
+          </p>
+        </div>
+        <div style="flex: 1">
+          <h4 style="margin-bottom: 8px; font-size: 1rem">Support / Help</h4>
+          <p style="margin: 2px 0">
+            <a href="#" style="color: #ff5733; text-decoration: none">FAQ</a>
+          </p>
+          <p style="margin: 2px 0">
+            <a href="#" style="color: #ff5733; text-decoration: none"
+              >Help Center</a
+            >
+          </p>
+        </div>
+        <div style="flex: 1">
+          <h4 style="margin-bottom: 8px; font-size: 1rem">Social Media</h4>
+          <p style="margin: 2px 0">
+            <a href="#" style="color: #ff5733; text-decoration: none"
+              >Facebook</a
+            >
+          </p>
+          <p style="margin: 2px 0">
+            <a href="#" style="color: #ff5733; text-decoration: none"
+              >Instagram</a
+            >
+          </p>
+        </div>
+      </div>
+      <div
+        style="
+          text-align: center;
+          margin-top: 15px;
+          font-size: 0.8rem;
+          color: #aaa;
+        "
+      >
+        &copy; 2025 Fridge Tracker. All rights reserved.
+      </div>
+    </footer>
+  </body>
 </html>
