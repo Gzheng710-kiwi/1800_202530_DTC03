@@ -71,13 +71,18 @@
 
   <body>
     <nav>
-      <div class="container">
-        <img class="logo" src="images/logo-transparent.png" />
-      </div>
-      <div class="container">
-        <button id="burger-menu-button" class="btn-square interactible">
-          Burger menu
-        </button>
+      <div id="nav-content">
+        <div class="container flex-row">
+          <img class="logo" src="images/cleanfridge-transparent.png" />
+          <h6 id="logo-heading" >Fridge Tracker</h6>
+        </div>
+        <div class="container">
+          <button id="burger-menu-button" class="btn-square interactible">
+            <svg data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+              <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -86,7 +91,7 @@
         <div class="welcome-text">
           <h1 style="font-size: 4rem">
             Welcome to
-            <span style="color: #0f7f4a">Fridge Tracker</span>
+            <span style="color: #0f7f4a; font-size: 4rem">Fridge Tracker</span>
           </h1>
           <p>Treasure every item in your fridge!</p>
           <button class="login-btn">Login</button>
