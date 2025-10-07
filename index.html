@@ -12,7 +12,6 @@
 
         <!-- Link to styles of your own -->
         <script src="https://cdn.tailwindcss.com"></script>
-        <!-- <link rel="stylesheet" href="./styles/style.css"> -->
 
     </head>
 
@@ -22,29 +21,27 @@
         <!-- Your HTML Layout go here -->
         <!------------------------------>
         <!-- Stuff for body goes here -->
-        <nav class="flex flex-1 flex-row relative justify-between w-9">
-        <div class="flex flex-1 flex-row relative justify-between p-2 m-2">
-            <div class="flex flex-1 flex-row items-center">
-            <img class="" src="images/cleanfridge-transparent.png" />
-            <h6 class="text-2xl">Fridge Tracker</h6>
+        <nav class="flex flex-row">
+            <div id="navbar-content" class="flex flex-row flex-1 justify-between">
+                <div id="logo" class="flex flex-row">
+                    <!-- <img src="images/cleanfridge-transparent.png"> -->
+                    <h3>Fridge Tracker</h3>
+                </div>
+                <div id="burger-menu-container" class="flex flex-row border-2 p-2 aspect-square">
+                    <button class="text-[0px]">
+                        ...
+                    </button>
+                </div>
             </div>
-            <div class="container">
-            <button id="burger-menu-button" class="btn-square interactible">
-                <svg data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
-                </svg>
-            </button>
-            </div>
-        </div>
         </nav>
 
-         <main>
-            Download Thing!
-         </main>
+        <main>
+        Download Thing!
+        </main>
 
-         <footer>
-            Footer!
-         </footer>
+        <footer>
+        Footer!
+        </footer>
 
         <!---------------------------------------------->
         <!-- Your own JavaScript functions go here    -->
