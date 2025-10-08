@@ -6,13 +6,9 @@
 
     <meta name="comp1800 template" content="My 1800 App" />
     <title>My BCIT Project</title>
-    <link rel="stylesheet" href="./styles/style.css" />
-    <style>
-      .welcome-banner {
-        background-color: white;
-        padding: 100px 80px;
-      }
+    <script src="https://cdn.tailwindcss.com"></script>
 
+    <style>
       .welcome-text {
         text-align: left;
         max-width: none;
@@ -70,16 +66,16 @@
   </head>
 
   <body>
-    <nav>
-      <div id="nav-content">
-        <div class="container flex-row">
-          <img class="logo" src="images/cleanfridge-transparent.png" />
-          <h6 id="logo-heading" >Fridge Tracker</h6>
+    <nav class="flex flex-row max-h-[16vmin] min-h-[8vmax] shadow-slate-300 shadow-md">
+      <div class="flex flex-row flex-1 justify-between m-2 p-2">
+        <div class="flex flex-row items-center gap-[2vw]">
+          <img class="h-[100%]" src="images/cleanfridge-transparent.png">
+          <h3 class="text-[6vmin]">Fridge Tracker</h3>
         </div>
-        <div class="container">
-          <button id="burger-menu-button" class="btn-square interactible">
+        <div id="burger-menu-container" class="flex flex-row aspect-square">
+          <button class=" flex-1 text-[0px] w-[100%] duration-300 rounded-xl bg-slate-200 hover:bg-slate-300">
             <svg data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-              <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
+                <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
             </svg>
           </button>
         </div>
