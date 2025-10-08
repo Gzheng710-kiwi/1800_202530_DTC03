@@ -1,56 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <meta name="comp1800 template" content="My 1800 App">
-        <title>My BCIT Project</title>
+      <meta name="comp1800 template" content="My 1800 App">
+      <title>My BCIT Project</title>
 
-        <!-- Other libraries go here -->
+      <!-- Other libraries go here -->
 
-        <!-- Link to styles of your own -->
-        <script src="https://cdn.tailwindcss.com"></script>
+      <!-- Link to styles of your own -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link href="styles/style.css" rel="stylesheet">
 
-    </head>
+  </head>
 
-    <body>
+  <body>
+    <nav class="flex flex-row max-h-[16vmin] min-h-[8vmax] shadow-md shadow-slate-300">
+      <div class="flex flex-row flex-1 justify-between m-2 p-2">
+        <div class="flex flex-row items-center gap-[2vw]">
+          <img class="h-[100%]" src="images/cleanfridge-transparent.png">
+          <h3 class="text-[6vmin]">Fridge Tracker</h3>
+        </div>
+        <div id="burger-menu-container" class="flex flex-row aspect-square">
+          <button class=" flex-1 text-[0px] w-[100%] duration-300 rounded-xl bg-slate-200 hover:bg-slate-300">
+            <svg data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
 
-        <!------------------------------>
-        <!-- Your HTML Layout go here -->
-        <!------------------------------>
-        <!-- Stuff for body goes here -->
-        <nav class="flex flex-row">
-            <div id="navbar-content" class="flex flex-row flex-1 justify-between">
-                <div id="logo" class="flex flex-row">
-                    <!-- <img src="images/cleanfridge-transparent.png"> -->
-                    <h3>Fridge Tracker</h3>
-                </div>
-                <div id="burger-menu-container" class="flex flex-row border-2 p-2 m-2 aspect-square">
-                    <button class="text-5xl w-[100%]">
-                        <svg data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                            <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </nav>
+    <main>
+    Download Thing!
+    </main>
 
-        <main>
-        Download Thing!
-        </main>
+    <footer>
+    Footer!
+    </footer>
 
-        <footer>
-        Footer!
-        </footer>
+      <!---------------------------------------------->
+      <!-- Your own JavaScript functions go here    -->
+      <!---------------------------------------------->
 
-        <!---------------------------------------------->
-        <!-- Your own JavaScript functions go here    -->
-        <!---------------------------------------------->
+      <!-- Link to scripts of your own -->
+      <!-- <script type="module" src="./src/main.js"></script> -->
 
-        <!-- Link to scripts of your own -->
-        <!-- <script type="module" src="./src/main.js"></script> -->
-
-    </body>
+  </body>
 </html>
