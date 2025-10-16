@@ -2,12 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App">
-
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="comp1800 template" content="My 1800 App">
+    <title>My BCIT Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 
     <!-- Other libraries go here -->
 
@@ -17,7 +19,30 @@
 </head>
 
 <body>
+    <div class="flex-grow p-6">
+        <h1 class="text-5xl font-semibold">Main Content</h1>
+        <p class="text-xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti vitae laboriosam praesentium. Rem, hic quos.</p>
+    </div>
 
+    <nav class="fixed bottom-0 left-0 w-full bg-slate-300 border-y-2 border-black">
+        <div class="flex justify-around items-center h-32">
+            <button class="bg-white p-3 rounded-md border-2 border-black flex items-center hover:bg-gray-200">
+                Dashboard
+            </button>
+            <button class="bg-white p-3 rounded-md border-2 border-black flex items-center hover:bg-gray-200">
+                Logs
+            </button>
+            <button class="bg-white p-2 rounded-md border-2 border-black flex items-center hover:bg-gray-200 -translate-y-7 py-4">
+                Add food
+            </button>
+            <button class="bg-white p-3 rounded-md border-2 border-black flex items-center hover:bg-gray-200">
+                Reminders
+            </button>
+            <button class="bg-white p-3 rounded-md border-2 border-black flex items-center hover:bg-gray-200">
+                Profile
+            </button>
+        </div>
+    </nav>
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
