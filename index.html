@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <meta name="comp1800 template" content="My 1800 App">
-      <title>My BCIT Project</title>
-
-      <!-- Other libraries go here -->
-
-      <!-- Link to styles of your own -->
-      <script src="https://cdn.tailwindcss.com"></script>
-      <link href="styles/style.css" rel="stylesheet">
-
+    <meta name="comp1800 template" content="My 1800 App" />
+    <title>My BCIT Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
-    <nav class="flex flex-row max-h-[16vmin] min-h-[8vmax] shadow-md shadow-slate-300">
+    <nav class="flex flex-row max-h-[8vmax] min-h-20 shadow-slate-300 shadow-md">
       <div class="flex flex-row flex-1 justify-between m-2 p-2">
         <div class="flex flex-row items-center gap-[2vw]">
           <img class="h-[100%]" src="images/cleanfridge-transparent.png">
-          <h3 class="text-[6vmin]">Fridge Tracker</h3>
+          <h3 class="text-[5vmin]">Fridge Tracker</h3>
         </div>
-        <div id="burger-menu-container" class="flex flex-row aspect-square">
-          <button class=" flex-1 text-[0px] w-[100%] duration-300 rounded-xl bg-slate-200 hover:bg-slate-300">
-            <svg data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+        <div id="burger-menu-container" class="flex items-center">
+          <button class="h-[75%] aspect-square text-[0px] duration-300 rounded-lg bg-slate-200 hover:bg-slate-300">
+            <svg class="h-[100%] w-[100%]" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
                 <path d="M97.092 36.078H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 61.889H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222zM97.092 87.7H30.908a2.111 2.111 0 0 0 0 4.222h66.184a2.111 2.111 0 0 0 0-4.222z"/>
             </svg>
           </button>
@@ -34,19 +27,77 @@
     </nav>
 
     <main>
-    Download Thing!
-    </main>
+      <section class="relative py-7 sm:py-20 px-8 md:px-16 flex flex-col md:flex-row items-center">
+      <div class="max-w-l text-left space-y-5">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold">
+          Welcome to
+          <span class="text-green-700">Fridge Tracker</span>
+        </h1>
+        <p class="text-lg text-gray-600">Treasure every item in your fridge!</p>
+        <a href="login.html">
+        <button class="bg-gradient-to-r from-blue-500 to-blue-400 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl hover:translate-y-[-3px] transition-all">
+          Login
+        </button>
+        </a>
+      </div>
+      <img src="images/Transparent_Strawberry.png" alt=""
+           class="hidden lg:block absolute right-1 top-[350px] transform -translate-y-1/2 w-[700px] xl:w-[1000px] h-auto"/>
+    </section>
 
-    <footer>
-    Footer!
+    <section class="bg-green-50 flex items-center justify-center min-h-[20vh] sm:min-h-[50vh] px-2 sm:px-6">
+      <div class="text-center max-w-sm">
+        <h1 class="text-2xl sm:text-5xl font-bold text-green-700 mb-3">
+          Keep Your Fridge in Check 🥗
+        </h1>
+        <p class="text-gray-700 text-base  sm:text-lg mb-6 leading-relaxed">
+          Track your food,<br>
+          get smart expiration reminders,<br>
+          save money, save time, and save the planet.
+          <br>
+        </p>
+        <a href="#learn-more" class="relative z-20 inline-block bg-green-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-800 transition">
+          Learn More
+        </a>
+      </div>
+    </section>
+
+    <section class="py-6 px-6 flex flex-col lg:flex-row items-start gap-8 max-w-7xl mx-auto">
+      <div class="border-4 border-blue-700 rounded-xl overflow-hidden max-w-lg w-full">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/aI_F_rHp6HY?si=tsS5urUFxEOe77sP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="hidden md:block max-w-xs lg:mr-1">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-3">Fridge Tracker Project</h2>
+        <p class="text-gray-700 leading-relaxed">
+          Discover how our Fridge Tracker helps you manage your food efficiently, reduce waste, and save your money. 
+        </p>
+        <p class="text-gray-500 leading-relaxed">Please watch our Pitch Video!</p>
+      </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-8 text-center">
+      <div class="max-w-7xl mx-auto px-6 flex flex-row justify-between gap-6 flex-nowrap">
+        <div class="flex-1 min-w-[120px]">
+          <h4 class="sm:text-2xl sm:font-bold mb-2">Contact</h4>
+          <a href="mailto:info@fridgetracker.com" class="text-orange-500 hover:underline">info@ft.com</a>
+          <a href="tel:+16049874321" class="text-orange-500 hover:underline">604-987-4321</a>
+        </div>
+
+        <div class="flex-1 min-w-[120px]">
+          <h4 class="sm:text-2xl sm:font-bold mb-2">Support / Help</h4>
+          <a href="#" class="text-orange-500 hover:underline">FAQ</a>
+          <a href="#" class="text-orange-500 hover:underline">Help Center</a>
+        </div>
+
+        <div class="flex-1 min-w-[120px]">
+          <h4 class="sm:text-2xl sm:font-bold mb-2">Social Media</h4>
+          <a href="#" class="text-orange-500 hover:underline">Facebook</a>
+          <a href="#" class="text-orange-500 hover:underline">Instagram</a>
+        </div>
+      </div>
+      
+      <div class="text-center mt-4 text-gray-400 text-xs">
+        &copy; 2025 Fridge Tracker. All rights reserved.
+      </div>
     </footer>
-
-      <!---------------------------------------------->
-      <!-- Your own JavaScript functions go here    -->
-      <!---------------------------------------------->
-
-      <!-- Link to scripts of your own -->
-      <!-- <script type="module" src="./src/main.js"></script> -->
-
   </body>
 </html>
