@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="comp1800 template" content="My 1800 App">
+        <title>My BCIT Project</title>
 
-    <meta name="comp1800 template" content="My 1800 App">
-    <title>My BCIT Project</title>
+        <!-- Tailwind and JQuery -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <!-- Tailwind and JQuery -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <!-- Other libraries go here -->
 
-    <!-- Other libraries go here -->
+        <!-- Custom Components -->
+        <script type="module" src="/src/components/app-navbar.js"></script>
 
-    <!-- Custom Components -->
-    <script type="module" src="/src/components/app-navbar.js"></script>
+        <!-- Link to styles of your own -->
+        <link rel="stylesheet" href="./styles/style.css">
 
-    <!-- Link to styles of your own -->
-    <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+        <app-navbar></app-navbar>
 
-</head>
+        <main>
+            <div class="flex-grow p-6">
+                <h1 class="text-5xl font-semibold">Main Content</h1>
+                <p class="text-xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti vitae laboriosam praesentium. Rem, hic quos.</p>
+            </div>
+        </main>
 
-<body>
-    <app-navbar></app-navbar>
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
 
-    <main>
-        <div class="flex-grow p-6">
-            <h1 class="text-5xl font-semibold">Main Content</h1>
-            <p class="text-xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti vitae laboriosam praesentium. Rem, hic quos.</p>
-        </div>
-    </main>
-
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-
-    <!-- Link to scripts of your own -->
-    <!-- <script type="module" src="./src/main.js"></script> -->
-
-</body>
-
+        <!-- Link to scripts of your own -->
+        <!-- <script type="module" src="./src/main.js"></script> -->
+    </body>
 </html>
