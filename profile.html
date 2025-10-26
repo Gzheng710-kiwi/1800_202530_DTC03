@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <meta name="comp1800 template" content="My 1800 App" />
     <title>My BCIT Project</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module" src="/src/components/app-navbar.js"></script>
     <style>
       :root {
         /*Light color scheme here:*/
@@ -80,14 +80,15 @@
     </style>
   </head>
 
-  <body>
+  <body class="light-mode">
     <!--navbar-->
+    <app-navbar></app-navbar>
     <nav
       class="flex flex-row max-h-[8vmax] min-h-20 shadow-slate-300 shadow-md"
     >
       <div class="flex flex-row flex-1 justify-between m-2 p-2">
         <div class="flex flex-row items-center gap-[2vw]">
-          <img class="h-[100%]" src=" " />
+          <img class="h-[100%]" src="images/cleanfridge-transparent.png" />
           <h3 class="text-[5vmin]">Fridge Tracker</h3>
         </div>
         <div id="burger-menu-container" class="flex items-center">
@@ -109,143 +110,172 @@
       </div>
     </nav>
     <!--main-->
-    <main class="max-w-6xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-10">
+    <main class="max-w-6xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-10 pb-32">
       <!--left card-->
       <aside
-        class="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-gray-200"
+        class="bg-[--bg-color] text-[--text-color] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
       >
         <img
-          class="w-28 h-28 rounded-full border-4 border-green-200 object-cover mb-4"
+          class="w-28 h-28 rounded-full border-4 border-[--highlight-bg-color] object-cover mb-4"
           src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png"
           alt=""
         />
-        <h2 class="text-2xl font-bold text-green-700">
+        <h2 class="text-2xl font-bold text-[--highlight-text-color]">
           Hello, user_name, Welcome Back!
         </h2>
-        <div class="w-full text-left space-y-3 text-sm text-gray-600 mt-10">
+        <div
+          class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10"
+        >
           <p><strong>Email:</strong> user@example.com</p>
           <p><strong>Loction:</strong> Vancouver, BC</p>
           <p><strong>Member Since:</strong> October 2025</p>
         </div>
         <button
-          class="mt-8 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+          class="mt-4 bg-[#000000] text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
         >
           Edit Profile
         </button>
         <div class="mt-8 w-full grid grid-cols-3 text-center">
           <div>
-            <p class="text-lg font-bold text-green-700">11</p>
-            <p class="text-xs text-gray-500">Items</p>
+            <p class="text-lg font-bold text-[--highlight-text-color]">11</p>
+            <p class="text-xs text-[--secondary-text-color]">Items</p>
           </div>
           <div>
-            <p class="text-lg font-bold text-[#337744]">4</p>
-            <p class="text-xs text-gray-500">Reminders</p>
+            <p class="text-lg font-bold text-[--highlight-text-color]">4</p>
+            <p class="text-xs text-[--secondary-text-color]">Reminders</p>
           </div>
           <div>
-            <p class="text-lg font-bold text-[#337744]">1</p>
-            <p class="text-xs text-gray-500">Expiring Soon</p>
+            <p class="text-lg font-bold text-[--highlight-text-color]">1</p>
+            <p class="text-xs text-[--secondary-text-color]">Expiring Soon</p>
           </div>
         </div>
         <div
-          class="w-full h-[2px] mt-6 bg-gradient-to-r from-green-200 to-transparent"
+          class="w-full h-[2px] mt-6 bg-gradient-to-r from-[--highlight-bg-color] to-transparent"
         ></div>
       </aside>
+
       <!--right card-->
       <section class="space-y-10">
-        <div class="bg-white shadow-md rounded-2xl p-8 border border-gray-200">
-          <h3 class="text-2xl font-semibold text-green-700 mb-4">
+        <div
+          class="bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]"
+        >
+          <h3 class="text-2xl font-semibold text-[--highlight-text-color] mb-4">
             Edit Your Information
           </h3>
           <form class="space-y-4">
             <div>
-              <label class="block text-sm text-gray-600 mb-1"
+              <label class="block text-sm text-[--secondary-text-color] mb-1"
                 >Display Name:</label
               >
               <input
                 type="text"
                 placeholder=""
-                class="w-full max-w-md border border-gray-300 rounded-lg p-2"
+                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
               />
             </div>
             <div>
-              <label class="block text-sm text-gray-600 mb-1">Email:</label>
+              <label class="block text-sm text-[--secondary-text-color] mb-1"
+                >Email:</label
+              >
               <input
                 type="email"
                 placeholder=""
-                class="w-full max-w-md border border-gray-300 rounded-lg p-2"
+                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
               />
             </div>
             <div>
-              <label class="block text-sm text-gray-600 mb-1"
+              <label class="block text-sm text-[--secondary-text-color] mb-1"
                 >Phone Number:</label
               >
               <input
                 type="phone number"
                 placeholder=""
-                class="w-full max-w-md border border-gray-300 rounded-lg p-2"
+                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
               />
             </div>
             <button
               type="submit"
-              class="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+              class="mt-4 bg-[#000000] text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
             >
               Save Changes
             </button>
           </form>
         </div>
-        <div class="bg-white shadow-md rounded-2xl p-8 border border-gray-200">
-          <h3 class="text-2xl font-semibold text-green-700 mb-4">
+
+        <div
+          class="bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color] mb-5"
+        >
+          <h3 class="text-2xl font-semibold text-[--highlight-text-color] mb-5">
             Your Current Food Records (optional)
           </h3>
           <ul class="grid sm:grid-cols-2 gap-4">
             <li
-              class="p-4 bg-green-50 border border-green-100 rounded-lg flex justify-between"
+              class="p-4 bg-[--secondary-bg-color] border border-[--highlight-bg-color] rounded-lg flex justify-between"
             >
               <div>
-                <p class="font-medium text-gray-700">Butter (x1)</p>
-                <p class="text-sm text-gray-500">Expires in 1 month</p>
+                <p class="font-medium text-[--text-color]">Butter (x1)</p>
+                <p class="text-sm text-[--secondary-text-color]">
+                  Expires in 1 month
+                </p>
               </div>
-              <span class="text-xs text-green-600 font-semibold self-start"
+              <span
+                class="text-xs text-[--highlight-text-color] font-semibold self-start"
                 >Fresh</span
               >
             </li>
+
             <li
-              class="p-4 bg-green-50 border border-green-100 rounded-lg flex justify-between"
+              class="p-4 bg-[--secondary-bg-color] border border-[--highlight-bg-color] rounded-lg flex justify-between"
             >
               <div>
-                <p class="font-medium text-gray-700">Egg (x8)</p>
-                <p class="text-sm text-gray-500">Expires in 2 weeks</p>
+                <p class="font-medium text-[--text-color]">Egg (x8)</p>
+                <p class="text-sm text-[--secondary-text-color]">
+                  Expires in 2 weeks
+                </p>
               </div>
-              <span class="text-xs text-green-600 font-semibold self-start"
+              <span
+                class="text-xs text-[--highlight-text-color] font-semibold self-start"
                 >Fresh</span
               >
             </li>
+
             <li
-              class="p-4 bg-yellow-50 border border-yellow-100 rounded-lg flex justify-between"
+              class="p-4 bg-[--secondary-bg-color] border border-[--contrast-bg-color] rounded-lg flex justify-between"
             >
               <div>
-                <p class="font-medium text-gray-700">Sausage (x1)</p>
-                <p class="text-sm text-gray-500">Expires tomorrow</p>
+                <p class="font-medium text-[--text-color]">Sausage (x1)</p>
+                <p class="text-sm text-[--secondary-text-color]">
+                  Expires tomorrow
+                </p>
               </div>
-              <span class="text-xs text-yellow-600 font-semibold self-start"
+              <span
+                class="text-xs text-[--secondary-text-color] font-semibold self-start"
                 >Soon</span
               >
             </li>
+
             <li
-              class="p-4 bg-red-50 border border-red-100 rounded-lg flex justify-between"
+              class="p-4 bg-[--contrast-bg-color] border border-[--secondary-bg-color] rounded-lg flex justify-between"
             >
               <div>
-                <p class="font-medium text-gray-700">Milk (1L)</p>
-                <p class="text-sm text-gray-500">Expired yesterday</p>
+                <p class="font-medium text-[--contrast-text-color]">
+                  Milk (1L)
+                </p>
+                <p class="text-sm text-[--contrast-text-color]">
+                  Expired yesterday
+                </p>
               </div>
-              <span class="text-xs text-red-600 font-semibold self-start"
+              <span
+                class="text-xs text-[--contrast-text-color] font-semibold self-start"
                 >Expired</span
               >
             </li>
           </ul>
           <div class="text-right mt-4">
-            <a href="#" class="text-green-600 font-medium hover:underline"
-              >Go to Food List →</a
+            <a
+              href="#"
+              class="text-[--highlight-text-color] font-medium hover:underline"
+              >Go to Food Logs →</a
             >
           </div>
         </div>
@@ -253,38 +283,5 @@
     </main>
 
     <!--footer-->
-    <footer class="bg-gray-900 text-white py-8 text-center">
-      <div
-        class="max-w-7xl mx-auto px-6 flex flex-row justify-between gap-6 flex-nowrap"
-      >
-        <div class="flex-1 min-w-[120px]">
-          <h4 class="sm:text-2xl sm:font-bold mb-2">Contact</h4>
-          <a
-            href="mailto:info@fridgetracker.com"
-            class="text-orange-500 hover:underline"
-            >info@ft.com</a
-          >
-          <a href="tel:+16049874321" class="text-orange-500 hover:underline"
-            >604-987-4321</a
-          >
-        </div>
-
-        <div class="flex-1 min-w-[120px]">
-          <h4 class="sm:text-2xl sm:font-bold mb-2">Support / Help</h4>
-          <a href="#" class="text-orange-500 hover:underline">FAQ</a>
-          <a href="#" class="text-orange-500 hover:underline">Help Center</a>
-        </div>
-
-        <div class="flex-1 min-w-[120px]">
-          <h4 class="sm:text-2xl sm:font-bold mb-2">Social Media</h4>
-          <a href="#" class="text-orange-500 hover:underline">Facebook</a>
-          <a href="#" class="text-orange-500 hover:underline">Instagram</a>
-        </div>
-      </div>
-
-      <div class="text-center mt-4 text-gray-400 text-xs">
-        &copy; 2025 Fridge Tracker. All rights reserved.
-      </div>
-    </footer>
   </body>
 </html>
