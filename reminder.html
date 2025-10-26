@@ -118,11 +118,189 @@
           Your Food Reminders
         </h1>
         <button
-          class="mt-4 sm:mt-0 bg-[--highlight-bg-color] text-[--contrast-text-color] px-5 py-2 rounded-lg hover:opacity-90 transition"
+          class="mt-4 sm:mt-0 bg-[--highlight-bg-color] text-black px-5 py-2 rounded-lg hover:opacity-90 transition"
         >
           + Add New Reminder
         </button>
       </header>
+
+      <section class="grid sm:grid-cols-3 gap-6 text-center">
+        <div
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow"
+        >
+          <p class="text-2xl font-bold text-[--highlight-text-color]">4</p>
+          <p class="text-sm text-[--secondary-text-color]">
+            Food Types Tracked
+          </p>
+        </div>
+
+        <div
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow"
+        >
+          <p class="text-2xl font-bold text-yellow-600">1</p>
+          <p class="text-sm text-[--secondary-text-color]">Expiring Soon</p>
+        </div>
+
+        <div
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow"
+        >
+          <p class="text-2xl font-bold text-red-600">1</p>
+          <p class="text-sm text-[--secondary-text-color]">Expired</p>
+        </div>
+      </section>
+
+      <!--reminder list-->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold text-[--highlight-text-color]">
+          Active Reminders
+        </h2>
+        <ul class="space-y-4">
+          <li
+            class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg flex justify-between items-center"
+          >
+            <div>
+              <p class="font-medium text-[--text-color]">Sausage (x1)</p>
+              <p class="text-sm text-[--secondary-text-color]">
+                Expires tomorrow
+              </p>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <span class="text-xs font-semibold text-yellow-600">Soon</span>
+              <button
+                class="p-2 rounded-md bg-[--secondary-bg-color] hover:bg-red-100 transition"
+                title="Delete reminder"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#cc0000"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 7h12M9 7V4h6v3m-7 4v9m4-9v9m4-9v9M5 7h14v13a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </li>
+
+          <li
+            class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg flex justify-between items-center"
+          >
+            <div>
+              <p class="font-medium text-[--text-color]">Butter (x1)</p>
+              <p class="text-sm text-[--secondary-text-color]">
+                Expires in 1 month
+              </p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-xs font-semibold text-[--highlight-text-color]"
+                >Fresh</span
+              >
+              <button
+                class="p-2 rounded-md bg-[--secondary-bg-color] hover:bg-red-100 transition"
+                title="Delete reminder"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#cc0000"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 7h12M9 7V4h6v3m-7 4v9m4-9v9m4-9v9M5 7h14v13a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </li>
+
+          <li
+            class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg flex justify-between items-center"
+          >
+            <div>
+              <p class="font-medium text-[--text-color]">Egg (x8)</p>
+              <p class="text-sm text-[--secondary-text-color]">
+                Expires in 2 weeks
+              </p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-xs font-semibold text-[--highlight-text-color]"
+                >Fresh</span
+              >
+              <button
+                class="p-2 rounded-md bg-[--secondary-bg-color] hover:bg-red-100 transition"
+                title="Delete reminder"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#cc0000"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 7h12M9 7V4h6v3m-7 4v9m4-9v9m4-9v9M5 7h14v13a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </li>
+
+          <li
+            class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg flex justify-between items-center"
+          >
+            <div>
+              <p class="font-medium text-[--text-color]">Milk (x1)</p>
+              <p class="text-sm text-[--secondary-text-color]">
+                Expired yesterday
+              </p>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="text-xs font-semibold text-red-600">Expired</span>
+              <button
+                class="p-2 rounded-md bg-[--secondary-bg-color] hover:bg-red-100 transition"
+                title="Delete reminder"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="#cc0000"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 7h12M9 7V4h6v3m-7 4v9m4-9v9m4-9v9M5 7h14v13a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <div class="flex justify-between items-center pb-20 -mt-6">
+        <button
+          class="bg-[--highlight-bg-color] text-black px-4 py-2 rounded-lg hover:opacity-90 transition"
+        >
+          Manage Reminders
+        </button>
+      </div>
     </main>
   </body>
 </html>
