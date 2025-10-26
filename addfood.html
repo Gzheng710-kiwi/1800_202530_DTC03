@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="comp1800 template" content="My 1800 App">
+        <title>My BCIT Project</title>
+
+        <!-- Tailwind and JQuery -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <!-- Other libraries go here -->
+
+        <!-- Custom Components -->
+        <script type="module" src="/src/components/app-navbar.js"></script>
+
+        <!-- Link to styles of your own -->
+        <link rel="stylesheet" href="./styles/style.css">
+
+    </head>
+    <body>
+        <app-navbar></app-navbar>
+
+        <main>
+            <div id="main-content" class="flex justify-center">
+                <div class="flex-1 m-[10vmin] max-w-2xl flex flex-row justify-center">
+                    <div class="flex-1 border-2 border-black border-solid p-2 rounded-lg">
+                        <div class="flex flex-row justify-between">
+                            <h2 class="text-4xl font-bold">Add food</h2>
+                            <img class="w-1/4" src="images/cleanfridge-transparent.png" alt="fridge tracker logo">
+                        </div>
+                        <div>
+                            <div>
+                                <h4>Reminder</h4>
+                            </div>
+                            <div>
+                                <h4>Date</h4>
+                            </div>
+                            <div>
+                                <h4>Save</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+
+        <!-- Link to scripts of your own -->
+        <!-- <script type="module" src="./src/main.js"></script> -->
+    </body>
+</html>
