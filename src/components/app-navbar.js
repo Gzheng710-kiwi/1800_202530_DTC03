@@ -6,11 +6,12 @@ class AppNavbar extends HTMLElement {
 
     renderNavbar() {
         this.innerHTML = `
-            <nav class="fixed bottom-0 left-0 w-full bg-slate-300 border-y-2 border-black">
+            <link href="/styles/style.css" rel="stylesheet">
+            <nav class="fixed bottom-0 left-0 w-full bg-[--secondary-bg-color] border-y-2 border-black">
                 <div class="flex justify-around items-center h-32 gap-[2vw]">
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="dashboard-button" 
-                        class="bg-white flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center hover:bg-gray-200">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Dashboard 1 -->
                             <svg class="h-3/4"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -27,7 +28,7 @@ class AppNavbar extends HTMLElement {
                     </div>
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="logs-button" 
-                        class="bg-white flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center hover:bg-gray-200">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Logs-2 -->
                             <svg class="h-full"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -38,7 +39,7 @@ class AppNavbar extends HTMLElement {
                         <h6 class="text-sm text-nowrap font-semibold">Logs</h6>
                     </div>
                     <div class="flex flex-col flex-1 basis-4 w-[15vw] max-w-[125px] h-4/5 items-center justify-center -translate-y-7">
-                        <button id="addfood-button" class="bg-white flex p-0 m-0 rounded-full border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center hover:bg-gray-200">
+                        <button id="addfood-button" class="btn-primary flex p-0 m-0 rounded-full border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- AddFood-2 -->
                             <svg class="h-full p-1"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -50,7 +51,7 @@ class AppNavbar extends HTMLElement {
                     </div>
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="reminders-button" 
-                        class="bg-white flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center hover:bg-gray-200">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Reminders-2 -->
                             <svg class="h-full" 
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -62,7 +63,7 @@ class AppNavbar extends HTMLElement {
                     </div>
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="profile-button" 
-                        class="bg-white flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center hover:bg-gray-200">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Profile-2 -->
                             <svg class="h-full"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
