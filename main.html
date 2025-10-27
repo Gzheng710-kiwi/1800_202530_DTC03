@@ -21,13 +21,34 @@
         <link rel="stylesheet" href="./styles/style.css">
 
     </head>
-    <body>
+    <body class="">
         <app-navbar></app-navbar>
-
         <main>
-            <div class="flex-grow p-6">
-                <h1 class="text-5xl font-semibold">Main Content</h1>
-                <p class="text-xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti vitae laboriosam praesentium. Rem, hic quos.</p>
+            <div id="main-content" class="flex justify-center">
+                <div class="flex-1 m-[10vh] max-w-2xl flex flex-col justify-center items-stretch">
+                    <h1 class="text-4xl font-bold mb-8">Dashboard</h1>
+                    <div class="flex-1 border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg">
+                        <h2 class="text-2xl font-bold">Recents</h2>
+                        <div class="flex flex-col mt-4">
+                            <div class="flex flex-row border-b py-4">
+                                <h5 class="flex-1 p-1">Tomato</h5>
+                                <button class="py-1 px-2 rounded-lg">Add</button>
+                            </div>
+                            <div class="flex flex-row border-b py-4">
+                                <h5 class="flex-1 p-1">Ham</h5>
+                                <button class="py-1 px-2 rounded-lg">Add</button>
+                            </div>
+                            <div class="flex flex-row border-b py-4">
+                                <h5 class="flex-1 p-1">Potato</h5>
+                                <button class="py-1 px-2 rounded-lg">Add</button>
+                            </div>
+                            <div class="flex flex-row border-b py-4">
+                                <h5 class="flex-1 p-1">Salami</h5>
+                                <button class="py-1 px-2 rounded-lg">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
 
