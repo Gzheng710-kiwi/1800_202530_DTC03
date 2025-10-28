@@ -7,7 +7,7 @@ class AppNavbar extends HTMLElement {
     renderNavbar() {
         this.innerHTML = `
             <link href="/styles/style.css" rel="stylesheet">
-            <nav class="fixed bottom-0 left-0 w-full bg-[--secondary-bg-color] border-y-2 border-black">
+            <nav class="fixed bottom-0 left-0 w-full bg-[--secondary-bg-color] border-t-2 border-black">
                 <div class="flex justify-around items-center h-32 gap-[2vw]">
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="dashboard-button" 
