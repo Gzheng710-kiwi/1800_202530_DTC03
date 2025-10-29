@@ -5,7 +5,7 @@
 // Handles Login/Signup toggling, error messages, and form submits.
 // -------------------------------------------------------------
 
-import "./styles/style.css";
+import "../styles/style.css";
 import { loginUser, signupUser, authErrorMessage } from "./authentication.js";
 
 // --- Login and Signup Page ---
