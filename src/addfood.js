@@ -1,11 +1,19 @@
-import { saveFoodItem } from "./save-foodlog";
+import { saveFoodItem } from "./savefooditem";
 
-document.getElementById("addfood-submit").addEventListener("click", () => {
-  let foodName = document.getElementById("foodName").value;
-  let expiry = document.getElementById("expDate").value;
-  let addedDate = document.getElementById("dateAdded").value;
-  let reminders = document.getElementById("remindersToggle").checked;
-  let image = document.getElementById("imageUrl").value || null;
+const saveButton = document.getElementById("addfood-submit")
+console.log("Button: " + saveButton.id);
+saveButton.addEventListener("click", () => {
+  let foodName = document.getElementById("addfood-name").value;
+  let expDate = document.getElementById("addfood-expDate").value;
+  let reminders = document.getElementById("addfood-reminder").checked;
+  // let image = document.getElementById("addfood-image").value;
 
-  addFoodItem(foodName, expiry, addedDate, reminders, image);
+  console.log(
+    "\nName: " + foodName +
+    "\nExpiry Date: " + expDate +
+    "\nReminders: " + reminders
+  )
+
+  console.log("Saving food...");
+  saveFoodItem(foodName, expDate, reminders);
 });

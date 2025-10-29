@@ -25,7 +25,10 @@ export async function saveFoodItem(_name, _expDate, _reminders, _imageUrl = null
     await addDoc(foodRef, {
         name: _name,
         expDate: _expDate,
+        addedDate: serverTimestamp(),
         reminders: _reminders,
         imageUrl: _imageUrl
     });
+
+    console.log("Food saved successfully");
 }
