@@ -12,6 +12,25 @@ class AppNavbar extends HTMLElement {
     this.querySelector("#logs-button")?.addEventListener("click", () => {
       window.location.href = "deletelogs.html";
     });
+    // Add Food button → addfood.html
+    this.querySelector("#addfood-button")?.addEventListener("click", () => {
+      window.location.href = "addfood.html";
+    });
+
+    // (Optional) Dashboard button → dashboard.html
+    this.querySelector("#dashboard-button")?.addEventListener("click", () => {
+      window.location.href = "main.html";
+    });
+
+    // // (Optional) Reminders button → reminders.html
+    // this.querySelector("#reminders-button")?.addEventListener("click", () => {
+    //   window.location.href = "reminders.html";
+    // });
+
+    // // (Optional) Profile button → profile.html
+    // this.querySelector("#profile-button")?.addEventListener("click", () => {
+    //   window.location.href = "profile.html";
+    // });
   }
 
   renderNavbar() {
