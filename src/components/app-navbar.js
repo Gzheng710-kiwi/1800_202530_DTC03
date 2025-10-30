@@ -1,11 +1,21 @@
 class AppNavbar extends HTMLElement {
-    constructor() {
-        super();
-        this.renderNavbar();
-    }
+  constructor() {
+    super();
+    this.renderNavbar();
+  }
 
-    renderNavbar() {
-        this.innerHTML = `
+  connectedCallback() {
+    this.addEventListeners();
+  }
+
+  addEventListeners() {
+    this.querySelector("#logs-button")?.addEventListener("click", () => {
+      window.location.href = "deletelogs.html";
+    });
+  }
+
+  renderNavbar() {
+    this.innerHTML = `
             <link href="/styles/style.css" rel="stylesheet">
             <nav class="fixed bottom-0 left-0 w-full bg-[--secondary-bg-color] border-t-2 border-black">
                 <div class="flex justify-around items-center h-32 gap-[2vw]">
@@ -76,7 +86,7 @@ class AppNavbar extends HTMLElement {
                 </div>
             </nav>
         `;
-    }
+  }
 }
 
-customElements.define('app-navbar', AppNavbar);
+customElements.define("app-navbar", AppNavbar);
