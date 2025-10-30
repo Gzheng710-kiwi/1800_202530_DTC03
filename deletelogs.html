@@ -3,562 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My BCIT Project</title>
+    <title>Delete Foods | FridgeTracker™</title>
 
-		<!-- Tailwind and JQuery -->
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-		<!-- Other libraries go here -->
-
-		<!-- Custom Components -->
-		<script type="module" src="/src/components/app-navbar.js"></script>
-
-		<!-- Link to styles of your own -->
-		<link rel="stylesheet" href="./styles/style.css">
+    <script type="module" src="/src/components/app-navbar.js"></script>
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
-  <body class="bg-neutral-50">
-    <!-- App frame -->
-    <div class="border-neutral-200 bg-white shadow-sm flex flex-col">
+
+  <body class="bg-neutral-50 min-h-screen">
+    <div class="border-neutral-200 bg-white shadow-sm flex flex-col min-h-screen">
       <app-navbar></app-navbar>
 
-      <!-- Top bar -->
-      <header class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b">
-        <div class="px-4 py-3 flex items-center gap-3">
-          <!-- tiny search icon -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="icon icon-tabler icons-tabler-outline icon-tabler-search"
-          >
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-            <path d="M21 21l-6 -6" />
-          </svg>
+      <main class="flex-1 overflow-y-auto">
+        <div class="mx-auto w-full max-w-[1024px] px-4 py-6 sm:px-6 lg:px-8">
 
-          <input
-            type="search"
-            placeholder="Search"
-            class="w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 leading-none outline-none ring-0 focus:border-neutral-400"
-            aria-label="Search foods"
-          />
+          <!-- Search Bar -->
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </svg>
+            </span>
+            <input
+              id="food-search"
+              type="search"
+              placeholder="Search"
+              class="w-full rounded-xl border border-neutral-300 bg-white pl-12 pr-4 py-3 outline-none focus:border-neutral-400"
+              aria-label="Search foods"
+            />
+          </div>
+
+          <!-- Food List Card -->
+          <section class="mt-6 rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
+            <!-- Column Headers -->
+            <header class="px-8 py-4 border-b border-neutral-200 bg-neutral-50">
+              <div class="grid grid-cols-[5rem_2fr_1.2fr_4rem] items-center">
+                <span class="text-lg font-semibold text-neutral-800 ">#</span>
+                <h2 class="text-2xl font-extrabold text-neutral-900 -translate-x-12">Food</h2>
+                <h2 class="text-2xl font-extrabold text-neutral-900 -translate-x-5 text-right">Expiry</h2>
+                <span class="sr-only">Delete</span>
+              </div>
+            </header>
+
+            <!-- Dynamic Food List -->
+            <ul id="food-list" class="divide-y divide-neutral-200">
+              <!-- JS dynamically fills this -->
+            </ul>
+          </section>
         </div>
-
-        <!-- Column headers (sticky below search) -->
-        <div
-          class="flex flex-row justify-between w-[81%] items-center gap-2 px-4 py-2 text-2xl font-semibold text-black border-t bg-white"
-        >
-          <span class="text-center">#</span>
-          <span>Food</span>
-          <span>Expiry</span>
-        </div>
-      </header>
-
-      <!-- Scrollable content -->
-      <main class="flex-1 overflow-y-auto text-2xl">
-        <ul class="divide-y divide-neutral-200">
-          <!-- Sample row -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">1</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Greek Yogurt (Vanilla)
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-19</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50 active:scale-95 transition"
-              aria-label="Delete item"
-            >
-              <!-- trash icon -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- Second table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">2</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Spinach
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-21</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- third table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">3</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Chicken Breast
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-22</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- Fourth table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">4</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Strawberries
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-23</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- fifth table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">5</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Whole Wheat Bread
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-24</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- Sixth table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">6</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Cheddar Cheese
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-25</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- Seventh table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">7</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Avocados
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-26</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- Eighth table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">8</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Eggs (Dozen)
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-27</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- ninth table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">9</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Tomato Sauce Jar
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-28</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- tenth table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">10</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Bananas
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-29</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- eleventh table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">11</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Carrots
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-08-30</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-
-          <!-- twelfth table -->
-          <li
-            class="grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3"
-          >
-            <span class="text-center text-black">12</span>
-            <div class="min-w-0">
-              <span
-                class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium"
-              >
-                Milk (2%)
-              </span>
-            </div>
-            <span class="rounded-full border px-3 py-1 text-black"
-              >2025-09-01</span
-            >
-            <button
-              type="button"
-              class="justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 7l16 0" />
-                <path d="M10 11l0 6" />
-                <path d="M14 11l0 6" />
-                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-              </svg>
-            </button>
-          </li>
-        </ul>
       </main>
     </div>
+
+    <script type="module" src="/src/deletelogs.js"></script>
   </body>
 </html>
