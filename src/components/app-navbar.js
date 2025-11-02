@@ -1,46 +1,20 @@
-class AppNavbar extends HTMLElement {
-  constructor() {
-    super();
-    this.renderNavbar();
-  }
+class AppNavbar extends HTMLElement 
+{
+    constructor() 
+    {
+        super();
+        this.renderNavbar();
+    }
 
-  connectedCallback() {
-    this.addEventListeners();
-  }
-
-  addEventListeners() {
-    this.querySelector("#logs-button")?.addEventListener("click", () => {
-      window.location.href = "deletelogs.html";
-    });
-    // Add Food button → addfood.html
-    this.querySelector("#addfood-button")?.addEventListener("click", () => {
-      window.location.href = "addfood.html";
-    });
-
-    // (Optional) Dashboard button → dashboard.html
-    this.querySelector("#dashboard-button")?.addEventListener("click", () => {
-      window.location.href = "main.html";
-    });
-
-    // // (Optional) Reminders button → reminders.html
-    this.querySelector("#reminders-button")?.addEventListener("click", () => {
-      window.location.href = "reminder.html";
-    });
-
-    // // (Optional) Profile button → profile.html
-    this.querySelector("#profile-button")?.addEventListener("click", () => {
-      window.location.href = "profile.html";
-    });
-  }
-
-  renderNavbar() {
-    this.innerHTML = `
+    renderNavbar() 
+    {
+        this.innerHTML = `
             <link href="/styles/style.css" rel="stylesheet">
-            <nav class="fixed bottom-0 left-0 w-full bg-[--secondary-bg-color] border-t-2 border-black">
+            <nav class="fixed bottom-0 left-0 w-full bg-[--secondary-bg-color] border-t-2 border-[--text-color]">
                 <div class="flex justify-around items-center h-32 gap-[2vw]">
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="dashboard-button" 
-                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-[--text-color] h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Dashboard 1 -->
                             <svg class="h-3/4"
                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +31,7 @@ class AppNavbar extends HTMLElement {
                     </div>
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="logs-button" 
-                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-[--text-color] h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Logs-2 -->
                             <svg class="h-full"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -68,7 +42,7 @@ class AppNavbar extends HTMLElement {
                         <h6 class="text-sm text-nowrap font-semibold">Logs</h6>
                     </div>
                     <div class="flex flex-col flex-1 basis-4 w-[15vw] max-w-[125px] h-4/5 items-center justify-center -translate-y-7">
-                        <button id="addfood-button" class="btn-primary flex p-0 m-0 rounded-full border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
+                        <button id="addfood-button" class="btn-primary flex p-0 m-0 rounded-full border-2 border-[--text-color] h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- AddFood-2 -->
                             <svg class="h-full p-1"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -80,7 +54,7 @@ class AppNavbar extends HTMLElement {
                     </div>
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="reminders-button" 
-                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-[--text-color] h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Reminders-2 -->
                             <svg class="h-full" 
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -92,7 +66,7 @@ class AppNavbar extends HTMLElement {
                     </div>
                     <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                         <button id="profile-button" 
-                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-black h-full max-w-full aspect-square text-[0px] items-center justify-center">
+                        class="btn-primary flex p-0 m-0 rounded-lg border-2 border-[--text-color] h-full max-w-full aspect-square text-[0px] items-center justify-center">
                             <!-- Profile-2 -->
                             <svg class="h-full"
                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -105,7 +79,7 @@ class AppNavbar extends HTMLElement {
                 </div>
             </nav>
         `;
-  }
+    }
 }
 
 customElements.define("app-navbar", AppNavbar);
