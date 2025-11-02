@@ -4,6 +4,7 @@ class AppNavbar extends HTMLElement
     {
         super();
         this.renderNavbar();
+        this.setupnNavbarNavbar();
     }
 
     renderNavbar() 
