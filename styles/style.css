@@ -4,7 +4,7 @@
     --light-text-color: #000000;
     --light-secondary-text-color: #666666;
     --light-highlight-text-color: #337744;
-    --light-contrast-text-color: #CCCCCC;
+    --light-contrast-text-color: #ffffff;
 
     --light-bg-color: #FFFFFF;
     --light-secondary-bg-color: #CBD5E1;
@@ -25,7 +25,7 @@
     --dark-bg-color: #222222;
     --dark-secondary-bg-color: #444444;
     --dark-highlight-bg-color: #337744;
-    --dark-contrast-bg-color: #FFFFFF;
+    --dark-contrast-bg-color: #EEEEEE;
 }
 
 body
