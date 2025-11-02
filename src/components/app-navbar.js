@@ -23,9 +23,9 @@ class AppNavbar extends HTMLElement {
     });
 
     // // (Optional) Reminders button → reminders.html
-    // this.querySelector("#reminders-button")?.addEventListener("click", () => {
-    //   window.location.href = "reminders.html";
-    // });
+    this.querySelector("#reminders-button")?.addEventListener("click", () => {
+      window.location.href = "reminder.html";
+    });
 
     // // (Optional) Profile button → profile.html
     // this.querySelector("#profile-button")?.addEventListener("click", () => {
