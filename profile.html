@@ -85,15 +85,16 @@
     <app-navbar></app-navbar>
 
     <!--main-->
-    <main class="max-w-6xl mx-auto py-12 px-6 grid md:grid-cols-2 gap-10 pb-32">
+    <main class="max-w-6xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-10 pb-32 items-stretch">
       <!--left card-->
       <aside
-        class="bg-[--bg-color] text-[--text-color] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
+        class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
       >
         <img
-          class="w-28 h-28 rounded-full border-4 border-[--highlight-bg-color] object-cover mb-4"
+          id="profile-avatar"
+          class="w-28 h-28 rounded-full border-4 border-[--highlight-bg-color] object-cover mb-4 cursor-pointer hover:opacity-80 transition"
           src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png"
-          alt=""
+          alt="Profile Avatar"
         />
         <h2 class="text-2xl font-bold text-[--highlight-text-color]">
           Hello, user_name, Welcome Back!
@@ -101,73 +102,71 @@
         <div
           class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10"
         >
-          <p><strong>Email:</strong> user@example.com</p>
-          <p><strong>Loction:</strong> Vancouver, BC</p>
-          <p><strong>Member Since:</strong> October 2025</p>
+          <p><strong>Email:</strong> <span id="profile-email"></span></p>
+          <p><strong>Loction:</strong> <span id="profile-location"></p>
+          <p><strong>Member Since:</strong> <span id="profile-since"></span></p>
         </div>
-        <button
-          class="mt-4 bg-[#88cc99] text-black px-6 py-2 rounded-lg hover:bg-green-700 transition"
-        >
-          Edit Profile
-        </button>
+
         <div class="mt-8 w-full grid grid-cols-3 text-center">
           <div>
-            <p class="text-lg font-bold text-[--highlight-text-color]">11</p>
+            <p id="count-items" class="text-lg font-bold text-[--highlight-text-color]">0</p>
             <p class="text-xs text-[--secondary-text-color]">Items</p>
           </div>
           <div>
-            <p class="text-lg font-bold text-[--highlight-text-color]">4</p>
+            <p id="count-reminders" class="text-lg font-bold text-[--highlight-text-color]">0</p>
             <p class="text-xs text-[--secondary-text-color]">Reminders</p>
           </div>
           <div>
-            <p class="text-lg font-bold text-[--highlight-text-color]">1</p>
+            <p id="count-expiring" class="text-lg font-bold text-[--highlight-text-color]">0</p>
             <p class="text-xs text-[--secondary-text-color]">Expiring Soon</p>
           </div>
+        </div>
         </div>
         <div
           class="w-full h-[2px] mt-6 bg-gradient-to-r from-[--highlight-bg-color] to-transparent"
         ></div>
       </aside>
-
       <!--right card-->
-      <section class="space-y-10">
+      <section class="h-full space-y-10">
         <div
-          class="bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]"
+          class="h-full bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]"
         >
           <h3 class="text-2xl font-semibold text-[--highlight-text-color] mb-4">
             Edit Your Information
           </h3>
-          <form class="space-y-4">
-            <div>
-              <label class="block text-sm text-[--secondary-text-color] mb-1"
-                >Display Name:</label
-              >
-              <input
-                type="text"
-                placeholder=""
-                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-              />
-            </div>
-            <div>
-              <label class="block text-sm text-[--secondary-text-color] mb-1"
-                >Email:</label
-              >
-              <input
-                type="email"
-                placeholder=""
-                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-              />
-            </div>
-            <div>
-              <label class="block text-sm text-[--secondary-text-color] mb-1"
-                >Phone Number:</label
-              >
-              <input
-                type="phone number"
-                placeholder=""
-                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-              />
-            </div>
+          <form id="edit-profile-form" class="space-y-4">
+        <div>
+          <label class="block text-sm text-[--secondary-text-color] mb-1">
+            Display Name:
+          </label>
+          <input
+            id="edit-name"
+            type="text"
+            placeholder="Your name"
+            class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
+          />
+        </div>
+        <div>
+          <label class="block text-sm text-[--secondary-text-color] mb-1">
+            Email (read-only):
+          </label>
+          <input
+            id="edit-email"
+            type="email"
+            readonly
+            class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-gray-100 text-[--text-color]"/>
+          </div>
+          <div>
+            <label class="block text-sm text-[--secondary-text-color] mb-1">
+              Location:
+            </label>
+            <input
+              id="edit-location"
+              type="text"
+              placeholder="Enter your city"
+              class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
+            />
+          </div>
             <button
               type="submit"
               class="mt-4 bg-[#000000] text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
@@ -175,88 +174,10 @@
               Save Changes
             </button>
           </form>
-        </div>
-
-        <div
-          class="bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color] mb-5"
-        >
-          <h3 class="text-2xl font-semibold text-[--highlight-text-color] mb-5">
-            Your Current Food Records (optional)
-          </h3>
-          <ul class="grid sm:grid-cols-2 gap-4">
-            <li
-              class="p-4 bg-[--secondary-bg-color] border border-[--highlight-bg-color] rounded-lg flex justify-between"
-            >
-              <div>
-                <p class="font-medium text-[--text-color]">Butter (x1)</p>
-                <p class="text-sm text-[--secondary-text-color]">
-                  Expires in 1 month
-                </p>
-              </div>
-              <span
-                class="text-xs text-[--highlight-text-color] font-semibold self-start"
-                >Fresh</span
-              >
-            </li>
-
-            <li
-              class="p-4 bg-[--secondary-bg-color] border border-[--highlight-bg-color] rounded-lg flex justify-between"
-            >
-              <div>
-                <p class="font-medium text-[--text-color]">Egg (x8)</p>
-                <p class="text-sm text-[--secondary-text-color]">
-                  Expires in 2 weeks
-                </p>
-              </div>
-              <span
-                class="text-xs text-[--highlight-text-color] font-semibold self-start"
-                >Fresh</span
-              >
-            </li>
-
-            <li
-              class="p-4 bg-[--secondary-bg-color] border border-[--contrast-bg-color] rounded-lg flex justify-between"
-            >
-              <div>
-                <p class="font-medium text-[--text-color]">Sausage (x1)</p>
-                <p class="text-sm text-[--secondary-text-color]">
-                  Expires tomorrow
-                </p>
-              </div>
-              <span
-                class="text-xs text-[--secondary-text-color] font-semibold self-start"
-                >Soon</span
-              >
-            </li>
-
-            <li
-              class="p-4 bg-[--contrast-bg-color] border border-[--secondary-bg-color] rounded-lg flex justify-between"
-            >
-              <div>
-                <p class="font-medium text-[--contrast-text-color]">
-                  Milk (1L)
-                </p>
-                <p class="text-sm text-[--contrast-text-color]">
-                  Expired yesterday
-                </p>
-              </div>
-              <span
-                class="text-xs text-[--contrast-text-color] font-semibold self-start"
-                >Expired</span
-              >
-            </li>
-          </ul>
-          <div class="text-right mt-4">
-            <a
-              href="#"
-              class="text-[--highlight-text-color] font-medium hover:underline"
-              >Go to Food Logs →</a
-            >
-          </div>
+         </div>
         </div>
       </section>
     </main>
-
-    <!--footer-->
+    <script type="module" src="/src/profile.js"></script>
   </body>
 </html>
