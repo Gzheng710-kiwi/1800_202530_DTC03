@@ -28,9 +28,9 @@ class AppNavbar extends HTMLElement {
     });
 
     // // (Optional) Profile button → profile.html
-    // this.querySelector("#profile-button")?.addEventListener("click", () => {
-    //   window.location.href = "profile.html";
-    // });
+    this.querySelector("#profile-button")?.addEventListener("click", () => {
+      window.location.href = "profile.html";
+    });
   }
 
   renderNavbar() {
