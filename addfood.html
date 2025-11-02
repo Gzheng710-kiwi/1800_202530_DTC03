@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="comp1800 template" content="My 1800 App">
-        <title>My BCIT Project</title>
+        <title>FridgeTracker</title>
 
         <!-- Tailwind and JQuery -->
         <script src="https://cdn.tailwindcss.com"></script>
@@ -20,24 +20,28 @@
         <!-- Link to styles of your own -->
         <link rel="stylesheet" href="./styles/style.css">
 
-    </head>
-    <body class="dark-mod">
-        <app-navbar></app-navbar>
+        <!-- Link to scripts of your own -->
 
+    </head>
+    <body class="">
+        <app-navbar></app-navbar>
+        <div class="m-4">
+            <button id="back-button" class="rounded-md px-3 py-1 btn-secondary">Back</button>
+        </div>
         <main>
             <div id="main-content" class="flex justify-center">
                 <div class="flex-1 m-[10vmin] max-w-2xl flex flex-row justify-center">
-                    <div class="flex-1 border-2 border-[--secondary-text-color] border-solid p-[2vw] rounded-lg">
+                    <div class="flex-1 border border-[--secondary-bg-color] border-solid shadow-md p-[8vmin] rounded-lg">
                         <h2 class="text-4xl font-bold">Add food</h2>
                         <div>
-                            <div class="flex flex-row justify-between gap-[4vw]">
-                                <div class="flex flex-col flex-1">
-                                    <div class="flex flex-row justify-between items-stretch basis-full my-4 gap-2">
+                            <div class="flex flex-col justify-between items-stretch">
+                                <div class="flex flex-col flex-1 justify-between">
+                                    <div class="flex flex-row justify-between items-stretch basis-full my-4 gap-8">
                                         <div class="flex flex-col flex-[2_1_0] justify-between">
-                                            <h2 class="text-2xl">Name</h2>
-                                            <input class="border-2 w-full p-2" type="text" placeholder="food name...">
+                                            <h3 class="text-2xl">Name</h3>
+                                            <input id="addfood-name" class="border-2 w-full p-2 rounded-md" type="text" placeholder="food name...">
                                         </div>
-                                        <div class="flex flex-[1_1_0] max-w-24 justify-center items-center contrast rounded-full">
+                                        <div class="flex flex-[1_1_0] max-w-20 justify-center items-center contrast rounded-full">
                                             <!-- Camera-1 -->
                                             <svg class="h-1/2 w-auto"
                                             version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200px" height="200px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" fill="#000000">
@@ -53,14 +57,16 @@
                                             <!-- https://www.svgrepo.com/svg/513414/photo-camera -->
                                         </div>
                                     </div>
-                                    <div class="my-4">
-                                        <h4>Reminder</h4>
+                                    <div class="flex flex-row justify-between my-4 gap-8">
+                                        <h3 class="text-2xl">Exp Date:</h3>
+                                        <input id="addfood-expDate" class="border-2 p-2 rounded-md" type="date" placeholder="food name...">
                                     </div>
-                                    <div class="my-4">
-                                        <h4>Date</h4>
+                                    <div class="flex flex-row justify-between my-4 gap-8">
+                                        <h3 class="flex-1 text-2xl">Reminder:</h3>
+                                            <input id="addfood-reminder" class="flex-1 border-2 p-2 rounded-md" type="checkbox">
                                     </div>
-                                    <div class="my-4">
-                                        <h4>Save</h4>
+                                    <div class="flex flex-1 flex-row items-end my-4 gap-8">
+                                        <button id="addfood-submit" class="flex-1 text-2xl btn-primary border-[--secondary-bg-color] shadow-md rounded-md px-3 py-2">Save</button>
                                     </div>
                                 </div>
                             </div>
@@ -75,6 +81,6 @@
         <!---------------------------------------------->
 
         <!-- Link to scripts of your own -->
-        <!-- <script type="module" src="./src/main.js"></script> -->
+        <script type="module" src="./src/addfood.js"></script>
     </body>
 </html>
