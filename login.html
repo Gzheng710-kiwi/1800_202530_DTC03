@@ -4,15 +4,21 @@
     <title>My BCIT Project</title>
     <meta name="comp1800 template" content="My 1800 App" />
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <script type="module" src="/src/components/site-navbar.js"></script>
-    <script type="module" src="/src/components/site-footer.js"></script> -->
+
+		<!-- Tailwind and JQuery -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+		<!-- Other libraries go here -->
+
+		<!-- Custom Components -->
+		<script type="module" src="/src/components/app-navbar.js"></script>
+
+		<!-- Link to styles of your own -->
+		<link rel="stylesheet" href="./styles/style.css">
   </head>
 
   <body class="bg-gray-50 min-h-screen flex flex-col">
-    <!-- <site-navbar></site-navbar> -->
-    <!-- navbar -->
     <nav
       class="flex flex-row max-h-[8vmax] min-h-20 shadow-slate-300 shadow-md"
     >
@@ -190,7 +196,6 @@
     </footer>
 
     <!-- javascript code -->
-    <script type="module" src="/src/app.js"></script>
     <script type="module" src="/src/firebaseConfig.js"></script>
     <script type="module" src="/src/authentication.js"></script>
     <script type="module" src="/src/loginSignup.js"></script>
