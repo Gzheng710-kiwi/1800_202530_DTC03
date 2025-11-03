@@ -106,29 +106,41 @@ onAuthStateChanged(auth, async (user) => {
   listenFoodStats(user);
 });
 
-// --- Function: listenFoodStats ---
-
+// --- UPDATED FUNCTION: listenFoodStats ---
+// Matches the logic in reminder.js
 function listenFoodStats(user) {
   const foodRef = collection(db, "users", user.uid, "foodlog");
 
   onSnapshot(foodRef, (snapshot) => {
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
     let itemCount = 0;
     let reminderCount = 0;
     let expiringSoonCount = 0;
 
-    snapshot.forEach((doc) => {
-      const data = doc.data();
+    snapshot.forEach((docSnap) => {
+      const data = docSnap.data();
       itemCount++;
 
-      if (data.reminders) reminderCount++;
+      if (data.reminders) {
+        reminderCount++;
 
-      if (data.expDate) {
-        const exp = data.expDate.toDate
-          ? data.expDate.toDate()
-          : new Date(data.expDate);
-        const diffDays = Math.ceil((exp - today) / (1000 * 60 * 60 * 24));
-        if (diffDays >= 0 && diffDays <= 3) expiringSoonCount++;
+        let expiry;
+        if (data.expDate?.toDate) {
+          expiry = data.expDate.toDate();
+        } else if (typeof data.expDate === "string") {
+          const [y, m, d] = data.expDate.split("-").map(Number);
+          expiry = new Date(y, m - 1, d);
+        } else if (data.expDate) {
+          expiry = new Date(data.expDate);
+        }
+
+        if (expiry) {
+          expiry.setHours(0, 0, 0, 0);
+          const diffDays = Math.floor((expiry - today) / (1000 * 60 * 60 * 24));
+          if (diffDays >= 0 && diffDays <= 3) expiringSoonCount++;
+        }
       }
     });
 
