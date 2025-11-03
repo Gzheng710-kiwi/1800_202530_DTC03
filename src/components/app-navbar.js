@@ -1,9 +1,22 @@
+import { setupNavbar } from "../navbar";
+
 class AppNavbar extends HTMLElement 
 {
     constructor() 
     {
         super();
         this.renderNavbar();
+    }
+
+    connectedCallback()
+    {
+        this.setupEventListeners();
+    }
+
+    setupEventListeners()
+    {
+        console.log("Setting up navbar listeners...");
+        setupNavbar();
     }
 
     renderNavbar() 
