@@ -15,6 +15,9 @@
     --light-primary-button-hover-bg-color: #E0E5EB;
     --light-secondary-button-bg-color: #DDEEFF;
     --light-secondary-button-hover-bg-color: #CCDDFF;
+    --light-contrast-button-bg-color: #111111;
+    --light-contrast-button-hover-bg-color: #333333;
+    
     
     /*Dark color scheme here:*/
     --dark-text-color: #FFFFFF;
@@ -43,6 +46,8 @@ body
     --primary-button-hover-bg-color: var(--light-primary-button-hover-bg-color);
     --secondary-button-bg-color: var(--light-secondary-button-bg-color);
     --secondary-button-hover-bg-color: var(--light-secondary-button-hover-bg-color);
+    --contrast-button-bg-color: var(--light-contrast-button-bg-color);
+    --contrast-button-hover-bg-color: var(--light-contrast-button-hover-bg-color);
 
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -74,6 +79,17 @@ body.dark-mode
 .contrast-bg, .contrast
 {
     background-color: var(--contrast-bg-color);
+}
+
+button.contrast
+{
+    color: var(--contrast-text-color);
+    background-color: var(--contrast-button-bg-color);
+}
+
+button.contrast:hover
+{
+    background-color: var(--contrast-button-hover-bg-color);
 }
 
 .svg-logo
