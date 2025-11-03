@@ -88,7 +88,7 @@ function loadReminders(user) {
         ? data.expDate.toDate()
         : new Date(data.expDate);
       const today = new Date();
-      const daysLeft = Math.ceil((expiry - today) / (1000 * 60 * 60 * 24));
+      const daysLeft = Math.floor((expiry - today) / (1000 * 60 * 60 * 24));
 
       let status = "";
       let color = "";
