@@ -84,10 +84,19 @@ function loadReminders(user) {
       const data = docSnap.data();
       if (!data.expDate || !data.reminders) return;
 
-      const expiry = data.expDate.toDate
-        ? data.expDate.toDate()
-        : new Date(data.expDate);
+      let expiry;
+      if (data.expDate.toDate) {
+        expiry = data.expDate.toDate();
+      } else if (typeof data.expDate === "string") {
+        const [y, m, d] = data.expDate.split("-").map(Number);
+        expiry = new Date(y, m - 1, d);
+      } else {
+        expiry = new Date(data.expDate);
+      }
+
+      expiry.setHours(0, 0, 0, 0);
       const today = new Date();
+      today.setHours(0, 0, 0, 0);
       const daysLeft = Math.floor((expiry - today) / (1000 * 60 * 60 * 24));
 
       let status = "";
