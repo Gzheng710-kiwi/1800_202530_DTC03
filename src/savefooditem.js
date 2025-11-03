@@ -11,6 +11,18 @@ import { db, auth } from "./firebaseConfig.js";
  * @param {boolean} _reminders 
  * @param {string} imageUrl 
  */
+function showPopup(message) {
+  const popup = document.getElementById("popup");
+  popup.textContent = message;
+  popup.classList.remove("hidden");
+  popup.classList.add("show");
+
+  setTimeout(() => {
+    popup.classList.remove("show");
+    popup.classList.add("hidden");
+  }, 3500); // hide after 2.5 seconds
+}
+
 export async function saveFoodItem(_name, _expDate, _reminders, _imageUrl = null)
 {
     const user = auth.currentUser;
@@ -30,5 +42,5 @@ export async function saveFoodItem(_name, _expDate, _reminders, _imageUrl = null
         imageUrl: _imageUrl
     });
 
-    console.log("Food saved successfully");
+    showPopup("Food saved successfully");
 }
