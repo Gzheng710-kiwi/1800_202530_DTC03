@@ -13,17 +13,29 @@
   </head>
 
   <body class="bg-neutral-50 min-h-screen">
-    <div class="border-neutral-200 bg-white shadow-sm flex flex-col min-h-screen">
+    <div
+      class="border-neutral-200 bg-white shadow-sm flex flex-col min-h-screen"
+    >
       <app-navbar></app-navbar>
 
       <main class="flex-1 overflow-y-auto">
         <div class="mx-auto w-full max-w-[1024px] px-4 py-6 sm:px-6 lg:px-8">
-
           <!-- Search Bar -->
           <div class="relative">
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <span
+              class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <circle cx="11" cy="11" r="8"></circle>
                 <path d="m21 21-4.3-4.3"></path>
               </svg>
@@ -38,13 +50,23 @@
           </div>
 
           <!-- Food List Card -->
-          <section class="mt-6 rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
+          <section
+            class="mt-6 rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden"
+          >
             <!-- Column Headers -->
             <header class="px-8 py-4 border-b border-neutral-200 bg-neutral-50">
               <div class="grid grid-cols-[5rem_2fr_1.2fr_4rem] items-center">
-                <span class="text-lg font-semibold text-neutral-800 ">#</span>
-                <h2 class="text-2xl font-extrabold text-neutral-900 -translate-x-12">Food</h2>
-                <h2 class="text-2xl font-extrabold text-neutral-900 -translate-x-5 text-right">Expiry</h2>
+                <span class="text-lg font-semibold text-neutral-800">#</span>
+                <h2
+                  class="text-2xl font-extrabold text-neutral-900 -translate-x-12"
+                >
+                  Food
+                </h2>
+                <h2
+                  class="text-2xl font-extrabold text-neutral-900 -translate-x-5 text-right"
+                >
+                  Expiry
+                </h2>
                 <span class="sr-only">Delete</span>
               </div>
             </header>
@@ -59,5 +81,11 @@
     </div>
 
     <script type="module" src="/src/foodlog.js"></script>
+    <!-- Popup notification -->
+    <!-- Centered popup notification -->
+    <div
+      id="popup"
+      class="hidden fixed top-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-center px-4 py-2 rounded-lg shadow-lg transition-opacity duration-300 w-[50%] max-w-md"
+    ></div>
   </body>
 </html>

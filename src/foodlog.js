@@ -9,11 +9,13 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { showPopup } from "./popup.js";
 
 const listEl = document.getElementById("food-list");
 const searchEl = document.getElementById("food-search");
 
 let items = []; // local cache for filtering
+
 
 function asDateString(exp) {
   if (!exp) return "—";
@@ -94,6 +96,7 @@ function render(list) {
   listEl.querySelectorAll(".js-delete").forEach((btn) => {
     btn.addEventListener("click", async (e) => {
       const docId = e.currentTarget.getAttribute("data-docid");
+      showPopup("Food Deleted successfully");
       if (!docId) return;
       const { uid } = auth.currentUser || {};
       if (!uid) return;
