@@ -45,7 +45,7 @@ async function getFoodsSortedbyDate(uid, maxResults)
 
 async function foodToHtml(allFoods)
 {
-    let _foodDiv;
+    let _foodDiv = "";
     for (let food of allFoods)
     {
         //Append a div with the food name and an 'Add' button
