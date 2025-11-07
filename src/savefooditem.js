@@ -5,7 +5,7 @@ import { showPopup } from "./popup"
 
 
 
-export async function saveFoodItem(_name, _expDate, _reminders, _imageUrl = null)
+export async function saveFoodItem(_name, _expDate, _amount, _reminders, _imageUrl = null)
 {
     const user = auth.currentUser;
     if (!user)
@@ -20,6 +20,7 @@ export async function saveFoodItem(_name, _expDate, _reminders, _imageUrl = null
         name: _name,
         expDate: _expDate,
         addedDate: serverTimestamp(),
+        amount: _amount,
         reminders: _reminders,
         imageUrl: _imageUrl
     });
