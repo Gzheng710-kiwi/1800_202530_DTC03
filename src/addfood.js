@@ -1,7 +1,7 @@
 import { saveFoodItem } from "./savefooditem";
 
 const saveButton = document.getElementById("addfood-submit")
-console.log("Button: " + saveButton.id);
+
 saveButton.addEventListener("click", () => {
   let foodName = document.getElementById("addfood-name").value;
   let expDate = document.getElementById("addfood-expDate").value;
@@ -16,6 +16,6 @@ saveButton.addEventListener("click", () => {
     "\nReminders: " + reminders
   )
 
-  console.log("Saving food...");
+  // console.log("Saving food...");
   saveFoodItem(foodName, expDate, amount, reminders);
 });

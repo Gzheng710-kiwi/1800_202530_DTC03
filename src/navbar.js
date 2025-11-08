@@ -1,6 +1,6 @@
 export function setupNavbar()
 {
-    console.log("navbar setup triggered");
+    // console.log("navbar setup triggered");
 
     const navLinks = {
         "logs-button" : "foodlog.html",

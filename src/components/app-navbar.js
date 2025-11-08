@@ -15,7 +15,7 @@ class AppNavbar extends HTMLElement
 
     setupEventListeners()
     {
-        console.log("Setting up navbar listeners...");
+        // console.log("Setting up navbar listeners...");
         setupNavbar();
     }
 
