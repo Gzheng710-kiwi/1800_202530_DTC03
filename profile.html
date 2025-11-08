@@ -38,9 +38,7 @@
         <h2 class="text-2xl font-bold text-[--highlight-text-color]">
           Hello, user_name, Welcome Back!
         </h2>
-        <div
-          class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10"
-        >
+        <div class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10">
           <p><strong>Email:</strong> <span id="profile-email"></span></p>
           <p><strong>Loction:</strong> <span id="profile-location"></p>
           <p><strong>Member Since:</strong> <span id="profile-since"></span></p>
@@ -118,5 +116,9 @@
       </section>
     </main>
     <script type="module" src="/src/profile.js"></script>
+    <div
+      id="popup"
+      class="hidden fixed top-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-center px-4 py-2 rounded-lg shadow-lg transition-opacity duration-300 w-[50%] max-w-md"
+    ></div>
   </body>
 </html>

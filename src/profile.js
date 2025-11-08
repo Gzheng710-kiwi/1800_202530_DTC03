@@ -8,6 +8,7 @@ import {
 } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { showPopup } from "./popup.js";
 
 // --- Element references ---
 const avatarEl = document.getElementById("profile-avatar");
@@ -96,7 +97,7 @@ onAuthStateChanged(auth, async (user) => {
         { merge: true }
       );
 
-      alert("Profile updated successfully!");
+      showPopup("Profile updated successfully!");
     } catch (err) {
       console.error("Update failed:", err);
       alert("Failed to update profile.");
