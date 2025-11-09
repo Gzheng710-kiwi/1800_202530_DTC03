@@ -25,11 +25,33 @@
         <app-navbar></app-navbar>
         <main>
             <div id="main-content" class="flex justify-center">
-                <div class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch">
-                    <h1 class="text-4xl font-bold mb-8">Dashboard</h1>
+                <div class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch gap-[2vh]">
+                    <div class="flex flex-row justify-between">
+                        <h1 class="text-4xl font-bold mb-6">Dashboard</h1>
+                        <!-- Reminder Button -->
+                        <div class="relative">
+                            <button id="dashboard-reminderbutton" class="transparent">
+                                <!-- Reminders-2 -->
+                                <svg class="size-16"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path d="M256 73.825c-100.613 0-182.18 81.562-182.18 182.17a182.18 182.18 0 0 0 364.36 0c0-100.608-81.572-182.17-182.18-182.17zm0 282.92a23.683 23.683 0 0 1-23.682-23.678h47.36A23.68 23.68 0 0 1 256 356.745zm80.015-47.425c0 8.753-7.092 9.334-15.841 9.334H191.822c-8.749 0-15.837-.58-15.837-9.334v-1.512a15.814 15.814 0 0 1 9.009-14.247l5.03-43.418a66.01 66.01 0 0 1 52.41-64.591v-16.857a13.572 13.572 0 0 1 27.146 0v16.857a66.01 66.01 0 0 1 52.404 64.591l5.032 43.427a15.793 15.793 0 0 1 9.009 14.238v1.512z" data-name="Notification"/>
+                                </svg>
+                                <!-- https://www.reshot.com/free-svg-icons/item/notification-MGH4E57DQJ/ -->
+                            </button>
+                            <!-- Reminder Overlay -->
+                                <div id="reminder-overlay" 
+                                class="absolute top-16 right-0 p-6 w-72 z-10
+                                bg-[--bg-color] border border-[--secondary-border-color] rounded-xl shadow-xl
+                                hidden flex-col justify-between gap-6">
+                                    <h3 class="text-xl font-bold">Reminders</h3>
+                                    <div id="dashboard-reminders">...</div>
+                                    <a href="reminder.html" class="text-[--secondary-text-color] underline">See all reminders...</a>
+                                </div>
+                        </div>
+                    </div>
                     <div id="dashboard-content" class="flex-1 border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg">
                         <h2 class="text-2xl font-bold">Recents</h2>
-                        <div id="recents" class="flex flex-col mt-4"></div>
+                        <div id="dashboard-recents" class="flex flex-col mt-4">...</div>
                     </div>
                 </div>
             </div>
