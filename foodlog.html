@@ -53,21 +53,56 @@
           <section
             class="mt-6 rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden"
           >
-            <!-- Column Headers -->
             <header class="px-8 py-4 border-b border-neutral-200 bg-neutral-50">
-              <div class="grid grid-cols-[5rem_2fr_1.2fr_4rem] items-center">
-                <span class="text-lg font-semibold text-neutral-800">#</span>
-                <h2
-                  class="text-2xl font-extrabold text-neutral-900 -translate-x-12"
+              <!-- SAME template as rows -->
+              <div
+                class="grid grid-cols-[2.25rem_1fr_auto_2.25rem] items-center gap-2"
+              >
+                <!-- Col 1: header checkbox -->
+                <input
+                  id="select-all"
+                  type="checkbox"
+                  class="h-5 w-5 accent-green-600 cursor-pointer -translate-x-4"
+                  aria-label="Select all"
+                />
+
+                <!-- Col 2: Food label (aligned with name chip) -->
+                <span class="text-lg font-bold text-neutral-900">Food</span>
+
+                <!-- Col 3: Expiry label (right-aligned like the badge) -->
+                <span
+                  class="text-lg font-bold text-neutral-900 justify-self-end"
+                  >Expiry</span
                 >
-                  Food
-                </h2>
-                <h2
-                  class="text-2xl font-extrabold text-neutral-900 -translate-x-5 text-right"
+
+                <!-- <button
+                  type="button"
+                  data-docid="${it.id}"
+                  class="js-delete justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50 active:scale-95 transition"
+                  aria-label="Delete item"
+                  title="Delete"
                 >
-                  Expiry
-                </h2>
-                <span class="sr-only">Delete</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 7l16 0" />
+                    <path d="M10 11l0 6" />
+                    <path d="M14 11l0 6" />
+                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                  </svg>
+                </button> -->
+                <!-- <span class="sr-only">Delete</span> -->
               </div>
             </header>
 

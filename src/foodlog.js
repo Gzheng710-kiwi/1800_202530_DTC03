@@ -16,7 +16,6 @@ const searchEl = document.getElementById("food-search");
 
 let items = []; // local cache for filtering
 
-
 function asDateString(exp) {
   if (!exp) return "—";
   // Firestore Timestamp
@@ -49,32 +48,18 @@ function rowHTML(index, it) {
     (expired ? "text-red-600 border-red-300 bg-red-50" : "text-black");
 
   return `
-    <span class="text-center text-black">${index}</span>
+    <input
+      type="checkbox"
+      class="js-checkbox h-5 w-5 -translate-y-1 accent-green-600 cursor-pointer"
+      data-docid="${it.id}"
+      aria-label="Select food item"
+    />
     <div class="min-w-0">
       <span class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium">
         ${it.name ?? "(unnamed)"}
       </span>
     </div>
-    <span class="${expiryClasses} -translate-x-11">${expStr}</span>
-    <button
-      type="button"
-      data-docid="${it.id}"
-      class="js-delete justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50 active:scale-95 transition"
-      aria-label="Delete item"
-      title="Delete"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-           viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-           class="icon icon-tabler icons-tabler-outline icon-tabler-trash">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <path d="M4 7l16 0" />
-        <path d="M10 11l0 6" />
-        <path d="M14 11l0 6" />
-        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-      </svg>
-    </button>
+    <span class="${expiryClasses} -translate-x-11 text-right">${expStr}</span>
   `;
 }
 
@@ -92,22 +77,22 @@ function render(list) {
     listEl.appendChild(li);
   });
 
-  // Delegate delete clicks
-  listEl.querySelectorAll(".js-delete").forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      const docId = e.currentTarget.getAttribute("data-docid");
-      showPopup("Food Deleted successfully");
-      if (!docId) return;
-      const { uid } = auth.currentUser || {};
-      if (!uid) return;
-      try {
-        await deleteDoc(doc(db, "users", uid, "foodlog", docId));
-      } catch (err) {
-        console.error("Delete failed:", err);
-        alert("Could not delete item.");
-      }
-    });
-  });
+  // // Delegate delete clicks
+  // listEl.querySelectorAll(".js-delete").forEach((btn) => {
+  //   btn.addEventListener("click", async (e) => {
+  //     const docId = e.currentTarget.getAttribute("data-docid");
+  //     showPopup("Food Deleted successfully");
+  //     if (!docId) return;
+  //     const { uid } = auth.currentUser || {};
+  //     if (!uid) return;
+  //     try {
+  //       await deleteDoc(doc(db, "users", uid, "foodlog", docId));
+  //     } catch (err) {
+  //       console.error("Delete failed:", err);
+  //       alert("Could not delete item.");
+  //     }
+  //   });
+  // });
 }
 
 function applyFilter() {
