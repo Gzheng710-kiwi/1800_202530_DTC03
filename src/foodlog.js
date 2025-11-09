@@ -43,6 +43,16 @@ function isExpired(exp) {
 function rowHTML(index, it) {
   const expStr = asDateString(it.expDate);
   const expired = isExpired(it.expDate);
+
+  let qty = "—";
+  if (it.amount) {
+    qty = it.amount;
+  } else if (it.qty) {
+    qty = it.qty;
+  } else if (it.quantity) {
+    qty = it.quantity;
+  }
+
   const expiryClasses =
     "rounded-full border px-3 py-1 " +
     (expired ? "text-red-600 border-red-300 bg-red-50" : "text-black");
@@ -56,12 +66,21 @@ function rowHTML(index, it) {
     />
     <div class="min-w-0">
       <span class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium">
-        ${it.name ?? "(unnamed)"}
+        ${it.name || "(unnamed)"}
       </span>
     </div>
-    <span class="${expiryClasses} -translate-x-11 text-right">${expStr}</span>
+    <span class="rounded-full border px-3 py-1 text-black">${qty}</span> <!-- 👈 added -->
+    <span class="${expiryClasses}  text-right">${expStr}</span>
   `;
 }
+
+window.selectAllCheckBoxes = function (source) {
+  const checkboxes = document.querySelectorAll(".js-checkbox");
+  checkboxes.forEach(function (box) {
+    box.checked = source.checked;
+  });
+};
+
 
 function render(list) {
   listEl.innerHTML = "";
@@ -77,22 +96,22 @@ function render(list) {
     listEl.appendChild(li);
   });
 
-  // // Delegate delete clicks
-  // listEl.querySelectorAll(".js-delete").forEach((btn) => {
-  //   btn.addEventListener("click", async (e) => {
-  //     const docId = e.currentTarget.getAttribute("data-docid");
-  //     showPopup("Food Deleted successfully");
-  //     if (!docId) return;
-  //     const { uid } = auth.currentUser || {};
-  //     if (!uid) return;
-  //     try {
-  //       await deleteDoc(doc(db, "users", uid, "foodlog", docId));
-  //     } catch (err) {
-  //       console.error("Delete failed:", err);
-  //       alert("Could not delete item.");
-  //     }
-  //   });
-  // });
+  // Delegate delete clicks
+  listEl.querySelectorAll(".js-delete").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const docId = e.currentTarget.getAttribute("data-docid");
+      showPopup("Food Deleted successfully");
+      if (!docId) return;
+      const { uid } = auth.currentUser || {};
+      if (!uid) return;
+      try {
+        await deleteDoc(doc(db, "users", uid, "foodlog", docId));
+      } catch (err) {
+        console.error("Delete failed:", err);
+        alert("Could not delete item.");
+      }
+    });
+  });
 }
 
 function applyFilter() {

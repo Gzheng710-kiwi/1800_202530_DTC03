@@ -61,6 +61,7 @@
                 <!-- Col 1: header checkbox -->
                 <input
                   id="select-all"
+                  onchange="selectAllCheckBoxes(this)"
                   type="checkbox"
                   class="h-5 w-5 accent-green-600 cursor-pointer -translate-x-4"
                   aria-label="Select all"
@@ -75,10 +76,10 @@
                   >Expiry</span
                 >
 
-                <!-- <button
+                <button
                   type="button"
                   data-docid="${it.id}"
-                  class="js-delete justify-self-end inline-flex items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50 active:scale-95 transition"
+                  class="js-delete justify-self-end hidden items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50 active:scale-95 transition"
                   aria-label="Delete item"
                   title="Delete"
                 >
@@ -101,7 +102,7 @@
                     <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
                     <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
                   </svg>
-                </button> -->
+                </button>
                 <!-- <span class="sr-only">Delete</span> -->
               </div>
             </header>
