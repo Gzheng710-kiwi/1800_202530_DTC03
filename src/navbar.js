@@ -6,7 +6,7 @@ export function setupNavbar()
         "logs-button" : "foodlog.html",
         "addfood-button": "addfood.html",
         "dashboard-button": "main.html",
-        "reminders-button": "reminder.html",
+        "groups-button": "groups.html",
         "profile-button": "profile.html"
     };
 
