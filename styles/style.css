@@ -18,6 +18,8 @@
     --light-contrast-button-bg-color: #111111;
     --light-contrast-button-hover-bg-color: #333333;
     
+    --light-primary-border-color: #CBD5E1;
+    
     
     /*Dark color scheme here:*/
     --dark-text-color: #FFFFFF;
@@ -29,6 +31,15 @@
     --dark-secondary-bg-color: #444444;
     --dark-highlight-bg-color: #337744;
     --dark-contrast-bg-color: #EEEEEE;
+
+    --dark-primary-button-bg-color: #111111;
+    --dark-primary-button-hover-bg-color: #333333;
+    --dark-secondary-button-bg-color: #444444;
+    --dark-secondary-button-hover-bg-color: #666666;
+    --dark-contrast-button-bg-color: #FFFFFF;
+    --dark-contrast-button-hover-bg-color: #E0E5EB;
+    
+    --dark-primary-border-color: #222222;
 }
 
 body
@@ -49,6 +60,8 @@ body
     --contrast-button-bg-color: var(--light-contrast-button-bg-color);
     --contrast-button-hover-bg-color: var(--light-contrast-button-hover-bg-color);
 
+    --primary-border-color: var(--light-primary-border-color);
+
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: var(--text-color);
@@ -67,8 +80,15 @@ body.dark-mode
     --secondary-bg-color: var(--dark-secondary-bg-color);
     --highlight-bg-color: var(--dark-highlight-bg-color);
     --contrast-bg-color: var(--dark-contrast-bg-color);
+    
+    --primary-button-bg-color: var(--dark-primary-button-bg-color);
+    --primary-button-hover-bg-color: var(--dark-primary-button-hover-bg-color);
+    --secondary-button-bg-color: var(--dark-secondary-button-bg-color);
+    --secondary-button-hover-bg-color: var(--dark-secondary-button-hover-bg-color);
+    --contrast-button-bg-color: var(--dark-contrast-button-bg-color);
+    --contrast-button-hover-bg-color: var(--dark-contrast-button-hover-bg-color);
 
-    /* Missing button dark-modes */
+    --primary-border-color: var(--dark-primary-border-color);
 }
 
 .contrast-text, .contrast
@@ -122,4 +142,10 @@ button
 .btn-secondary:hover
 {
     background-color: var(--secondary-button-hover-bg-color);
+}
+
+button.transparent
+{
+    border-width: 0px;
+    background-color: transparent;
 }
