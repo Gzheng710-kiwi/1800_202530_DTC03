@@ -9,6 +9,7 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { showPopup } from "./popup.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
 // --- Element references ---
 const avatarEl = document.getElementById("profile-avatar");
@@ -150,3 +151,13 @@ function listenFoodStats(user) {
     if (expiringEl) expiringEl.textContent = expiringSoonCount;
   });
 }
+// Log Out, back to index.html
+document.getElementById("logout-btn").addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      window.location.href = "index.html";
+    })
+    .catch(() => {
+      alert("Logout failed. Please try again.");
+    });
+});
