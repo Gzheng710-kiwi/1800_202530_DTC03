@@ -131,7 +131,9 @@ button
 
 .btn-primary
 {
+    color: var(--text-color);
     background-color: var(--primary-button-bg-color);
+    border: 2px solid var(--primary-border-color);
 }
 
 .btn-primary:hover
