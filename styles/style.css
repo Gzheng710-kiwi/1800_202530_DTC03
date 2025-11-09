@@ -18,8 +18,8 @@
     --light-contrast-button-bg-color: #111111;
     --light-contrast-button-hover-bg-color: #333333;
     
-    --light-primary-border-color: #CBD5E1;
     --light-primary-border-color: #222222;
+    --light-secondary-border-color: #DDEEEE;
     
     
     /*Dark color scheme here:*/
@@ -41,7 +41,7 @@
     --dark-contrast-button-hover-bg-color: #E0E5EB;
     
     --dark-primary-border-color: #DDDDDD;
-    --dark-primary-border-color: #666666;
+    --dark-secondary-border-color: #666666;
 }
 
 body
