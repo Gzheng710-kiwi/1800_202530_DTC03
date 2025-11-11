@@ -50,6 +50,30 @@ options.forEach((opt) => {
   });
 });
 
+document
+  .getElementById("remove-avatar-btn")
+  .addEventListener("click", async () => {
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        avatarEl.src =
+          "data:image/svg+xml;utf8,\
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>\
+          <circle cx='32' cy='32' r='32' fill='%23f3f4f6'/>\
+          <circle cx='32' cy='24' r='10' fill='%23d1d5db'/>\
+          <path d='M12 52c4-8 12-12 20-12s16 4 20 12' fill='%23d1d5db'/>\
+          </svg>";
+        await setDoc(
+          doc(db, "users", user.uid),
+          { photoURL: "" },
+          { merge: true }
+        );
+        menu.classList.add("hidden");
+      } catch (e) {
+        console.error("Failed to remove avatar:", e);
+      }
+    }
+  });
 document.addEventListener("click", (e) => {
   if (!avatarEl.contains(e.target) && !menu.contains(e.target))
     menu.classList.add("hidden");
