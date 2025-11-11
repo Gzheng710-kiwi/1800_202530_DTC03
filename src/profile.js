@@ -1,17 +1,10 @@
 import { auth, db } from "./firebaseConfig.js";
-import {
-  doc,
-  getDoc,
-  setDoc,
-  onSnapshot,
-  collection,
-} from "firebase/firestore";
+import { doc, setDoc, onSnapshot, collection } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { showPopup } from "./popup.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
-// --- Element references ---
+// Element references
 const avatarEl = document.getElementById("profile-avatar");
 const nameEl = document.querySelector("h2");
 const emailDisplay = document.getElementById("profile-email");
@@ -26,13 +19,43 @@ const locationInput = document.getElementById("edit-location");
 const itemsEl = document.getElementById("count-items");
 const remindersEl = document.getElementById("count-reminders");
 const expiringEl = document.getElementById("count-expiring");
+// Avatar dropdown (Big Smile)
+const menu = document.getElementById("avatar-menu");
+const options = document.querySelectorAll(".avatar-option");
 
-const fileInput = document.createElement("input");
-fileInput.type = "file";
-fileInput.accept = "image/*";
+avatarEl.addEventListener("click", (e) => {
+  e.stopPropagation();
+  menu.classList.toggle("hidden");
+});
 
-avatarEl.addEventListener("click", () => fileInput.click());
+options.forEach((opt) => {
+  opt.addEventListener("click", async () => {
+    const seed = opt.dataset.seed;
+    const url = `https://api.dicebear.com/7.x/big-smile/svg?seed=${seed}`;
+    avatarEl.src = url;
+    menu.classList.add("hidden");
 
+    const user = auth.currentUser;
+    if (user) {
+      try {
+        await setDoc(
+          doc(db, "users", user.uid),
+          { avatarSeed: seed, photoURL: url },
+          { merge: true }
+        );
+      } catch (e) {
+        console.error("Avatar save failed:", e);
+      }
+    }
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!avatarEl.contains(e.target) && !menu.contains(e.target))
+    menu.classList.add("hidden");
+});
+
+// Main user data & stats
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     nameEl.textContent = "Please log in to view profile";
@@ -66,25 +89,6 @@ onAuthStateChanged(auth, async (user) => {
     });
   }
 
-  fileInput.onchange = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    try {
-      const storage = getStorage();
-      const avatarRef = ref(storage, `avatars/${user.uid}.jpg`);
-      await uploadBytes(avatarRef, file);
-      const photoURL = await getDownloadURL(avatarRef);
-
-      await setDoc(userRef, { photoURL }, { merge: true });
-      avatarEl.src = photoURL;
-      alert("Avatar updated successfully!");
-    } catch (err) {
-      console.error("Upload failed:", err);
-      alert("Upload failed. Please check Firebase Storage rules.");
-    }
-  };
-
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     try {
@@ -108,8 +112,7 @@ onAuthStateChanged(auth, async (user) => {
   listenFoodStats(user);
 });
 
-// --- UPDATED FUNCTION: listenFoodStats ---
-// Matches the logic in reminder.js
+// Food stats
 function listenFoodStats(user) {
   const foodRef = collection(db, "users", user.uid, "foodlog");
 
@@ -151,7 +154,7 @@ function listenFoodStats(user) {
     if (expiringEl) expiringEl.textContent = expiringSoonCount;
   });
 }
-// Log Out, back to index.html
+// Log Out
 document.getElementById("logout-btn").addEventListener("click", () => {
   signOut(auth)
     .then(() => {

@@ -5,123 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="comp1800 template" content="My 1800 App" />
     <title>My BCIT Project</title>
-
         <!-- Tailwind and JQuery -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-        <!-- Other libraries go here -->
-
         <!-- Custom Components -->
         <script type="module" src="/src/components/app-navbar.js"></script>
-
         <!-- Link to styles of your own -->
         <link rel="stylesheet" href="./styles/style.css">
   </head>
-
   <body class="light-mode">
     <!--navbar-->
     <app-navbar></app-navbar>
-
     <!--main-->
     <main class="max-w-6xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-10 pb-32 items-stretch">
       <!--left card-->
       <aside
         class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
       >
-        <img
-          id="profile-avatar"
-          class="w-28 h-28 rounded-full border-4 border-[--highlight-bg-color] object-cover mb-4 cursor-pointer hover:opacity-80 transition"
-          src="https://cdn-icons-png.flaticon.com/512/5087/5087579.png"
+    <!-- Profile avatar button -->
+      <div class="relative inline-block text-left">
+        <img id="profile-avatar"
+          src="https://api.dicebear.com/7.x/big-smile/svg?seed=peach"
           alt="Profile Avatar"
-        />
-        <h2 class="text-2xl font-bold text-[--highlight-text-color]">
-          Hello, user_name, Welcome Back!
-        </h2>
-        <div class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10">
-          <p><strong>Email:</strong> <span id="profile-email"></span></p>
-          <p><strong>Location:</strong> <span id="profile-location"></p>
-          <p><strong>Member Since:</strong> <span id="profile-since"></span></p>
-        </div>
-
-        <!-- LOG Out BUTTON-->
-        <button
-          id="logout-btn"
-          class="mt-6 bg-black text-white px-6 py-2 rounded-lg contrast transition w-full"
-        >
-          Log Out
-        </button>
-
-        <div class="mt-8 w-full grid grid-cols-3 text-center">
-          <div>
-            <p id="count-items" class="text-lg font-bold text-[--highlight-text-color]">0</p>
-            <p class="text-xs text-[--secondary-text-color]">Items</p>
+          class="w-24 h-24 rounded-full border-2 shadow-md cursor-pointer hover:scale-105 transition" />
+          <div id="avatar-menu"
+              class="hidden absolute mt-2 w-60 bg-white border border-gray-200 rounded-xl shadow-lg p-3 z-10">
+            <p class="text-sm text-gray-500 mb-2">Choose your Avatar:</p>
+            <div class="grid grid-cols-3 gap-3">
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=peach"
+                  data-seed="peach"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=snowflake"
+                  data-seed="snowflake"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=twinkle"
+                  data-seed="twinkle"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=cool"
+                  data-seed="cool"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=blush"
+                  data-seed="blush"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110  cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=rudolph"
+                  data-seed="rudolph"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=lucky"
+                  data-seed="lucky"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=kiwi"
+                  data-seed="kiwi"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=noel"
+                  data-seed="noel"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=holly"
+                  data-seed="holly"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=firefly"
+                  data-seed="firefly"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+              <img src="https://api.dicebear.com/7.x/big-smile/svg?seed=happy"
+                  data-seed="happy"
+                  class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition" />
+            </div>
           </div>
-          <div>
-            <p id="count-reminders" class="text-lg font-bold text-[--highlight-text-color]">0</p>
-            <p class="text-xs text-[--secondary-text-color]">Reminders</p>
-          </div>
-          <div>
-            <p id="count-expiring" class="text-lg font-bold text-[--highlight-text-color]">0</p>
-            <p class="text-xs text-[--secondary-text-color]">Expiring Soon</p>
-          </div>
-        </div>
-        </div>
-        <div
-          class="w-full h-[2px] mt-6 bg-gradient-to-r from-[--highlight-bg-color] to-transparent"
-        ></div>
-      </aside>
-      <!--right card-->
-      <section class="h-full space-y-10">
-        <div
-          class="h-full bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]"
-        >
-          <h3 class="text-2xl font-semibold text-[--highlight-text-color] mb-4">
-            Edit Your Information
-          </h3>
-          <form id="edit-profile-form" class="space-y-4">
-        <div>
-          <label class="block text-sm text-[--secondary-text-color] mb-1">
-            Display Name:
-          </label>
-          <input
-            id="edit-name"
-            type="text"
-            placeholder="Your name"
-            class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-          />
-        </div>
-        <div>
-          <label class="block text-sm text-[--secondary-text-color] mb-1">
-            Email (read-only):
-          </label>
-          <input
-            id="edit-email"
-            type="email"
-            readonly
-            class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 text-[--text-color]"/>
-          </div>
-          <div>
-            <label class="block text-sm text-[--secondary-text-color] mb-1">
-              Location:
-            </label>
-            <input
-              id="edit-location"
-              type="text"
-              placeholder="Enter your city"
-              class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-            />
-          </div>
+      </div>
+            <h2 class="text-2xl font-bold text-[--highlight-text-color]">
+              Hello, user_name, Welcome Back!
+            </h2>
+            <div class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10">
+              <p><strong>Email:</strong> <span id="profile-email"></span></p>
+              <p><strong>Location:</strong> <span id="profile-location"></span></p>
+              <p><strong>Member Since:</strong> <span id="profile-since"></span></p>
+            </div>
+            <!-- LOG Out BUTTON-->
             <button
-              type="submit"
-              class="mt-4 w-full bg-black text-white px-6 py-2 rounded-lg contrast transition"
+              id="logout-btn"
+              class="mt-6 bg-black text-white px-6 py-2 rounded-lg contrast transition w-full"
             >
-              Save Changes
+              Log Out
             </button>
-          </form>
-         </div>
-        </div>
-      </section>
+            <div class="mt-8 w-full grid grid-cols-3 text-center">
+              <div>
+                <p id="count-items" class="text-lg font-bold text-[--highlight-text-color]">0</p>
+                <p class="text-xs text-[--secondary-text-color]">Items</p>
+              </div>
+              <div>
+                <p id="count-reminders" class="text-lg font-bold text-[--highlight-text-color]">0</p>
+                <p class="text-xs text-[--secondary-text-color]">Reminders</p>
+              </div>
+              <div>
+                <p id="count-expiring" class="text-lg font-bold text-[--highlight-text-color]">0</p>
+                <p class="text-xs text-[--secondary-text-color]">Expiring Soon</p>
+              </div>
+            </div>
+            </div>
+            <div
+              class="w-full h-[2px] mt-6 bg-gradient-to-r from-[--highlight-bg-color] to-transparent"
+            ></div>
+          </aside>
+          <!--right card-->
+          <section class="h-full space-y-10">
+            <div
+              class="h-full bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]"
+            >
+              <h3 class="text-2xl font-semibold text-[--highlight-text-color] mb-4">
+                Edit Your Information
+              </h3>
+              <form id="edit-profile-form" class="space-y-4">
+            <div>
+              <label class="block text-sm text-[--secondary-text-color] mb-1">
+                Display Name:
+              </label>
+              <input
+                id="edit-name"
+                type="text"
+                placeholder="Your name"
+                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
+              />
+            </div>
+            <div>
+              <label class="block text-sm text-[--secondary-text-color] mb-1">
+                Email (read-only):
+              </label>
+              <input
+                id="edit-email"
+                type="email"
+                readonly
+                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 text-[--text-color]"/>
+              </div>
+              <div>
+                <label class="block text-sm text-[--secondary-text-color] mb-1">
+                  Location:
+                </label>
+                <input
+                  id="edit-location"
+                  type="text"
+                  placeholder="Enter your city"
+                  class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
+                />
+              </div>
+                <button
+                  type="submit"
+                  class="mt-4 w-full bg-black text-white px-6 py-2 rounded-lg contrast transition"
+                >
+                  Save Changes
+                </button>
+              </form>
+            </div>
+          </section>
     </main>
     <script type="module" src="/src/profile.js"></script>
     <div
