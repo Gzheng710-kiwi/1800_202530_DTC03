@@ -86,6 +86,10 @@ function loadReminders(user) {
       const data = docSnap.data();
       if (!data.expDate || !data.reminders) return;
 
+      // In a separate javascript file:
+      // Make a function that exports a function giving you the relative date.
+      // Add a funciton giving you the date in date format.
+      // Maybe one that is a combination of the two.
       let expiry;
       if (data.expDate.toDate) {
         expiry = data.expDate.toDate();
@@ -158,17 +162,23 @@ auth.onAuthStateChanged((user) => {
   });
 });
 
+// Change *button* background to show user if they are viewing all/soon/expired
+// If they hit a button matching their current view, it should return to the default view (allFoods)
+// Consider removing the "all foods" button.
 function filterReminders(type) {
   let filtered = allReminders;
 
-  if (type === "soon") {
-    filtered = allReminders.filter((r) => r.status === "Soon");
-  }
-  if (type === "expired") {
-    filtered = allReminders.filter((r) => r.status === "Expired");
-  }
-  if (type === "all") {
-    filtered = allReminders;
+  switch(type)
+  {
+    case "soon":
+      filtered = allReminders.filter((r) => r.status === "Soon");
+      break;
+    case "expired":
+      filtered = allReminders.filter((r) => r.status === "Expired");
+      break;
+    case "all":
+      filtered = allReminders;
+      break;
   }
 
   renderReminders(filtered);
