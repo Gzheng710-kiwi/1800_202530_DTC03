@@ -6,18 +6,19 @@
     <meta name="comp1800 template" content="My 1800 App" />
     <title>My BCIT Project</title>
 
-        <!-- Tailwind and JQuery -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Tailwind and JQuery -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        <!-- Other libraries go here -->
+    <!-- Other libraries go here -->
 
-        <!-- Custom Components -->
-        <script type="module" src="/src/components/app-navbar.js"></script>
+    <!-- Custom Components -->
+    <script type="module" src="/src/components/app-navbar.js"></script>
 
-        <!-- Link to styles of your own -->
-        <link rel="stylesheet" href="./styles/style.css">
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
+
   <body class="light-mode">
     <!--navbar-->
     <app-navbar></app-navbar>
@@ -29,18 +30,13 @@
         <h1 class="text-3xl font-bold text-[--highlight-text-color]">
           Your Food Reminders
         </h1>
-        <button
-          class="mt-4 sm:mt-0 bg-[#88cc99] px-5 py-2 rounded-lg hover:opacity-90 transition"
-          onclick="window.location.href='addfood.html'"
-        >
-          + Add New Reminder
-        </button>
       </header>
 
       <!-- Summary cards -->
       <section class="grid sm:grid-cols-3 gap-6 text-center">
         <div
-          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow"
+          id="filter-all"
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer hover:bg-gray-100"
         >
           <p
             class="text-2xl font-bold text-[--highlight-text-color]"
@@ -51,18 +47,21 @@
           <p class="text-sm text-[--secondary-text-color]">Food Tracked</p>
         </div>
         <div
-          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow"
+          id="filter-soon"
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer hover:bg-gray-100"
         >
           <p class="text-2xl font-bold text-yellow-600" id="expiring-soon">0</p>
           <p class="text-sm text-[--secondary-text-color]">Expiring Soon</p>
         </div>
         <div
-          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow"
+          id="filter-expired"
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer hover:bg-gray-100"
         >
           <p class="text-2xl font-bold text-red-600" id="expired">0</p>
           <p class="text-sm text-[--secondary-text-color]">Expired</p>
         </div>
       </section>
+
       <!-- Reminder List -->
       <section class="space-y-4">
         <h2 class="text-xl font-semibold text-[--highlight-text-color]">

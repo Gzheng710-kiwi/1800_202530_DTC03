@@ -9,6 +9,8 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
+let allReminders = [];
+
 function renderReminders(reminders) {
   const container = document.getElementById("reminder-list");
 
@@ -129,7 +131,8 @@ function loadReminders(user) {
     document.getElementById("expiring-soon").textContent = expiringSoon;
     document.getElementById("expired").textContent = expired;
 
-    renderReminders(reminders);
+    allReminders = reminders;
+    renderReminders(allReminders);
   });
 }
 
@@ -142,4 +145,31 @@ auth.onAuthStateChanged((user) => {
   }
 
   loadReminders(user);
+  document.getElementById("filter-all").addEventListener("click", () => {
+    filterReminders("all");
+  });
+
+  document.getElementById("filter-soon").addEventListener("click", () => {
+    filterReminders("soon");
+  });
+
+  document.getElementById("filter-expired").addEventListener("click", () => {
+    filterReminders("expired");
+  });
 });
+
+function filterReminders(type) {
+  let filtered = allReminders;
+
+  if (type === "soon") {
+    filtered = allReminders.filter((r) => r.status === "Soon");
+  }
+  if (type === "expired") {
+    filtered = allReminders.filter((r) => r.status === "Expired");
+  }
+  if (type === "all") {
+    filtered = allReminders;
+  }
+
+  renderReminders(filtered);
+}
