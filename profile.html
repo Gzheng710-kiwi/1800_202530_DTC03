@@ -213,12 +213,23 @@
                 class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
               />
             </div>
-            <button
-              type="submit"
-              class="mt-4 w-full bg-black text-white px-6 py-2 rounded-lg contrast transition"
-            >
-              Save Changes
-            </button>
+            <div class="mt-6 flex flex-col sm:flex-row justify-end gap-4">
+              <!-- Save Button -->
+              <button
+                type="submit"
+                class="w-full sm:w-auto sm:flex-1 bg-black text-white px-6 py-2 rounded-lg contrast transition"
+              >
+                Save Changes
+              </button>
+
+              <!-- Cancel Button -->
+              <button
+                id="cancel-btn"
+                class="w-full sm:w-auto sm:flex-1 px-6 py-2 rounded-lg border border-gray-400 text-gray-700 hover:bg-gray-100 transition"
+              >
+                Cancel
+              </button>
+            </div>
           </form>
         </div>
       </section>

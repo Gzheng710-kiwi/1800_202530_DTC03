@@ -74,6 +74,7 @@ document
       }
     }
   });
+
 document.addEventListener("click", (e) => {
   if (!avatarEl.contains(e.target) && !menu.contains(e.target))
     menu.classList.add("hidden");
