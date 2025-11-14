@@ -189,3 +189,11 @@ document.getElementById("logout-btn").addEventListener("click", () => {
       alert("Logout failed. Please try again.");
     });
 });
+
+// Cancel button
+document.getElementById("cancel-btn").addEventListener("click", () => {
+  showPopup("You didn't make any changes.");
+  setTimeout(() => {
+    window.location.href = "profile.html";
+  }, 1500);
+});
