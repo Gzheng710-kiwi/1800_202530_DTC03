@@ -1,5 +1,6 @@
 import { auth, db } from "./firebaseConfig.js";
 import { updateDoc } from "firebase/firestore";
+import { convertToDate, calculateDaysLeft } from "./calculateDate.js";
 import {
   collection,
   query,
@@ -86,24 +87,8 @@ function loadReminders(user) {
       const data = docSnap.data();
       if (!data.expDate || !data.reminders) return;
 
-      // In a separate javascript file:
-      // Make a function that exports a function giving you the relative date.
-      // Add a funciton giving you the date in date format.
-      // Maybe one that is a combination of the two.
-      let expiry;
-      if (data.expDate.toDate) {
-        expiry = data.expDate.toDate();
-      } else if (typeof data.expDate === "string") {
-        const [y, m, d] = data.expDate.split("-").map(Number);
-        expiry = new Date(y, m - 1, d);
-      } else {
-        expiry = new Date(data.expDate);
-      }
-
-      expiry.setHours(0, 0, 0, 0);
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const daysLeft = Math.floor((expiry - today) / (1000 * 60 * 60 * 24));
+      const expiry = convertToDate(data.expDate);
+      const daysLeft = calculateDaysLeft(expiry);
 
       let status = "";
       let color = "";
@@ -168,8 +153,7 @@ auth.onAuthStateChanged((user) => {
 function filterReminders(type) {
   let filtered = allReminders;
 
-  switch(type)
-  {
+  switch (type) {
     case "soon":
       filtered = allReminders.filter((r) => r.status === "Soon");
       break;
