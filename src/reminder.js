@@ -7,10 +7,10 @@ import {
   orderBy,
   onSnapshot,
   doc,
-  deleteDoc,
 } from "firebase/firestore";
 
 let allReminders = [];
+let currentFilter = "all";
 
 function renderReminders(reminders) {
   const container = document.getElementById("reminder-list");
@@ -151,19 +151,38 @@ auth.onAuthStateChanged((user) => {
 // If they hit a button matching their current view, it should return to the default view (allFoods)
 // Consider removing the "all foods" button.
 function filterReminders(type) {
+  if (currentFilter === type) {
+    currentFilter = "all";
+    renderReminders(allReminders);
+    highlightCard("all");
+    return;
+  }
+
+  currentFilter = type;
   let filtered = allReminders;
 
-  switch (type) {
-    case "soon":
-      filtered = allReminders.filter((r) => r.status === "Soon");
-      break;
-    case "expired":
-      filtered = allReminders.filter((r) => r.status === "Expired");
-      break;
-    case "all":
-      filtered = allReminders;
-      break;
+  if (type === "soon") {
+    filtered = allReminders.filter((r) => r.status === "Soon");
+  } else if (type === "expired") {
+    filtered = allReminders.filter((r) => r.status === "Expired");
   }
 
   renderReminders(filtered);
+  highlightCard(type);
+}
+// Make highlight color when click on the card
+function highlightCard(active) {
+  const soon = document.getElementById("filter-soon");
+  const expired = document.getElementById("filter-expired");
+
+  soon.classList.remove("bg-yellow-100");
+  expired.classList.remove("bg-red-100");
+  if (active === "all") {
+    return;
+  }
+  if (active === "soon") {
+    soon.classList.add("bg-yellow-100");
+  } else if (active === "expired") {
+    expired.classList.add("bg-red-100");
+  }
 }
