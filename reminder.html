@@ -27,35 +27,21 @@
       <header
         class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6"
       >
-        <h1 class="text-3xl font-bold text-[--highlight-text-color]">
-          Your Food Reminders
-        </h1>
+        <h1 class="text-4xl font-bold mb-8">Reminders</h1>
       </header>
 
       <!-- Summary cards -->
-      <section class="grid sm:grid-cols-3 gap-6 text-center">
-        <div
-          id="filter-all"
-          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer hover:bg-gray-100"
-        >
-          <p
-            class="text-2xl font-bold text-[--highlight-text-color]"
-            id="total-food"
-          >
-            0
-          </p>
-          <p class="text-sm text-[--secondary-text-color]">Food Tracked</p>
-        </div>
+      <section class="grid sm:grid-cols-2 gap-6 text-center">
         <div
           id="filter-soon"
-          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer hover:bg-gray-100"
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer"
         >
           <p class="text-2xl font-bold text-yellow-600" id="expiring-soon">0</p>
           <p class="text-sm text-[--secondary-text-color]">Expiring Soon</p>
         </div>
         <div
           id="filter-expired"
-          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer hover:bg-gray-100"
+          class="p-4 bg-[--bg-color] border border-[--secondary-bg-color] rounded-lg shadow cursor-pointer"
         >
           <p class="text-2xl font-bold text-red-600" id="expired">0</p>
           <p class="text-sm text-[--secondary-text-color]">Expired</p>

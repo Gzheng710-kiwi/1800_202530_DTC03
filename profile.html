@@ -22,13 +22,15 @@
     <app-navbar></app-navbar>
 
     <!--main-->
-    <main
-      class="max-w-6xl mx-auto py-20 px-6 grid md:grid-cols-2 gap-10 pb-32 items-stretch"
-    >
+    <main class="max-w-6xl mx-auto py-10 px-6 space-y-10 pb-32">
+    <div class=" mx-auto">
+      <h1 class="text-4xl font-bold">Profile</h1>
+    </div>
+      <section class="grid md:grid-cols-2 gap-10 items-start">
       <!--left card-->
       <aside
-        class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
-      >
+      class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
+    >
         <!-- Profile avatar button -->
         <div class="relative inline-block text-left">
           <img
@@ -106,7 +108,7 @@
               <div class="col-span-3 text-center mt-2">
                 <button
                   id="remove-avatar-btn"
-                  class="text-s text-gray-500 hover:underline transition border-none"
+                  class="text-s text-gray-500 underline transition border-none"
                 >
                   I don't want an avatar
                 </button>

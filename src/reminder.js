@@ -116,7 +116,7 @@ function loadReminders(user) {
       });
     });
 
-    document.getElementById("total-food").textContent = reminders.length;
+    //document.getElementById("total-food").textContent = reminders.length;
     document.getElementById("expiring-soon").textContent = expiringSoon;
     document.getElementById("expired").textContent = expired;
 
@@ -134,9 +134,9 @@ auth.onAuthStateChanged((user) => {
   }
 
   loadReminders(user);
-  document.getElementById("filter-all").addEventListener("click", () => {
-    filterReminders("all");
-  });
+  //document.getElementById("filter-all").addEventListener("click", () => {
+  //filterReminders("all");
+  //});
 
   document.getElementById("filter-soon").addEventListener("click", () => {
     filterReminders("soon");
