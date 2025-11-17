@@ -61,48 +61,71 @@
                 <!-- Col 1: header checkbox -->
                 <input
                   id="select-all"
-                  onchange="selectAllCheckBoxes(this)"
                   type="checkbox"
-                  class="h-5 w-5 accent-green-600 cursor-pointer -translate-x-4"
-                  aria-label="Select all"
+                  class="h-5 w-5 accent-green-600 invisible cursor-pointer -translate-x-4"
+                  onchange="selectAllCheckBoxes(this)"
                 />
 
                 <!-- Col 2: Food label (aligned with name chip) -->
                 <span class="text-lg font-bold text-neutral-900">Food</span>
-
-                <!-- Col 3: Expiry label (right-aligned like the badge) -->
-                <span
-                  class="text-lg font-bold text-neutral-900 justify-self-end"
-                  >Expiry</span
-                >
-
-                <button
-                  type="button"
-                  data-docid="${it.id}"
-                  class="js-delete justify-self-end hidden items-center justify-center size-9 rounded-md border border-neutral-300 hover:bg-neutral-50 active:scale-95 transition"
-                  aria-label="Delete item"
-                  title="Delete"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                <div class="flex justify-end gap-5">
+                  <button
+                    id="edit-btn"
+                    class="items-center pl-1 size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
                   >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M4 7l16 0" />
-                    <path d="M10 11l0 6" />
-                    <path d="M14 11l0 6" />
-                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
-                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
-                  </svg>
-                </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="32"
+                      height="32"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#000000"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"
+                      />
+                      <path d="M13.5 6.5l4 4" />
+                    </svg>
+                  </button>
+
+                  <!-- Col 3: Expiry label (right-aligned like the badge) -->
+                  <span class="text-lg font-bold text-neutral-900">Expiry</span>
+
+                  <button
+                    type="button"
+                    data-docid="${it.id}"
+                    id="delete-btn"
+                    class="js-delete items-center pl-1 size-9 rounded-md border border-neutral-300 hover:bg-neutral-50"
+                    disabled
+                    aria-label="Delete item"
+                    title="Delete"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="icon icon-tabler icons-tabler-outline icon-tabler-trash"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M4 7l16 0" />
+                      <path d="M10 11l0 6" />
+                      <path d="M14 11l0 6" />
+                      <path
+                        d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
+                      />
+                      <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                    </svg>
+                  </button>
+                </div>
                 <!-- <span class="sr-only">Delete</span> -->
               </div>
             </header>
