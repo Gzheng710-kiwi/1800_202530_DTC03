@@ -1,6 +1,8 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { saveFoodItem } from "./savefooditem";
 import { auth } from "./firebaseConfig";
+import { noUser } from "./authentication";
+import { showPopup } from "./popup";
 
 const saveButton = document.getElementById("addfood-submit");
 
@@ -13,35 +15,22 @@ function saveButtonEventListener()
         let amount = document.getElementById("addfood-amount").value;
         // let image = document.getElementById("addfood-image").value;
 
-        // console.log(
-        //     "\nName: " + foodName +
-        //     "\nExpiry Date: " + expDate +
-        //     "\nAmount: " + amount +
-        //     "\nReminders: " + reminders
-        // );
-        // console.log("Saving food...");
+        amount = parseInt(amount);
+        if (isNaN(amount) || amount <= 0)
+        {
+            alert("Amount must be an integer greater than 0");
+            return;
+        }
 
         saveFoodItem(foodName, expDate, amount, reminders);
     });
-}
-
-function noUser()
-{
-    //Replace dashboard contents with a message telling the user to log in.
-    let dashboard = document.getElementById("addfood-content");
-    dashboard.innerHTML = `
-        <div class="flex flex-col justify-center items-stretch">
-            <h3 class="text-2xl text-center font-semibold">You need have an account in order to add food to your fridge</h3>
-            <button onclick="location.href='login.html'" class=" mt-10 p-2 contrast font-bold text-2xl">Log In</button>
-        </div>
-    `
 }
 
 function verifyUser(user)
 {
     if (!user)
     {
-        noUser();
+        noUser("addfood-content");
         return;
     }
 
