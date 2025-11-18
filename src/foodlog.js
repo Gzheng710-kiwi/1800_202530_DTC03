@@ -106,10 +106,12 @@ editBtn.addEventListener("click", () => {
 
   boxes.forEach((box) => {
     box.classList.toggle("invisible", !editMode);
-  
+
     box.checked = false;
   });
-  document.getElementById("select-all").classList.toggle("invisible", !editMode);
+  document
+    .getElementById("select-all")
+    .classList.toggle("invisible", !editMode);
   // Disable delete button when entering edit mode
   deleteBtn.disabled = true;
 });
@@ -135,6 +137,9 @@ deleteBtn.addEventListener("click", async () => {
     const docId = box.dataset.docid;
     await deleteDoc(doc(db, "users", uid, "foodlog", docId));
   }
+  const selectAll = document.getElementById("select-all");
+  selectAll.classList.add("invisible");
+  selectAll.checked = false;
 
   showPopup("Deleted selected items");
 });
