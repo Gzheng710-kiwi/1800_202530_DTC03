@@ -15,10 +15,13 @@
     --light-primary-button-hover-bg-color: #E0E5EB;
     --light-secondary-button-bg-color: #DDEEFF;
     --light-secondary-button-hover-bg-color: #CCDDFF;
-    --light-contrast-button-bg-color: #111111;
+
+    --light-contrast-button-bg-color: #222222;
     --light-contrast-button-hover-bg-color: #333333;
+    --light-secondary-contrast-button-bg-color: #334455;
+    --light-secondary-contrast-button-hover-bg-color: #445566;
     
-    --light-primary-border-color: #222222;
+    --light-primary-border-color: #333333;
     --light-secondary-border-color: #DDEEEE;
     
     
@@ -37,8 +40,11 @@
     --dark-primary-button-hover-bg-color: #333333;
     --dark-secondary-button-bg-color: #444444;
     --dark-secondary-button-hover-bg-color: #666666;
+
     --dark-contrast-button-bg-color: #FFFFFF;
     --dark-contrast-button-hover-bg-color: #E0E5EB;
+    --dark-secondary-contrast-button-bg-color: #CCCCDD;
+    --dark-secondary-contrast-button-hover-bg-color: #9999AA;
     
     --dark-primary-border-color: #DDDDDD;
     --dark-secondary-border-color: #666666;
@@ -60,8 +66,11 @@ body
     --primary-button-hover-bg-color: var(--light-primary-button-hover-bg-color);
     --secondary-button-bg-color: var(--light-secondary-button-bg-color);
     --secondary-button-hover-bg-color: var(--light-secondary-button-hover-bg-color);
+
     --contrast-button-bg-color: var(--light-contrast-button-bg-color);
     --contrast-button-hover-bg-color: var(--light-contrast-button-hover-bg-color);
+    --secondary-contrast-button-bg-color: var(--light-secondary-contrast-button-bg-color);
+    --secondary-contrast-button-hover-bg-color: var(--light-secondary-contrast-button-hover-bg-color);
 
     --primary-border-color: var(--light-primary-border-color);
     --secondary-border-color: var(--light-secondary-border-color);
@@ -106,6 +115,12 @@ body.dark-mode
     background-color: var(--contrast-bg-color);
 }
 
+button
+{
+    transition-duration: 200ms;
+    border: 2px solid var(--primary-border-color);
+}
+
 button.contrast
 {
     color: var(--contrast-text-color);
@@ -117,36 +132,41 @@ button.contrast:hover
     background-color: var(--contrast-button-hover-bg-color);
 }
 
+button.secondary.contrast
+{
+    color: var(--contrast-text-color);
+    background-color: var(--secondary-contrast-button-bg-color);
+}
+
+button.secondary.contrast:hover
+{
+    background-color: var(--secondary-contrast-button-hover-bg-color);
+}
+
 .svg-logo
 {
     stroke: currentColor;
     fill: currentColor;
 }
 
-button
-{
-    transition-duration: 200ms;
-    border: 2px solid var(--primary-border-color);
-}
-
-.btn-primary
+.primary
 {
     color: var(--text-color);
     background-color: var(--primary-button-bg-color);
     border: 2px solid var(--primary-border-color);
 }
 
-.btn-primary:hover
+.primary:hover
 {
     background-color: var(--primary-button-hover-bg-color);
 }
 
-.btn-secondary
+.secondary
 {
     background-color: var(--secondary-button-bg-color);
 }
 
-.btn-secondary:hover
+.secondary:hover
 {
     background-color: var(--secondary-button-hover-bg-color);
 }
