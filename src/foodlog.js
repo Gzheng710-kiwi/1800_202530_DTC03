@@ -69,7 +69,7 @@ function rowHTML(index, it) {
         ${it.name || "(unnamed)"}
       </span>
     </div>
-    <span class="rounded-full justify-end border px-3 py-1 text-black">${qty}</span> <!-- 👈 added -->
+    <span class="rounded-full justify-end border px-3 py-1 text-black">${qty}</span> 
     <span class="${expiryClasses}  text-right">${expStr}</span>
   `;
 }
