@@ -1,6 +1,7 @@
 import { collection, getDocs, query, limit, orderBy, where } from "firebase/firestore";
 import { db, auth } from "./firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
+import { noUser } from './authentication'
 
 
 /**
@@ -105,18 +106,6 @@ async function remindersToHtml(div, allFoods)
     }
     div.innerHTML = _foodDiv;
 }
-                    
-function noUser()
-{
-    //Replace dashboard contents with a message telling the user to log in.
-    let dashboard = document.getElementById("dashboard-content");
-    dashboard.innerHTML = `
-    <div class="flex flex-col justify-center items-stretch">
-    <h3 class="text-2xl text-center font-semibold">You need have an account in order to view your dashboard</h3>
-    <button onclick="location.href='login.html'" class=" mt-10 p-2 contrast font-bold text-2xl">Log In</button>
-    </div>
-    `
-}
 
 async function displayRecentFoods(user)
 {
@@ -140,7 +129,7 @@ function setup()
     onAuthStateChanged(auth, (user) => {
         if (!user)
         {
-            noUser();
+            noUser("dashboard-content", false);
             return;
         }
 
@@ -151,6 +140,7 @@ function setup()
     //Reminder stuff
     const reminderOverlay = document.getElementById("reminder-overlay");
     const reminderButton = document.getElementById("dashboard-reminderbutton");
+    
     reminderButton.addEventListener("click", () => {
         reminderOverlay.classList.toggle("hidden");
         reminderOverlay.classList.toggle("flex");

@@ -150,3 +150,33 @@ export function authErrorMessage(error) {
   return map[code] || "Something went wrong. Please try again.";
 }
 
+/**
+ * Replaces the contents of the specified div with a message prompting the user to log in
+ * @param {string} divId The id of the div whose contents will be replaced
+ * @param {boolean} wrapWithCard Whether to wrap the message in a styled card (default: true)
+ */
+export function noUser(divId, wrapWithCard=true)
+{
+    //Replace dashboard contents with a message telling the user to log in.
+    let container = document.getElementById(divId);
+    if (wrapWithCard)
+    {
+      container.innerHTML = `
+      <div class="flex-1 border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg">
+        <div class="flex flex-col justify-center items-stretch">
+        <h3 class="text-2xl text-center font-semibold">You need have an account in order to view your dashboard</h3>
+        <button onclick="location.href='login.html'" class=" mt-10 p-2 contrast font-bold text-2xl">Log In</button>
+        </div>
+      </div>
+      `
+    }
+    else
+    {
+      container.innerHTML = `
+      <div class="flex flex-col justify-center items-stretch">
+      <h3 class="text-2xl text-center font-semibold">You need have an account in order to view your dashboard</h3>
+      <button onclick="location.href='login.html'" class=" mt-10 p-2 contrast font-bold text-2xl">Log In</button>
+      </div>
+      `
+    }
+}
