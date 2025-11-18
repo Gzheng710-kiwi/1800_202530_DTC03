@@ -1,5 +1,5 @@
-import { getFirestore, collection, addDoc, doc, getDoc, updateDoc, arrayUnion, query, where, getDocs } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { collection, addDoc, doc, getDoc, updateDoc, arrayUnion, query, where, getDocs } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 import { noUser } from './authentication'
 import { db, auth } from "./firebaseConfig";
 
@@ -72,7 +72,7 @@ function setup()
     onAuthStateChanged(auth, async (user) => {
         if (!user)
         {
-            noUser();
+            noUser("groups-content");
             return;
         }
 

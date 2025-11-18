@@ -25,8 +25,9 @@
         <app-navbar></app-navbar>
         <main>
             <div id="main-content" class="flex justify-center">
-                <div class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch gap-[2vh]">
+                <div id="groups-content" class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch gap-[2vh]">
                     <h1 class="text-4xl font-bold mb-8">Groups</h1>
+                    <!-- Current Groups -->
                     <div id="available-groups-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg">
                         <h2 class="text-2xl font-bold mb-4">Your Groups</h2>
                         <div id="groups-list" class="flex flex-col gap-4">
@@ -37,6 +38,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Join / Create Group -->
                     <div id="join-group-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg">
                         <button id="groups-createbutton" class="contrast rounded-md my-2 py-4 text-xl font-bold">Create Group</button>
                         <button id="groups-joinbutton" class="secondary contrast rounded-md my-2 py-4 text-xl font-bold">Join Group</button>
