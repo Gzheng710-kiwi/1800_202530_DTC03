@@ -60,7 +60,7 @@ function rowHTML(index, it) {
   return `
     <input
       type="checkbox"
-      class="js-checkbox h-5 w-5 -translate-y-1 accent-green-600 cursor-pointer"
+      class="js-checkbox invisible h-5 w-5 -translate-y-1 accent-green-600 cursor-pointer"
       data-docid="${it.id}"
       aria-label="Select food item"
     />
@@ -69,7 +69,7 @@ function rowHTML(index, it) {
         ${it.name || "(unnamed)"}
       </span>
     </div>
-    <span class="rounded-full border px-3 py-1 text-black">${qty}</span> <!-- 👈 added -->
+    <span class="rounded-full justify-end border px-3 py-1 text-black">${qty}</span> <!-- 👈 added -->
     <span class="${expiryClasses}  text-right">${expStr}</span>
   `;
 }
@@ -80,7 +80,6 @@ window.selectAllCheckBoxes = function (source) {
     box.checked = source.checked;
   });
 };
-
 
 function render(list) {
   listEl.innerHTML = "";
@@ -95,24 +94,50 @@ function render(list) {
     li.innerHTML = rowHTML(i + 1, it);
     listEl.appendChild(li);
   });
-
-  // Delegate delete clicks
-  listEl.querySelectorAll(".js-delete").forEach((btn) => {
-    btn.addEventListener("click", async (e) => {
-      const docId = e.currentTarget.getAttribute("data-docid");
-      showPopup("Food Deleted successfully");
-      if (!docId) return;
-      const { uid } = auth.currentUser || {};
-      if (!uid) return;
-      try {
-        await deleteDoc(doc(db, "users", uid, "foodlog", docId));
-      } catch (err) {
-        console.error("Delete failed:", err);
-        alert("Could not delete item.");
-      }
-    });
-  });
 }
+const editBtn = document.getElementById("edit-btn");
+const deleteBtn = document.getElementById("delete-btn");
+let editMode = false;
+
+editBtn.addEventListener("click", () => {
+  editMode = !editMode;
+
+  const boxes = document.querySelectorAll(".js-checkbox");
+
+  boxes.forEach((box) => {
+    box.classList.toggle("invisible", !editMode);
+  
+    box.checked = false;
+  });
+  document.getElementById("select-all").classList.toggle("invisible", !editMode);
+  // Disable delete button when entering edit mode
+  deleteBtn.disabled = true;
+});
+
+// When selecting any checkbox enable delete button
+document.addEventListener("change", () => {
+  if (!editMode) return;
+
+  const anyChecked = document.querySelector(".js-checkbox:checked");
+  deleteBtn.disabled = !anyChecked;
+});
+
+deleteBtn.addEventListener("click", async () => {
+  if (!editMode) return;
+
+  const checked = document.querySelectorAll(".js-checkbox:checked");
+  if (checked.length === 0) return;
+
+  const { uid } = auth.currentUser;
+  if (!uid) return;
+
+  for (const box of checked) {
+    const docId = box.dataset.docid;
+    await deleteDoc(doc(db, "users", uid, "foodlog", docId));
+  }
+
+  showPopup("Deleted selected items");
+});
 
 function applyFilter() {
   const q = (searchEl?.value || "").trim().toLowerCase();
