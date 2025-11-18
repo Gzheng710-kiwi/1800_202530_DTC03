@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="comp1800 template" content="My 1800 App">
+        <title>My BCIT Project</title>
+
+        <!-- Tailwind and JQuery -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+        <!-- Other libraries go here -->
+
+        <!-- Custom Components -->
+        <script type="module" src="/src/components/app-navbar.js"></script>
+
+        <!-- Link to styles of your own -->
+        <link rel="stylesheet" href="./styles/style.css">
+
+    </head>
+    <body class="">
+        <app-navbar></app-navbar>
+        <main>
+            <div id="main-content" class="flex justify-center">
+                <div id="group-content" class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch gap-[2vh]">
+                    <div class="flex flex-row justify-between items-center">
+                        <h1 id="group-name" class="text-4xl font-bold mb-8">Group Name</h1>
+                        <button id="delete-group-button" class="py-1 px-2 text-xl font-semibold primary rounded-lg">Delete Group</button>
+                    </div>
+                    <div id="fridge-content-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg gap-5">
+                        <!-- Fridge -->
+                        <div>
+                            <h2 class="text-3xl font-bold">Your Fridge:</h2>
+                            <div>
+                                <p>Food here</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="wishlist-content-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg gap-5">
+                        <!-- Wishlist -->
+                        <div>
+                            <h2 class="text-3xl font-bold">Your Wishlist:</h2>
+                            <div>
+                                <p>Food here</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!---------------------------------------------->
+        <!-- Your own JavaScript functions go here    -->
+        <!---------------------------------------------->
+
+        <!-- Link to scripts of your own -->
+         <script src="src/group.js" type="module"></script>
+    </body>
+</html>
