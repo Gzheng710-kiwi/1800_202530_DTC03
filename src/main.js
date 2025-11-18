@@ -140,7 +140,7 @@ function setup()
     //Reminder stuff
     const reminderOverlay = document.getElementById("reminder-overlay");
     const reminderButton = document.getElementById("dashboard-reminderbutton");
-    
+
     reminderButton.addEventListener("click", () => {
         reminderOverlay.classList.toggle("hidden");
         reminderOverlay.classList.toggle("flex");
