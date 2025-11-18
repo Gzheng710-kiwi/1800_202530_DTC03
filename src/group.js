@@ -1,6 +1,7 @@
-import { getFirestore, doc, getDoc, deleteDoc } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "./firebaseConfig";
+import { noUser } from "./authentication.js";
 
 // DOM Elements
 const groupNameHeader = document.getElementById("group-name");
