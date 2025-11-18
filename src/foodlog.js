@@ -104,27 +104,26 @@ editBtn.addEventListener("click", () => {
 
   const boxes = document.querySelectorAll(".js-checkbox");
 
+  // Show or hide checkboxes
   boxes.forEach((box) => {
     box.classList.toggle("invisible", !editMode);
-    box.checked = false;
+    box.checked = false; // reset checks when entering edit mode
   });
 
-  // Toggle Select All checkbox
-  document
-    .getElementById("select-all")
-    .classList.toggle("invisible", !editMode);
+  // Show/Hide Select All
+  const selectAll = document.getElementById("select-all");
+  selectAll.classList.toggle("invisible", !editMode);
+  selectAll.checked = false;
 
-  // SHOW delete button + HIDE edit button
   if (editMode) {
-    deleteBtn.classList.remove("hidden");
-    editBtn.classList.add("hidden");
+    editBtn.classList.remove("hidden"); // keep edit shown
+    deleteBtn.classList.add("hidden"); // hide delete
+    deleteBtn.disabled = true;
   } else {
-    deleteBtn.classList.add("hidden");
+    // Leaving edit mode → reset everything
     editBtn.classList.remove("hidden");
+    deleteBtn.classList.add("hidden");
   }
-
-  // Disable delete until user checks something
-  deleteBtn.disabled = true;
 });
 
 // When selecting any checkbox enable delete button
@@ -132,7 +131,18 @@ document.addEventListener("change", () => {
   if (!editMode) return;
 
   const anyChecked = document.querySelector(".js-checkbox:checked");
-  deleteBtn.disabled = !anyChecked;
+
+  if (anyChecked) {
+    // A checkbox is selected → show delete, hide edit
+    deleteBtn.classList.remove("hidden");
+    deleteBtn.disabled = false;
+    editBtn.classList.add("hidden");
+  } else {
+    // No checkbox selected → show edit, hide delete
+    deleteBtn.classList.add("hidden");
+    deleteBtn.disabled = true;
+    editBtn.classList.remove("hidden");
+  }
 });
 
 deleteBtn.addEventListener("click", async () => {
