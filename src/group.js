@@ -5,6 +5,7 @@ import { noUser } from "./authentication.js";
 
 // DOM Elements
 const groupNameHeader = document.getElementById("group-name");
+const groupIDSubtitle = document.getElementById("group-id");
 const deleteButton = document.getElementById("delete-group-button");
 
 // Read group ID from URL
@@ -68,6 +69,7 @@ function setup()
 
         const data = await loadGroup(user);
         groupNameHeader.textContent = data.name || "Unnamed Group";
+        groupIDSubtitle.textContent = `Group ID: ${groupID}`;
         loadFoodItems();
     });
 }
