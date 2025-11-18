@@ -60,7 +60,7 @@ function rowHTML(index, it) {
   return `
     <input
       type="checkbox"
-      class="js-checkbox invisible h-5 w-5 -translate-y-1 accent-green-600 cursor-pointer"
+      class="js-checkbox invisible h-5 w-5 accent-green-600 cursor-pointer"
       data-docid="${it.id}"
       aria-label="Select food item"
     />
@@ -131,19 +131,28 @@ document.addEventListener("change", () => {
   if (!editMode) return;
 
   const anyChecked = document.querySelector(".js-checkbox:checked");
+  const allBoxes = document.querySelectorAll(".js-checkbox");
+  const allChecked = Array.from(allBoxes).every((box) => box.checked);
+  const selectAll = document.getElementById("select-all");
 
   if (anyChecked) {
-    // A checkbox is selected → show delete, hide edit
     deleteBtn.classList.remove("hidden");
     deleteBtn.disabled = false;
     editBtn.classList.add("hidden");
   } else {
-    // No checkbox selected → show edit, hide delete
     deleteBtn.classList.add("hidden");
     deleteBtn.disabled = true;
     editBtn.classList.remove("hidden");
   }
+
+  if (!allChecked) {
+    selectAll.checked = false;
+  }
+  else if (allBoxes.length > 0) {
+    selectAll.checked = true;
+  }
 });
+
 
 deleteBtn.addEventListener("click", async () => {
   if (!editMode) return;
