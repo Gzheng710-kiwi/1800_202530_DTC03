@@ -58,16 +58,18 @@ document
       try {
         avatarEl.src =
           "data:image/svg+xml;utf8,\
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>\
-          <circle cx='32' cy='32' r='32' fill='%23f3f4f6'/>\
-          <circle cx='32' cy='24' r='10' fill='%23d1d5db'/>\
-          <path d='M12 52c4-8 12-12 20-12s16 4 20 12' fill='%23d1d5db'/>\
-          </svg>";
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>\
+        <circle cx='32' cy='32' r='32' fill='%23f3f4f6'/>\
+        <circle cx='32' cy='24' r='10' fill='%23d1d5db'/>\
+        <path d='M12 52c4-8 12-12 20-12s16 4 20 12' fill='%23d1d5db'/>\
+        </svg>";
+
         await setDoc(
           doc(db, "users", user.uid),
-          { photoURL: "" },
+          { photoURL: "", avatarSeed: "" },
           { merge: true }
         );
+
         menu.classList.add("hidden");
       } catch (e) {
         console.error("Failed to remove avatar:", e);
@@ -96,7 +98,19 @@ onAuthStateChanged(auth, async (user) => {
     nameEl.textContent = `Hello, ${displayName}! Welcome Back!`;
     nameInput.value = displayName;
 
-    if (data.photoURL) avatarEl.src = data.photoURL;
+    const defaultAvatar =
+      "data:image/svg+xml;utf8,\
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>\
+        <circle cx='32' cy='32' r='32' fill='%23f3f4f6'/>\
+        <circle cx='32' cy='24' r='10' fill='%23d1d5db'/>\
+        <path d='M12 52c4-8 12-12 20-12s16 4 20 12' fill='%23d1d5db'/>\
+      </svg>";
+
+    if (data.photoURL) {
+      avatarEl.src = data.photoURL;
+    } else {
+      avatarEl.src = defaultAvatar;
+    }
 
     if (emailDisplay) emailDisplay.textContent = user.email;
     if (emailInput) emailInput.value = user.email;
