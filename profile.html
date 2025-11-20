@@ -29,7 +29,7 @@
       <section class="grid md:grid-cols-2 gap-10 items-start">
       <!--left card-->
       <aside
-      class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-lg p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
+      class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-md p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
     >
         <!-- Profile avatar button -->
         <div class="relative inline-block text-left">
@@ -39,6 +39,23 @@
             alt="Profile Avatar"
             class="w-24 h-24 rounded-full border-2 shadow-md cursor-pointer hover:scale-105 transition mb-4"
           />
+           <span
+            class="absolute bottom-0 right-0 bg-white rounded-full shadow p-1 border text-gray-600"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+              <path d="M13.5 6.5l4 4" />
+            </svg>
+          </span>
           <div
             id="avatar-menu"
             class="hidden absolute mt-2 w-60 bg-white border border-gray-200 rounded-xl shadow-lg p-3 z-10"
@@ -190,18 +207,17 @@
                 id="edit-name"
                 type="text"
                 placeholder="Your name"
-                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
+                class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
               />
             </div>
             <div>
-              <label class="block text-sm text-[--secondary-text-color] mb-1">
-                Email (read-only):
+              <label class="block text-sm text-[--secondary-text-color] mb-1">Birthday:
               </label>
               <input
-                id="edit-email"
-                type="email"
-                readonly
-                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 text-[--text-color]"
+                type="date"
+                id="birthday"
+                class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
+                placeholder="Select your birthday"
               />
             </div>
             <div>
@@ -212,7 +228,7 @@
                 id="edit-location"
                 type="text"
                 placeholder="Enter your city"
-                class="w-full max-w-md border border-[--secondary-bg-color] rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
+                class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
               />
             </div>
             <div class="mt-6 flex flex-col sm:flex-row justify-end gap-4">
