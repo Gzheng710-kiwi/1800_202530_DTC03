@@ -18,26 +18,26 @@
   </head>
 
   <body class="light-mode">
-    <!--navbar-->
+    <!--Navbar-->
     <app-navbar></app-navbar>
 
-    <!--main-->
+    <!--Main-->
     <main class="max-w-6xl mx-auto py-10 px-6 space-y-10 pb-32">
     <div class=" mx-auto">
       <h1 class="text-4xl font-bold">Profile</h1>
     </div>
       <section class="grid md:grid-cols-2 gap-10 items-start">
-      <!--left card-->
+      <!--Left Card-->
       <aside
       class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-md p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
     >
-        <!-- Profile avatar button -->
+        <!-- Profile Avatar Button -->
         <div class="relative inline-block text-left">
           <img
             id="profile-avatar"
             src="https://api.dicebear.com/7.x/big-smile/svg?seed=peach"
             alt="Profile Avatar"
-            class="w-24 h-24 rounded-full border-2 shadow-md cursor-pointer hover:scale-105 transition mb-4"
+            class="w-24 h-24 rounded-full border-2 shadow-md cursor-pointer transition mb-4"
           />
            <span
             class="absolute bottom-0 right-0 bg-white rounded-full shadow p-1 border text-gray-600"
@@ -146,7 +146,7 @@
           <p><strong>Member Since:</strong> <span id="profile-since"></span></p>
         </div>
 
-        <!-- LOG Out BUTTON-->
+        <!-- Log Out Button-->
         <button
           id="logout-btn"
           class="mt-6 bg-black text-white px-6 py-2 rounded-lg contrast transition w-full"
@@ -189,7 +189,7 @@
         ></div>
       </aside>
 
-      <!--right card-->
+      <!--Right Card-->
       <section class="h-full space-y-10">
         <div
           class="h-full bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]"
@@ -244,7 +244,7 @@
               <button
                 id="cancel-btn"
                 type="button"
-                class="w-full sm:w-auto sm:flex-1 px-6 py-2 rounded-lg border border-gray-400 text-gray-700 hover:bg-gray-100 transition"
+                class="w-full sm:w-auto sm:flex-1 px-6 py-2 rounded-lg secondary contrast transition"
               >
                 Cancel
               </button>
@@ -253,9 +253,7 @@
         </div>
       </section>
     </main>
-
     <script type="module" src="/src/profile.js"></script>
-
     <div
       id="popup"
       class="hidden fixed top-[85px] left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-center px-4 py-2 rounded-lg shadow-lg transition-opacity duration-300 w-[50%] max-w-md z-[100]"
