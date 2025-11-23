@@ -5,17 +5,19 @@
     <meta name="comp1800 template" content="My 1800 App" />
     <meta charset="utf-8" />
 
-		<!-- Tailwind and JQuery -->
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<!-- Other libraries go here -->
+    <!-- Tailwind and JQuery -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-		<!-- Custom Components -->
-		<script type="module" src="/src/components/app-navbar.js"></script>
+    <!-- Other libraries go here -->
 
-		<!-- Link to styles of your own -->
-		<link rel="stylesheet" href="./styles/style.css">
+    <!-- Custom Components -->
+    <script type="module" src="/src/components/app-navbar.js"></script>
+
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
   <body class="bg-gray-50 min-h-screen flex flex-col">
@@ -47,73 +49,98 @@
     </nav>
 
     <!-- ---------------------------------------------------------- -->
-    <main class="flex-grow flex items-center justify-center py-10 px-4">
+    <main
+      class="flex-grow flex items-start justify-center px-3 py-3 sm:px-4 sm:items-center"
+    >
       <section
-        class="w-full max-w-md bg-white shadow-lg rounded-2xl p-8 border-2 flex flex-col"
+        class="w-full sm:max-w-md bg-white shadow-lg rounded-2xl border-2 flex flex-col p-8 sm:p-8"
       >
         <!-- Branding -->
-        <h2 class="text-3xl font-semibold mb-4">Welcome to FridgeTracker™</h2>
+        <h2
+          class="text-3xl sm:text-2xl font-semibold mb-6 sm:mb-4 leading-tight"
+        >
+          Welcome to FridgeTracker™
+        </h2>
 
         <!-- Logo aligned left -->
-        <div class="flex mb-6">
-          <img class="w-40 h-24" src="images/logo-transparent.png" alt="Logo" />
+        <div class="flex mb-8 sm:mb-6">
+          <img
+            class="w-50 h-20 sm:w-40 sm:h-24"
+            src="images/logo-transparent.png"
+            alt="Logo"
+          />
         </div>
 
         <!-- Alerts -->
         <div
           id="authAlert"
-          class="hidden mb-4 w-full text-center py-2 rounded border"
+          class="hidden mb-6 sm:mb-4 w-full text-center py-4 sm:py-2 text-xl sm:text-sm rounded border"
           role="alert"
         ></div>
 
         <!-- Login -->
         <div id="loginView" class="w-full">
-          <h3 class="text-2xl font-semibold text-center mb-6">Login</h3>
-          <form id="loginForm" novalidate class="space-y-4">
+          <h3
+            class="text-3xl sm:text-2xl font-semibold text-center mb-8 sm:mb-6"
+          >
+            Login
+          </h3>
+
+          <form id="loginForm" novalidate class="space-y-6 sm:space-y-4">
             <div>
               <input
                 type="email"
                 id="loginEmail"
                 placeholder="Email"
                 required
-                class="w-full px-4 py-2 border-2 border-gray-300 rounded-[10px] focus:outline-none focus:border-black"
+                class="w-full px-6 py-3 sm:px-4 sm:py-2 text-xl sm:text-base border-2 border-gray-300 rounded-[12px] focus:outline-none focus:border-black"
               />
             </div>
+
             <div>
               <input
                 type="password"
                 id="loginPassword"
                 placeholder="Password"
                 required
-                class="w-full px-4 py-2 border-2 border-gray-300 rounded-[10px] focus:outline-none focus:border-black"
+                class="w-full px-6 py-3 sm:px-4 sm:py-2 text-xl sm:text-base border-2 border-gray-300 rounded-[12px] focus:outline-none focus:border-black"
               />
             </div>
+
             <button
               type="submit"
-              class="w-full bg-black text-white py-2 rounded-[10px] hover:bg-gray-700 transition duration-200"
+              class="w-full bg-black text-white py-3 sm:py-2 text-xl sm:text-base rounded-[12px] hover:bg-gray-700 transition duration-200"
             >
               Sign In
             </button>
           </form>
-          <p class="mt-4 text-center text-sm text-gray-600">
+
+          <p class="mt-6 sm:mt-4 text-center text-lg sm:text-sm text-gray-600">
             Don’t have an account?
             <a href="#" id="toSignup" class="text-blue-600 hover:underline"
               >Sign up</a
             >
           </p>
-          <div class="text-left mt-2">
+
+          <div class="text-left mt-4 sm:mt-2">
             <a
               href="/register"
-              class="text-black underline hover:text-blue-300 text-sm"
-              >Forgot password?</a
+              class="text-black underline hover:text-blue-300 text-lg sm:text-sm"
             >
+              Forgot password?
+            </a>
           </div>
         </div>
 
         <!-- Signup -->
         <div id="signupView" class="hidden w-full">
-          <h3 class="text-2xl font-semibold text-center mb-6">Sign Up</h3>
-          <form id="signupForm" novalidate class="space-y-4">
+          <h3
+            class="text-3xl sm:text-2xl font-semibold text-center mb-8 sm:mb-6"
+          >
+            Sign Up
+          </h3>
+
+          <form id="signupForm" novalidate class="space-y-6 sm:space-y-4">
             <div>
               <input
                 type="text"
@@ -121,35 +148,39 @@
                 placeholder="First and Last Name"
                 aria-label="Full name"
                 required
-                class="w-full px-4 py-2 border-2 border-gray-300 rounded-[10px] focus:outline-none focus:border-black"
+                class="w-full px-6 py-3 sm:px-4 sm:py-2 text-xl sm:text-base border-2 border-gray-300 rounded-[12px] focus:outline-none focus:border-black"
               />
             </div>
+
             <div>
               <input
                 type="email"
                 id="signupEmail"
                 placeholder="Email"
                 required
-                class="w-full px-4 py-2 border-2 border-gray-300 rounded-[10px] focus:outline-none focus:border-black"
+                class="w-full px-6 py-3 sm:px-4 sm:py-2 text-xl sm:text-base border-2 border-gray-300 rounded-[12px] focus:outline-none focus:border-black"
               />
             </div>
+
             <div>
               <input
                 type="password"
                 id="signupPassword"
                 placeholder="Password"
                 required
-                class="w-full px-4 py-2 border-2 border-gray-300 rounded-[10px] focus:outline-none focus:border-black"
+                class="w-full px-6 py-3 sm:px-4 sm:py-2 text-xl sm:text-base border-2 border-gray-300 rounded-[12px] focus:outline-none focus:border-black"
               />
             </div>
+
             <button
               type="submit"
-              class="w-full bg-green-600 text-white py-2 rounded-[10px] hover:bg-green-700 transition duration-200"
+              class="w-full bg-green-600 text-white py-3 sm:py-2 text-xl sm:text-base rounded-[12px] hover:bg-green-700 transition duration-200"
             >
               Create Account
             </button>
           </form>
-          <p class="mt-4 text-center text-sm text-gray-600">
+
+          <p class="mt-6 sm:mt-4 text-center text-lg sm:text-sm text-gray-600">
             Already have an account?
             <a href="#" id="toLogin" class="text-green-600 hover:underline"
               >Login</a
