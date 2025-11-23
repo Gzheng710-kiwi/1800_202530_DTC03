@@ -22,8 +22,9 @@
         <div
           class="mx-auto w-full max-w-[1024px] mb-52 px-4 py-6 sm:px-6 lg:px-8"
         >
+          <h1 class="text-4xl font-bold">Food logs</h1>
           <!-- Search Bar -->
-          <div class="relative">
+          <div class=" flex flex-row relative mt-10">
             <span
               class="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500"
             >
@@ -46,9 +47,18 @@
               id="food-search"
               type="search"
               placeholder="Search"
-              class="w-full rounded-xl border border-neutral-300 bg-white pl-12 pr-4 py-3 outline-none focus:border-neutral-400"
+              class="w-[90%] mr-2 flex justify-end rounded-xl border border-neutral-300 bg-white pl-12 pr-4 py-3 outline-none focus:border-neutral-400"
               aria-label="Search foods"
             />
+            <!-- Dropdown menu -->
+            <select
+              id="view-mode"
+              class="shrink-0 rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm outline-none focus:border-neutral-400"
+              aria-label="Filter view mode"
+            >
+              <option class="rounded-md" value="individual">Individual</option>
+              <option class="rounded-md" value="group">Group</option>
+            </select>
           </div>
 
           <!-- Food List Card -->
