@@ -58,20 +58,27 @@ function rowHTML(index, it) {
     (expired ? "text-red-600 border-red-300 bg-red-50" : "text-black");
 
   return `
-    <input
-      type="checkbox"
-      class="js-checkbox invisible h-5 w-5 accent-green-600 cursor-pointer"
-      data-docid="${it.id}"
-      aria-label="Select food item"
-    />
-    <div class="min-w-0">
-      <span class="inline-block max-w-full truncate rounded-full border px-3 py-1 font-medium">
-        ${it.name || "(unnamed)"}
-      </span>
-    </div>
-    <span class="rounded-full justify-end border px-3 py-1 text-black">${qty}</span> 
-    <span class="${expiryClasses}  text-right">${expStr}</span>
-  `;
+  <input
+    type="checkbox"
+    class="js-checkbox hidden h-5 w-5 accent-green-600 cursor-pointer"
+    data-docid="${it.id}"
+    aria-label="Select food item"
+  />
+  <div class="min-w-0">
+    <span class="inline-flex items-center h-8 rounded-full border border-neutral-300 px-4 font-medium whitespace-nowrap">
+      ${it.name || "(unnamed)"}
+    </span>
+  </div>
+
+  <span class="justify-self-end shrink-0 inline-flex h-8 w-8 items-center justify-center rounded-full border border-neutral-300 text-sm text-black">
+    ${qty}
+  </span>
+  <span class="${expiryClasses} justify-self-end shrink-0 inline-flex items-center h-8 rounded-full border px-4 text-sm whitespace-nowrap">
+    ${expStr}
+  </span>
+
+
+`;
 }
 
 window.selectAllCheckBoxes = function (source) {
@@ -90,7 +97,8 @@ function render(list) {
   list.forEach((it, i) => {
     const li = document.createElement("li");
     li.className =
-      "grid grid-cols-[2.25rem_1fr_auto_auto] items-center gap-2 px-4 py-3";
+      "grid grid-cols-[2.25rem_minmax(0,1fr)_auto_auto] items-center gap-3 px-4 py-3";
+
     li.innerHTML = rowHTML(i + 1, it);
     listEl.appendChild(li);
   });
@@ -106,13 +114,13 @@ editBtn.addEventListener("click", () => {
 
   // Show or hide checkboxes
   boxes.forEach((box) => {
-    box.classList.toggle("invisible", !editMode);
+    box.classList.toggle("hidden", !editMode);
     box.checked = false; // reset checks when entering edit mode
   });
 
   // Show/Hide Select All
   const selectAll = document.getElementById("select-all");
-  selectAll.classList.toggle("invisible", !editMode);
+  selectAll.classList.toggle("hidden", !editMode);
   selectAll.checked = false;
 
   if (editMode) {
@@ -147,12 +155,10 @@ document.addEventListener("change", () => {
 
   if (!allChecked) {
     selectAll.checked = false;
-  }
-  else if (allBoxes.length > 0) {
+  } else if (allBoxes.length > 0) {
     selectAll.checked = true;
   }
 });
-
 
 deleteBtn.addEventListener("click", async () => {
   if (!editMode) return;
@@ -171,7 +177,7 @@ deleteBtn.addEventListener("click", async () => {
   // Turn off edit mode after deleting
   editMode = false;
 
-  document.getElementById("select-all").classList.add("invisible");
+  document.getElementById("select-all").classList.add("hidden");
   document.getElementById("select-all").checked = false;
 
   deleteBtn.classList.add("hidden");
