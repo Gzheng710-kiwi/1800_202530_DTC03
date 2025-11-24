@@ -1,7 +1,9 @@
-import { doc, getDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDoc, deleteDoc, collection, query, orderBy, getDocs } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "./firebaseConfig";
-import { noUser } from "./authentication.js";
+import { noUser } from "./authentication";
+import { successPopup, errorPopup } from "./popup";
+import { betterDateFormat } from "./utils";
 
 // DOM Elements
 const groupNameHeader = document.getElementById("group-name");
@@ -18,7 +20,7 @@ async function loadGroup(user)
     const group = await getDoc(groupRef);
 
     if (!group.exists()) {
-        alert("Group not found");
+        errorPopup("Group not found");
         return;
     }
 
@@ -26,7 +28,7 @@ async function loadGroup(user)
     
     if (!data.members.includes(user.uid))
     {
-        alert("You do not have access to this group.");
+        errorPopup("You do not have access to this group.");
         location.href = "groups.html";
         return;
     }
@@ -46,9 +48,75 @@ async function deleteGroup()
     window.location.href = "groups.html";
 }
 
-function loadFoodItems()
+async function loadFoodItems()
 {
+    const groupFoodDiv = document.getElementById("group-fooditems");
+    if (!groupFoodDiv)
+    {
+        errorPopup("Food item collection not found");
+        return;
+    }
 
+    try
+    {
+        groupFoodDiv.innerHTML = "";
+
+        const foodRef = collection(db, "groups", groupID, "foodlog")
+        
+        const foodQuery = query(foodRef, orderBy("addedDate", "desc"));
+        const snapshot = await getDocs(foodQuery);
+
+        if (snapshot.empty)
+        {
+            groupFoodDiv.innerHTML = `
+            <p>No food items in this group yet.</p>
+            `
+            return;
+        }
+
+        snapshot.forEach((food) => {
+            const foodItem = createFoodElement(food.id, food.data());
+            groupFoodDiv.append(foodItem);
+        });
+    }
+    catch (error)
+    {
+        errorPopup("Error loading food items:\n" + error);
+        groupFoodDiv.innerHTML = '<p class="my-2 error rounded-md py-1 px-2">Error loading food items.</p>'
+    }
+}
+
+function createFoodElement(foodId, foodData)
+{
+    const expDate = foodData.expDate ? new Date(foodData.expDate).toLocaleDateString() : "-";
+
+    const foodDiv = document.createElement("div");
+    foodDiv.classList = "flex flex-row justify-between items-center py-2 px-2 border-b border-[--secondary-border-color]"
+
+    let _expDate = betterDateFormat(foodData.expDate);
+
+    foodDiv.innerHTML = `
+    <div class="rounded-full border py-1 px-2 border-[--secondary-border-color]">
+        <h4>${foodData.name}</h4>
+    </div>
+    <div class="flex flex-row gap-4">
+        <h2 class="rounded-full border py-1 px-2 border-[--secondary-border-color]">${foodData.amount}</h2>
+        <h2 class="rounded-full border py-1 px-2 border-[--secondary-border-color]">${_expDate}</h2>
+    </div>
+    `
+
+    return foodDiv;
+
+    // <!-- Example -->
+    // <div class="flex flex-row justify-between items-center py-2 px-2 border-b border-[--secondary-border-color]">
+    // <div class="rounded-full border py-1 px-2 border-[--secondary-border-color]">
+    //     <h4>FoodName</h4>
+    // </div>
+    // <div class="flex flex-row gap-4">
+    //     <h2 class="rounded-full border py-1 px-2 border-[--secondary-border-color]">#</h2>
+    //     <h2 class="rounded-full border py-1 px-2 border-[--secondary-border-color]">MM-DD-YYYY</h2>
+    // </div>
+    // </div>
 }
 
 function setup()
@@ -61,7 +129,7 @@ function setup()
         }
         if (!groupID)
         {
-            alert("No group ID provided in the URL.");
+            errorPopup("Group not found");
             throw new Error("Missing groupID");
         }
 

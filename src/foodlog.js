@@ -9,7 +9,7 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { showPopup } from "./popup.js";
+import { successPopup, errorPopup } from "./popup.js";
 
 const listEl = document.getElementById("food-list");
 const searchEl = document.getElementById("food-search");
@@ -183,7 +183,7 @@ deleteBtn.addEventListener("click", async () => {
   deleteBtn.classList.add("hidden");
   editBtn.classList.remove("hidden");
 
-  showPopup("Deleted selected items");
+  successPopup("Deleted selected items");
 });
 
 function applyFilter() {

@@ -23,6 +23,10 @@
     
     --light-primary-border-color: #333333;
     --light-secondary-border-color: #DDEEEE;
+
+    --light-success-color: #00AA00;
+    --light-error-color: #DD0000;
+    --light-popup-color: #DDEEFF;
     
     
     /*Dark color scheme here:*/
@@ -48,6 +52,10 @@
     
     --dark-primary-border-color: #DDDDDD;
     --dark-secondary-border-color: #666666;
+    
+    --dark-success-color: #00AA00;
+    --dark-error-color: #DD0000;
+    --dark-popup-color: #667799;
 }
 
 body
@@ -74,6 +82,10 @@ body
 
     --primary-border-color: var(--light-primary-border-color);
     --secondary-border-color: var(--light-secondary-border-color);
+
+    --success-color: var(--light-success-color);
+    --error-color: var(--light-error-color);
+    --popup-color: var(--light-popup-color);
 
 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -103,6 +115,10 @@ body.dark-mode
 
     --primary-border-color: var(--dark-primary-border-color);
     --secondary-border-color: var(--dark-secondary-border-color);
+    
+    --success-color: var(--dark-success-color);
+    --error-color: var(--dark-error-color);
+    --popup-color: var(--dark-popup-color);
 }
 
 .contrast-text, .contrast
@@ -175,4 +191,22 @@ button.transparent
 {
     border-width: 0px;
     background-color: transparent;
+}
+
+.error
+{
+    color: white;
+    background-color: var(--error-color);
+}
+
+.success
+{
+    color: white;
+    background-color: var(--success-color);
+}
+
+.popup
+{
+    color: var(--text-color);
+    background-color: var(--popup-color);
 }

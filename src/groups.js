@@ -13,7 +13,8 @@ async function loadUserGroups(uid)
     groupsList.innerHTML = "";
 
     const groups = await getGroups(uid);
-    Object.entries(groups).forEach((groupId, groupData) => {
+    Object.entries(groups).forEach(([groupId, groupData]) => {
+        // print(groupId, groupData);
         const div = document.createElement("div");
         div.className =
             "p-4 border rounded-lg shadow-sm flex justify-between items-center";
