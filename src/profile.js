@@ -15,6 +15,7 @@ const form = document.getElementById("edit-profile-form");
 const nameInput = document.getElementById("edit-name");
 const emailInput = document.getElementById("edit-email");
 const locationInput = document.getElementById("edit-location");
+const birthdayInput = document.getElementById("birthday");
 
 const itemsEl = document.getElementById("count-items");
 const remindersEl = document.getElementById("count-reminders");
@@ -98,6 +99,12 @@ onAuthStateChanged(auth, async (user) => {
     nameEl.textContent = `Hello, ${displayName}! Welcome Back!`;
     nameInput.value = displayName;
 
+    if (data.birthday) {
+      birthdayInput.value = data.birthday;
+    } else {
+      birthdayInput.value = "";
+    }
+
     const defaultAvatar =
       "data:image/svg+xml;utf8,\
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'>\
@@ -134,10 +141,11 @@ onAuthStateChanged(auth, async (user) => {
       const userRef = doc(db, "users", user.uid);
       const newName = nameInput.value.trim();
       const newLocation = locationInput.value.trim();
+      const newBirthday = birthdayInput.value;
 
       await setDoc(
         userRef,
-        { name: newName, location: newLocation },
+        { name: newName, location: newLocation, birthday: newBirthday },
         { merge: true }
       );
 
