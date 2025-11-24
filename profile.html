@@ -22,7 +22,7 @@
     <app-navbar></app-navbar>
 
     <!--Main-->
-    <main class="max-w-6xl mx-auto py-10 px-6 space-y-10 pb-32">
+    <main class="max-w-6xl mx-auto py-10 px-6 space-y-10 pb-32 mb-10">
     <div class=" mx-auto">
       <h1 class="text-4xl font-bold">Profile</h1>
     </div>
@@ -155,33 +155,18 @@
         </button>
 
         <div class="mt-8 w-full grid grid-cols-3 text-center">
-          <div>
-            <p
-              id="count-items"
-              class="text-lg font-bold text-[--highlight-text-color]"
-            >
-              0
-            </p>
+          <a href="foodlog.html" class="block no-underline cursor-pointer">
+            <p id="count-items" class="text-lg font-bold text-[--highlight-text-color]">0</p>
             <p class="text-xs text-[--secondary-text-color]">Food Items</p>
-          </div>
-          <div>
-            <p
-              id="count-reminders"
-              class="text-lg font-bold text-[--highlight-text-color]"
-            >
-              0
-            </p>
+          </a>
+          <a href="reminder.html" class="block no-underline cursor-pointer">
+            <p id="count-reminders" class="text-lg font-bold text-[--highlight-text-color]">0</p>
             <p class="text-xs text-[--secondary-text-color]">Reminders</p>
-          </div>
-          <div>
-            <p
-              id="count-expiring"
-              class="text-lg font-bold text-[--highlight-text-color]"
-            >
-              0
-            </p>
+          </a>
+          <a href="reminder.html" class="block no-underline cursor-pointer">
+            <p id="count-expiring" class="text-lg font-bold text-[--highlight-text-color]">0</p>
             <p class="text-xs text-[--secondary-text-color]">Expiring Soon</p>
-          </div>
+          </a>
         </div>
 
         <div
