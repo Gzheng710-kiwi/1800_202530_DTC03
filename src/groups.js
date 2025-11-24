@@ -2,6 +2,7 @@ import { collection, addDoc, doc, getDoc, updateDoc, arrayUnion, query, where, g
 import { onAuthStateChanged } from "firebase/auth";
 import { noUser } from './authentication'
 import { db, auth } from "./firebaseConfig";
+import { getGroups } from "./groupFunctions";
 
 const createBtn = document.getElementById("groups-createbutton");
 const joinBtn = document.getElementById("groups-joinbutton");
@@ -11,22 +12,15 @@ async function loadUserGroups(uid)
 {
     groupsList.innerHTML = "";
 
-    const qGroups = query(
-        collection(db, "groups"),
-        where("members", "array-contains", uid)
-    );
-
-
-    const results = await getDocs(qGroups);
-
-    results.forEach(group => {
+    const groups = await getGroups(uid);
+    Object.entries(groups).forEach((groupId, groupData) => {
         const div = document.createElement("div");
         div.className =
             "p-4 border rounded-lg shadow-sm flex justify-between items-center";
 
         div.innerHTML = `
-            <h3 class="text-xl font-medium">${group.data().name}</h3>
-            <button class="secondary rounded-md py-2 px-4" onclick="window.location='group.html?id=${group.id}'">Go to group</button>
+            <h3 class="text-xl font-medium">${groupData.name}</h3>
+            <button class="secondary rounded-md py-2 px-4" onclick="window.location='group.html?id=${groupId}'">Go to group</button>
         `;
 
         groupsList.appendChild(div);
