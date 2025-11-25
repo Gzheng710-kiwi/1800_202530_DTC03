@@ -13,6 +13,50 @@ export function errorPopup(message, duration = 2500, transition = 500)
   createAlertPopup(message, duration, transition, "error");
 }
 
+export function prompt(message, transition = 500)
+{
+  console.warn("The 'prompt' function is still a WIP. Don't use it yet.");
+  createPromptPopup();
+}
+
+
+function createPromptPopup(message, defaultValue = "", transition = 500)
+{
+  const existingPrompt = document.getElementById("prompt");
+  if (existingPrompt)
+  {
+    existingPrompt.remove();
+  }
+
+  const promptDiv = document.createElement("div");
+  promptDiv.classList = `flex absolute top-2 left-1/4 w-1/2 z-10 duration-${transition} -translate-y-10`;
+  promptDiv.classList.add("opacity-0");
+  promptDiv.id = "prompt";
+
+  const popup = document.createElement("div")
+  popup.classList = "flex flex-1 mx-12 justify-center text-xl font-semibold py-2 my-2 rounded-lg border border-[--primary-border-color] shadow-md"
+  popup.innerHTML = `
+  <p>${message}
+  <form>
+    <input id="prompt-input" type="text" value="${defaultValue}">
+    <div>
+      <button type="button">cancel</button>
+      <button type="submit">submit</button>
+    </div>
+  </form>
+  `;
+
+  promptDiv.appendChild(prompt);
+  document.body.append(promptDiv);
+
+  // await submit button
+  const input = document.getElementById("prompt-input");
+  input.focus();
+  input.select();
+
+  const form = document.getElementById("prompt-form");
+  const cancelButton = document.getElementById("prompt-cancel");
+}
 
 function createAlertPopup(message, duration = 2500, transition = 500, type = "default")
 {
@@ -62,7 +106,6 @@ function createAlertPopup(message, duration = 2500, transition = 500, type = "de
       popupDiv.remove();
     }, transition + 100)
   }, duration);
-
 }
 
 function show(popupDiv)
