@@ -29,7 +29,7 @@ function createPromptPopup(message, defaultValue = "", transition = 500)
   }
 
   const promptDiv = document.createElement("div");
-  promptDiv.classList = `flex absolute top-2 left-1/4 w-1/2 z-10 duration-${transition} -translate-y-10`;
+  promptDiv.classList = `flex absolute top-2 left-1/4 w-1/2 z-10 duration-${transition} -translate-y-12`;
   promptDiv.classList.add("opacity-0");
   promptDiv.id = "prompt";
 
@@ -67,7 +67,7 @@ function createAlertPopup(message, duration = 2500, transition = 500, type = "de
   }
 
   const popupDiv = document.createElement("div");
-  popupDiv.classList = `flex absolute top-2 left-1/4 w-1/2 z-10 duration-${transition} -translate-y-10`;
+  popupDiv.classList = `flex absolute top-20 left-0 w-full z-10 duration-${transition} -translate-y-12`;
   popupDiv.classList.add("opacity-0");
   popupDiv.id = "popup";
   
@@ -93,14 +93,14 @@ function createAlertPopup(message, duration = 2500, transition = 500, type = "de
   //Appear
   setTimeout(() => {
     show(popupDiv);
-    popupDiv.classList.remove("-translate-y-10");
+    popupDiv.classList.remove("-translate-y-12");
 
   }, 10);
   
   //Dissappear
   setTimeout(() => {
     hide(popupDiv);
-    popupDiv.classList.add("-translate-y-10");
+    popupDiv.classList.add("-translate-y-12");
     
     setTimeout(() => {
       popupDiv.remove();
