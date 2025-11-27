@@ -210,7 +210,7 @@ if (searchEl) {
   searchEl.addEventListener("input", applyFilter);
 }
 
-async function loadGroupItemsForUser(user) {
+sync function loadGroupItemsForUser(user) {
   try {
     const groups = await getGroups(user.uid);
     const entries = Object.entries(groups || {});
@@ -223,6 +223,7 @@ async function loadGroupItemsForUser(user) {
     }
 
     const all = [];
+
     for (const [groupId, groupData] of entries) {
       const qRef = query(
         collection(db, "groups", groupId, "foodlog"),
@@ -248,6 +249,21 @@ async function loadGroupItemsForUser(user) {
     console.error("Error loading group food:", err);
     errorPopup("Could not load group food log.");
   }
+}
+
+if (viewModeEl) {
+  viewModeEl.addEventListener("change", async () => {
+    currentView = viewModeEl.value; // "individual" or "group"
+    const user = auth.currentUser;
+    if (!user) return;
+
+    if (currentView === "individual") {
+      items = personalItems;
+      applyFilter();
+    } else {
+      await loadGroupItemsForUser(user);
+    }
+  });
 }
 
 onAuthStateChanged(auth, (user) => {
