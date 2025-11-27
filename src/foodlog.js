@@ -8,6 +8,7 @@ import {
   onSnapshot,
   deleteDoc,
   doc,
+  getDocs,
 } from "firebase/firestore";
 import { getGroups } from "./groupFunctions.js";
 import { successPopup, errorPopup } from "./popup.js";
@@ -180,14 +181,24 @@ deleteBtn.addEventListener("click", async () => {
 
   for (const box of checked) {
     const docId = box.dataset.docid;
-    await deleteDoc(doc(db, "users", uid, "foodlog", docId));
+    const source = box.dataset.source; // "personal" or "group"
+    const groupId = box.dataset.groupid;
+
+    // 🔹 SAME delete logic for both, but separate collections
+    if (source === "group" && groupId) {
+      await deleteDoc(doc(db, "groups", groupId, "foodlog", docId));
+    } else {
+      await deleteDoc(doc(db, "users", user.uid, "foodlog", docId));
+    }
   }
-
-  // Turn off edit mode after deleting
+  if (currentView === "group") {
+    await loadGroupItemsForUser(user);
+  } else {
+  }
   editMode = false;
-
-  document.getElementById("select-all").classList.add("hidden");
-  document.getElementById("select-all").checked = false;
+  const selectAll = document.getElementById("select-all");
+  selectAll.classList.add("hidden");
+  selectAll.checked = false;
 
   deleteBtn.classList.add("hidden");
   editBtn.classList.remove("hidden");
@@ -308,4 +319,3 @@ onAuthStateChanged(auth, (user) => {
     loadGroupItemsForUser(user);
   }
 });
-
