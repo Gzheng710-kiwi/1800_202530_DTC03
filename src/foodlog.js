@@ -1,4 +1,3 @@
-// /src/foodlog-list.js
 import { auth, db } from "./firebaseConfig.js";
 import { onAuthStateChanged } from "firebase/auth";
 import {
@@ -176,8 +175,8 @@ deleteBtn.addEventListener("click", async () => {
   const checked = document.querySelectorAll(".js-checkbox:checked");
   if (checked.length === 0) return;
 
-  const { uid } = auth.currentUser;
-  if (!uid) return;
+  const user = auth.currentUser;
+  if (!user) return;
 
   for (const box of checked) {
     const docId = box.dataset.docid;
@@ -319,3 +318,4 @@ onAuthStateChanged(auth, (user) => {
     loadGroupItemsForUser(user);
   }
 });
+
