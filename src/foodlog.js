@@ -210,7 +210,7 @@ if (searchEl) {
   searchEl.addEventListener("input", applyFilter);
 }
 
-sync function loadGroupItemsForUser(user) {
+async function loadGroupItemsForUser(user) {
   try {
     const groups = await getGroups(user.uid);
     const entries = Object.entries(groups || {});
@@ -269,25 +269,43 @@ if (viewModeEl) {
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     items = [];
+    personalItems = [];
+    groupItems = [];
     render(items);
     return;
   }
 
-  // Live query for this user's foodlog, soonest expiry first
+  currentView = viewModeEl?.value || "individual";
+
+  // Live query for this user's personal foodlog
   const qRef = query(
     collection(db, "users", user.uid, "foodlog"),
-    orderBy("expDate") // expDate can be Timestamp/Date/string; Firestore orders fine if types are consistent
+    orderBy("expDate")
   );
 
   onSnapshot(
     qRef,
     (snap) => {
-      items = snap.docs.map((d) => ({ id: d.id, ...d.data() }));
-      applyFilter(); // respects current search text
+      personalItems = snap.docs.map((d) => ({
+        id: d.id,
+        source: "personal",
+        ...d.data(),
+      }));
+
+      if (currentView === "individual") {
+        items = personalItems;
+        applyFilter();
+      }
     },
     (err) => {
       console.error("Snapshot error:", err);
-      alert("Could not load your food log.");
+      errorPopup("Could not load your food log.");
     }
   );
+
+  // If the page opens with "Group" selected, load group items right away
+  if (currentView === "group") {
+    loadGroupItemsForUser(user);
+  }
 });
+
