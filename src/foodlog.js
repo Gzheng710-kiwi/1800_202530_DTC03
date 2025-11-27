@@ -9,12 +9,17 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import { getGroups } from "./groupFunctions.js";
 import { successPopup, errorPopup } from "./popup.js";
 
 const listEl = document.getElementById("food-list");
 const searchEl = document.getElementById("food-search");
+const viewModeEl = document.getElementById("view-mode");
 
-let items = []; // local cache for filtering
+let items = [];
+let personalItems = [];
+let groupItems = [];
+let currentView = "individual";
 
 function asDateString(exp) {
   if (!exp) return "—";
@@ -57,11 +62,16 @@ function rowHTML(index, it) {
     "rounded-full border px-3 py-1 " +
     (expired ? "text-red-600 border-red-300 bg-red-50" : "text-black");
 
+  const sourceAttr = it.source || "personal";
+  const groupAttr = it.groupId || "";
+
   return `
   <input
     type="checkbox"
     class="js-checkbox hidden h-5 w-5 accent-green-600 cursor-pointer"
     data-docid="${it.id}"
+    data-source="${sourceAttr}"
+    data-groupid="${groupAttr}"
     aria-label="Select food item"
   />
   <div class="min-w-0">
@@ -76,8 +86,6 @@ function rowHTML(index, it) {
   <span class="${expiryClasses} justify-self-end shrink-0 inline-flex items-center h-8 rounded-full border px-4 text-sm whitespace-nowrap">
     ${expStr}
   </span>
-
-
 `;
 }
 
