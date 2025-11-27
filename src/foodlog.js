@@ -111,6 +111,7 @@ function render(list) {
     listEl.appendChild(li);
   });
 }
+
 const editBtn = document.getElementById("edit-btn");
 const deleteBtn = document.getElementById("delete-btn");
 let editMode = false;
@@ -207,6 +208,25 @@ function applyFilter() {
 
 if (searchEl) {
   searchEl.addEventListener("input", applyFilter);
+}
+
+async function loadGroupItemsForUser(user) {
+  try {
+    const groups = await getGroups(user.uid);
+    const entries = Object.entries(groups || {});
+
+    if (!entries.length) {
+      groupItems = [];
+      items = [];
+      applyFilter();
+      return;
+    }
+
+    const all = [];
+  } catch (err) {
+    console.error("Error loading group food:", err);
+    errorPopup("Could not load group food log.");
+  }
 }
 
 onAuthStateChanged(auth, (user) => {
