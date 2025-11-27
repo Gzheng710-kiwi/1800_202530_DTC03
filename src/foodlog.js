@@ -223,6 +223,27 @@ async function loadGroupItemsForUser(user) {
     }
 
     const all = [];
+    for (const [groupId, groupData] of entries) {
+      const qRef = query(
+        collection(db, "groups", groupId, "foodlog"),
+        orderBy("expDate")
+      );
+
+      const snap = await getDocs(qRef);
+      snap.forEach((d) => {
+        all.push({
+          id: d.id,
+          source: "group",
+          groupId,
+          groupName: groupData?.name || "Group",
+          ...d.data(),
+        });
+      });
+    }
+
+    groupItems = all;
+    items = groupItems;
+    applyFilter();
   } catch (err) {
     console.error("Error loading group food:", err);
     errorPopup("Could not load group food log.");
