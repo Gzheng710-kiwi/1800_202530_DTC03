@@ -23,7 +23,7 @@ class AppNavbar extends HTMLElement
     {
         this.innerHTML = `
         <nav class="fixed bottom-0 left-0 w-full bg-[--highlight-bg-color] border-t-2 border-[--primary-border-color]">
-            <div class="flex justify-around items-center h-32 mx-[2vw]">
+            <div class="flex justify-around items-center h-[14vh] mx-[2vw]">
                 <!-- DASHBOARD -->
                 <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
                     <button id="dashboard-button" class="primary flex p-0 m-0 rounded-lg h-full max-w-full aspect-square text-[0px] items-center justify-center">
