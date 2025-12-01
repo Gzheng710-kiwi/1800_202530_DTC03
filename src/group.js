@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { db, auth } from "./firebaseConfig";
 import { noUser } from "./authentication";
 import { successPopup, errorPopup } from "./popup";
+import { getGroupMembers, getUserFromId } from "./groupFunctions";
 import { betterDateFormat } from "./utils";
 
 // DOM Elements
@@ -53,7 +54,7 @@ async function loadFoodItems()
     const groupFoodDiv = document.getElementById("group-fooditems");
     if (!groupFoodDiv)
     {
-        errorPopup("Food item collection not found");
+        console.error("Food item collection not found");
         return;
     }
 
@@ -119,6 +120,38 @@ function createFoodElement(foodId, foodData)
     // </div>
 }
 
+async function loadGroupMembers()
+{
+    const membersDiv = document.getElementById("group-members");
+
+    if (!membersDiv)
+    {
+        console.error("Members collection not found");
+        return;
+    }
+
+    try
+    {
+        membersDiv.innerHTML = "";
+        let members = await getGroupMembers(groupID);
+
+        members.forEach(async (memberUID) => {
+            const member = await getUserFromId(memberUID);
+
+            const memberDiv = document.createElement("div");
+            memberDiv.innerHTML = `
+                <h4 class="border-b flex-1 py-2">${member.name}
+            `;
+            membersDiv.appendChild(memberDiv);
+        });
+    }
+    catch (error)
+    {
+        errorPopup("Error members:\n" + error);
+        membersDiv.innerHTML = '<p class="my-2 error rounded-md py-1 px-2">Error loading food items.</p>'
+    }
+}
+
 function setup()
 {
     onAuthStateChanged(auth, async (user) => {
@@ -134,11 +167,13 @@ function setup()
         }
 
         deleteButton.addEventListener("click", deleteGroup);
-
         const data = await loadGroup(user);
+
         groupNameHeader.textContent = data.name || "Unnamed Group";
         groupIDSubtitle.textContent = `Group ID: ${groupID}`;
+
         loadFoodItems();
+        loadGroupMembers();
     });
 }
 
