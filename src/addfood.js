@@ -59,9 +59,9 @@ function saveButtonEventListener()
 
         await saveFoodItem(foodName, expDate, amount, reminders, destinationId);
         // Wait 1 second
-        setTimeout(() => {
-            location.href = "./foodlog.html"
-        }, 1000);
+        // setTimeout(() => {
+        //     location.href = "./foodlog.html"
+        // }, 1000);
     });
 }
 
