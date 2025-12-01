@@ -1,7 +1,7 @@
 import { auth, db } from "./firebaseConfig.js";
 import { doc, setDoc, onSnapshot, collection } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { showPopup } from "./popup.js";
+import { successPopup } from "./popup.js";
 import { signOut } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
 // Element references
@@ -149,7 +149,7 @@ onAuthStateChanged(auth, async (user) => {
         { merge: true }
       );
 
-      showPopup("Profile updated successfully!");
+      successPopup("Profile updated successfully!");
     } catch (err) {
       console.error("Update failed:", err);
       alert("Failed to update profile.");
@@ -214,7 +214,7 @@ document.getElementById("logout-btn").addEventListener("click", () => {
 
 // Cancel button
 document.getElementById("cancel-btn").addEventListener("click", () => {
-  showPopup("You didn't make any changes.");
+  successPopup("You didn't make any changes.");
   setTimeout(() => {
     window.location.href = "profile.html";
   }, 1500);
