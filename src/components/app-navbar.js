@@ -23,11 +23,10 @@ class AppNavbar extends HTMLElement
     {
         this.innerHTML = `
         <nav class="fixed bottom-0 left-0 w-full bg-[--highlight-bg-color] border-t-2 border-[--primary-border-color]">
-            <div class="flex justify-around items-center h-32 gap-[2vw]">
-                <!-- DASHBAORD -->
+            <div class="flex justify-around items-center h-32 mx-[2vw]">
+                <!-- DASHBOARD -->
                 <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
-                    <button id="dashboard-button" 
-                    class="primary flex p-0 m-0 rounded-lg h-full max-w-full aspect-square text-[0px] items-center justify-center">
+                    <button id="dashboard-button" class="primary flex p-0 m-0 rounded-lg h-full max-w-full aspect-square text-[0px] items-center justify-center">
                         <!-- Dashboard 1 -->
                         <svg class="size-11"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -44,8 +43,7 @@ class AppNavbar extends HTMLElement
                 </div>
                 <!-- LOGS -->
                 <div class="flex flex-col flex-1 w-[15vw] max-w-[125px] h-2/3 items-center justify-center">
-                    <button id="logs-button" 
-                    class="primary flex p-0 m-0 rounded-lg border-2 border-[--text-color] h-full max-w-full aspect-square text-[0px] items-center justify-center">
+                    <button id="logs-button" class="primary flex p-0 m-0 rounded-lg border-2 border-[--text-color] h-full max-w-full aspect-square text-[0px] items-center justify-center">
                         <!-- Logs-2 -->
                         <svg class="size-14"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
