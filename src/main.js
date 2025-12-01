@@ -85,7 +85,6 @@ async function recentsToHtml(div, allFoods)
         _foodDiv += `
         <div class="flex flex-row border-b py-4">
         <h5 class="flex-1 p-1">${food}</h5>
-        <button class="py-1 px-2 rounded-lg">Add</button>
         </div>
         `;
     }
