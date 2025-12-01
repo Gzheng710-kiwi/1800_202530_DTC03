@@ -63,17 +63,17 @@ async function getRemindersSortedbyDate(uid, maxResults)
     console.log(allFoods);
     
     //Add food names to a Set
-    let _foodSet = new Set();
+    let _foodList = [];
     for (let doc of allFoods.docs)
     {
         let _data = doc.data();
         let _foodName = _data.name?.trim();
         if (_foodName)
         {
-            _foodSet.add(_foodName);
+            _foodList.push(_foodName);
         }
     }
-    return _foodSet;
+    return _foodList;
 }
                 
 async function recentsToHtml(div, allFoods)
@@ -106,19 +106,19 @@ async function remindersToHtml(div, allFoods)
     div.innerHTML = _foodDiv;
 }
 
-async function displayRecentFoods(user)
+async function displayRecentFoods(user, maxResults = 5)
 {
     const recentsDiv = document.getElementById("dashboard-recents");
 
-    let recentFoods = await getFoodsSortedbyDate(user.uid, 5);
+    let recentFoods = await getFoodsSortedbyDate(user.uid, maxResults);
     recentsToHtml(recentsDiv, recentFoods);
 }
 
-async function displayReminderFoods(user)
+async function displayReminderFoods(user, maxResults = 5)
 {
     const remindersDiv = document.getElementById("dashboard-reminders")
 
-    let reminderFoods = await getRemindersSortedbyDate(user.uid, 5);
+    let reminderFoods = await getRemindersSortedbyDate(user.uid, maxResults);
     remindersToHtml(remindersDiv, reminderFoods);
 }
 
@@ -133,16 +133,7 @@ function setup()
         }
 
         displayRecentFoods(user);
-        displayReminderFoods(user);
-    })
-
-    //Reminder stuff
-    const reminderOverlay = document.getElementById("reminder-overlay");
-    const reminderButton = document.getElementById("dashboard-reminderbutton");
-
-    reminderButton.addEventListener("click", () => {
-        reminderOverlay.classList.toggle("hidden");
-        reminderOverlay.classList.toggle("flex");
+        displayReminderFoods(user, 8);
     })
 }
 
