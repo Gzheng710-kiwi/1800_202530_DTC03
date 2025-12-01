@@ -29,7 +29,7 @@ async function loadUserGroups(uid) {
 
 function saveButtonEventListener()
 {
-    saveButton.addEventListener("click", () => {
+    saveButton.addEventListener("click", async () => {
         let foodName = document.getElementById("addfood-name").value;
         // let image = document.getElementById("addfood-image").value;
         let expDate = document.getElementById("addfood-expDate").value;
@@ -57,7 +57,11 @@ function saveButtonEventListener()
             return;
         }
 
-        saveFoodItem(foodName, expDate, amount, reminders, destinationId);
+        await saveFoodItem(foodName, expDate, amount, reminders, destinationId);
+        // Wait 1 second
+        setTimeout(() => {
+            location.href = "./foodlog.html"
+        }, 1000);
     });
 }
 

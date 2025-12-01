@@ -12,7 +12,7 @@ export default defineConfig({
         foodlog: resolve(__dirname, "foodlog.html"),
         addfood: resolve(__dirname, "addfood.html"),
         groups: resolve(__dirname, "groups.html"),
-        main: resolve(__dirname, "main.html"),
+        group: resolve(__dirname, "group.html"),
         reminder: resolve(__dirname, "reminder.html"),
       },
     },
