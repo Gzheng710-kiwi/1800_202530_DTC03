@@ -24,7 +24,7 @@
     <body class="">
         <app-navbar></app-navbar>
         <main>
-            <div id="main-content" class="flex justify-center">
+            <div id="main-content" class="flex justify-center my-12">
                 <div id="group-content" class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch gap-[2vh]">
                     <div class="flex flex-row justify-between items-center mb-6">
                         <div>
@@ -33,8 +33,8 @@
                         </div>
                         <button id="delete-group-button" class="py-1 px-2 text-base sm:text-lg md:text-xl font-semibold primary rounded-lg">Delete Group</button>
                     </div>
+                    <!-- Fridge -->
                     <div id="fridge-content-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg gap-5">
-                        <!-- Fridge -->
                         <div>
                             <h2 class="text-xl sm:text-2xl md:text-3xl font-bold">Your Fridge:</h2>
                             <div id="group-fooditems">
@@ -48,23 +48,13 @@
                                         <h2 class="rounded-full border py-1 px-2 border-[--secondary-border-color]">MM-DD-YYYY</h2>
                                     </div>
                                  </div>
-                                 <!-- Example 2 -->
-                                 <div class="flex flex-row justify-between items-center py-2 px-2 border-b border-[--secondary-border-color]">
-                                    <div class="rounded-full border py-1 px-2 border-[--secondary-border-color]">
-                                        <h4>FoodName</h4>
-                                    </div>
-                                    <div class="flex flex-row gap-4">
-                                        <h2 class="rounded-full border py-1 px-2 border-[--secondary-border-color]">#</h2>
-                                        <h2 class="rounded-full border py-1 px-2 border-[--secondary-border-color]">MM-DD-YYYY</h2>
-                                    </div>
-                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div id="wishlist-content-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg gap-5">
-                        <!-- Wishlist -->
+                    <!-- Members -->
+                    <div id="members-content-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg gap-5">
                         <div>
-                            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold">Your Wishlist:</h2>
+                            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold">Group Members:</h2>
                             <div class="my-2">
                                 <p class="text-[--secondary-text-color]">To be added in future updates...</p>
                             </div>
@@ -73,6 +63,8 @@
                 </div>
             </div>
         </main>
+        <!-- Empty space so navbar doesnt cover things -->
+        <div class="my-[14vh]"></div>
 
         <!---------------------------------------------->
         <!-- Your own JavaScript functions go here    -->
