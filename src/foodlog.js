@@ -15,6 +15,13 @@ import { successPopup, errorPopup } from "./popup.js";
 const listEl = document.getElementById("food-list");
 const searchEl = document.getElementById("food-search");
 const viewModeEl = document.getElementById("view-mode");
+const groupDropdown = document.createElement("select");
+
+groupDropdown.id = "group-dropdown";
+groupDropdown.className =
+  "hidden shrink-0 rounded-xl border border-neutral-300 bg-white px-4 py-3 text-sm outline-none focus:border-neutral-400 ml-2";
+groupDropdown.innerHTML = `<option value="">My Food Log</option>`;
+viewModeEl.insertAdjacentElement("afterend", groupDropdown);
 
 let items = [];
 let personalItems = [];
@@ -263,15 +270,15 @@ async function loadGroupItemsForUser(user) {
 
 if (viewModeEl) {
   viewModeEl.addEventListener("change", async () => {
-    currentView = viewModeEl.value; // "individual" or "group"
     const user = auth.currentUser;
     if (!user) return;
 
-    if (currentView === "individual") {
+    if (viewModeEl.value === "group") {
+      await loadUserGroups(user.uid);
+    } else {
+      groupDropdown.classList.add("hidden");
       items = personalItems;
       applyFilter();
-    } else {
-      await loadGroupItemsForUser(user);
     }
   });
 }
@@ -287,7 +294,6 @@ onAuthStateChanged(auth, (user) => {
 
   currentView = viewModeEl?.value || "individual";
 
-  // Live query for this user's personal foodlog
   const qRef = query(
     collection(db, "users", user.uid, "foodlog"),
     orderBy("expDate")
@@ -312,10 +318,26 @@ onAuthStateChanged(auth, (user) => {
       errorPopup("Could not load your food log.");
     }
   );
-
-  // If the page opens with "Group" selected, load group items right away
   if (currentView === "group") {
     loadGroupItemsForUser(user);
   }
 });
 
+async function loadUserGroups(uid) {
+  try {
+    const groups = await getGroups(uid);
+
+    groupDropdown.innerHTML = `<option value="">Select a group</option>`;
+
+    Object.entries(groups).forEach(([groupId, groupData]) => {
+      const option = document.createElement("option");
+      option.value = groupId;
+      option.textContent = groupData.name;
+      groupDropdown.appendChild(option);
+    });
+    groupDropdown.classList.remove("hidden");
+  } catch (error) {
+    console.error("Error loading groups:", error);
+    errorPopup("Error loading groups");
+  }
+}
