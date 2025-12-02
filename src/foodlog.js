@@ -187,16 +187,26 @@ deleteBtn.addEventListener("click", async () => {
 
   for (const box of checked) {
     const docId = box.dataset.docid;
-    const source = box.dataset.source; // "personal" or "group"
+    const source = box.dataset.source;
     const groupId = box.dataset.groupid;
 
-    // 🔹 SAME delete logic for both, but separate collections
     if (source === "group" && groupId) {
       await deleteDoc(doc(db, "groups", groupId, "foodlog", docId));
     } else {
       await deleteDoc(doc(db, "users", user.uid, "foodlog", docId));
     }
   }
+
+  if (viewModeEl.value === "group") {
+    const currentGroupId = groupDropdown.value;
+    if (currentGroupId) {
+      await loadSingleGroupItems(currentGroupId);
+    } else {
+      items = [];
+      applyFilter();
+    }
+  }
+
   editMode = false;
   const selectAll = document.getElementById("select-all");
   selectAll.classList.add("hidden");
@@ -207,6 +217,7 @@ deleteBtn.addEventListener("click", async () => {
 
   successPopup("Deleted selected items");
 });
+
 
 function applyFilter() {
   const q = (searchEl?.value || "").trim().toLowerCase();
