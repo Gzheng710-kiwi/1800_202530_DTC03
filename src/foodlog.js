@@ -223,6 +223,26 @@ if (searchEl) {
   searchEl.addEventListener("input", applyFilter);
 }
 
+async function loadSingleGroupItems(groupId) {
+  const qRef = query(
+    collection(db, "groups", groupId, "foodlog"),
+    orderBy("expDate")
+  );
+
+  const snap = await getDocs(qRef);
+
+  const list = snap.docs.map((d) => ({
+    id: d.id,
+    source: "group",
+    groupId,
+    ...d.data(),
+  }));
+
+  groupItems = list;
+  items = list;
+  applyFilter();
+}
+
 if (viewModeEl) {
   viewModeEl.addEventListener("change", async () => {
     const user = auth.currentUser;
