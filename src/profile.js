@@ -44,6 +44,7 @@ options.forEach((opt) => {
           { avatarSeed: seed, photoURL: url },
           { merge: true }
         );
+        successPopup("Avatar saved!");
       } catch (e) {
         console.error("Avatar save failed:", e);
       }
