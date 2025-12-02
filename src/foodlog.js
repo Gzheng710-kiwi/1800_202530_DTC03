@@ -197,10 +197,6 @@ deleteBtn.addEventListener("click", async () => {
       await deleteDoc(doc(db, "users", user.uid, "foodlog", docId));
     }
   }
-  if (currentView === "group") {
-    await loadGroupItemsForUser(user);
-  } else {
-  }
   editMode = false;
   const selectAll = document.getElementById("select-all");
   selectAll.classList.add("hidden");
@@ -225,47 +221,6 @@ function applyFilter() {
 
 if (searchEl) {
   searchEl.addEventListener("input", applyFilter);
-}
-
-async function loadGroupItemsForUser(user) {
-  try {
-    const groups = await getGroups(user.uid);
-    const entries = Object.entries(groups || {});
-
-    if (!entries.length) {
-      groupItems = [];
-      items = [];
-      applyFilter();
-      return;
-    }
-
-    const all = [];
-
-    for (const [groupId, groupData] of entries) {
-      const qRef = query(
-        collection(db, "groups", groupId, "foodlog"),
-        orderBy("expDate")
-      );
-
-      const snap = await getDocs(qRef);
-      snap.forEach((d) => {
-        all.push({
-          id: d.id,
-          source: "group",
-          groupId,
-          groupName: groupData?.name || "Group",
-          ...d.data(),
-        });
-      });
-    }
-
-    groupItems = all;
-    items = groupItems;
-    applyFilter();
-  } catch (err) {
-    console.error("Error loading group food:", err);
-    errorPopup("Could not load group food log.");
-  }
 }
 
 if (viewModeEl) {
@@ -318,26 +273,32 @@ onAuthStateChanged(auth, (user) => {
       errorPopup("Could not load your food log.");
     }
   );
-  if (currentView === "group") {
-    loadGroupItemsForUser(user);
-  }
 });
 
 async function loadUserGroups(uid) {
-  try {
-    const groups = await getGroups(uid);
+  const groups = await getGroups(uid);
 
-    groupDropdown.innerHTML = `<option value="">Select a group</option>`;
+  const entries = Object.entries(groups);
+  groupDropdown.innerHTML = `<option value="">Select a group</option>`;
 
-    Object.entries(groups).forEach(([groupId, groupData]) => {
-      const option = document.createElement("option");
-      option.value = groupId;
-      option.textContent = groupData.name;
-      groupDropdown.appendChild(option);
-    });
-    groupDropdown.classList.remove("hidden");
-  } catch (error) {
-    console.error("Error loading groups:", error);
-    errorPopup("Error loading groups");
+  entries.forEach(([gid, gdata]) => {
+    const opt = document.createElement("option");
+    opt.value = gid;
+    opt.textContent = gdata.name;
+    groupDropdown.appendChild(opt);
+  });
+
+  groupDropdown.classList.remove("hidden");
+
+  if (entries.length > 0) {
+    const firstGroupId = entries[0][0];
+    groupDropdown.value = firstGroupId;
+    await loadSingleGroupItems(firstGroupId);
   }
 }
+
+groupDropdown.addEventListener("change", () => {
+  const groupId = groupDropdown.value;
+  if (!groupId) return;
+  loadSingleGroupItems(groupId);
+});
