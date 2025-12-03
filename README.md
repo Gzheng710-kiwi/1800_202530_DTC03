@@ -1,30 +1,30 @@
-# Elmo Hikes
+# Fridge Tracker
 
 ## Overview
 
-Elmo Hikes is a client-side JavaScript web application that helps users discover and explore hiking trails. The app displays a curated list of hike trails, each with details such as name, location, difficulty, and an image. Users can browse the list and mark their favorite trails for easy access later.
+Fridge Tracker is a client-side JavaScript web application. It helps users manage the food in their fridges more easily. The app allows users to add food items, track expiry dates, view food logs, check reminders, update profile information and join shared groups to use the app with family members or roommates.
 
-Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for storing user favorites.
+Developed for the COMP 1800 course, this project applies User-Centred Design practices and agile project management, and demonstrates integration with Firebase backend services for managing user data, food items, reminders and shred groups.
 
 ---
 
 ## Features
 
-- Browse a list of curated hiking trails with images and details
-- Mark and unmark trails as favorites
-- View a personalized list of favorite hikes
-- Responsive design for desktop and mobile
+- Add food items with quantity and expiry dates
+- Display saved reminders, such as "Fresh", "Expiring Soon", and "Expired"
+- View food logs and delete food items
+- Join or create groups to share a fridge with others
+- Update personal profile
 
 ---
 
 ## Technologies Used
 
-Example:
-
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: HTML, CSS, JavaScript, Tailwind CSS
 - **Build Tool**: [Vite](https://vitejs.dev/)
-- **Backend**: Firebase for hosting
+- **Backend**: Firebase Authentication, Firebase for hosting
 - **Database**: Firestore
+- **API**: DiceBear Avatar API
 
 ---
 
