@@ -18,115 +18,100 @@
   </head>
 
   <body class="light-mode">
-    <!--Navbar-->
+    <!-- Navbar -->
     <app-navbar></app-navbar>
 
-    <!--Main-->
+    <!-- Main -->
     <main class="max-w-6xl mx-auto py-10 px-6 space-y-10 pb-32 mb-10">
     <div class=" mx-auto">
       <h1 class="text-4xl font-bold">Profile</h1>
     </div>
       <section class="grid md:grid-cols-2 gap-10 items-start">
-      <!--Left Card-->
-      <aside
-      class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-md p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]"
-    >
-        <!-- Profile Avatar Button -->
-        <div class="relative inline-block text-left">
-          <img
-            id="profile-avatar"
-            src="https://api.dicebear.com/7.x/big-smile/svg?seed=peach"
-            alt="Profile Avatar"
-            class="w-24 h-24 rounded-full border-2 shadow-md cursor-pointer transition mb-4"
-          />
+      <!-- Left Card -->
+        <aside
+          class="h-full bg-[--bg-color] text-[--text-color] rounded-2xl shadow-md p-8 flex flex-col items-center text-center border border-[--secondary-bg-color]">
+          <!-- Profile Avatar + Avatar Dropdown Menu -->
+          <div class="relative inline-block text-left">
+            <img
+              id="profile-avatar"
+              src="https://api.dicebear.com/7.x/big-smile/svg?seed=peach"
+              alt="Profile Avatar"
+              class="w-24 h-24 rounded-full border-2 shadow-md cursor-pointer transition mb-4"/>
+          <!-- Small edit icon overlay -->
            <span
-            class="absolute bottom-0 right-0 bg-white rounded-full shadow p-1 border text-gray-600"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+             class="absolute bottom-0 right-0 bg-white rounded-full shadow p-1 border text-gray-600">
+             <svg
+               xmlns="http://www.w3.org/2000/svg"
+               class="w-6 h-6"
+               viewBox="0 0 24 24"
+               fill="none"
+               stroke="currentColor"
+               stroke-width="2"
+               stroke-linecap="round"
+               stroke-linejoin="round">
               <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
               <path d="M13.5 6.5l4 4" />
             </svg>
           </span>
+          <!-- Avatar selection dropdown -->
           <div
             id="avatar-menu"
-            class="hidden absolute mt-2 w-60 bg-white border border-gray-200 rounded-xl shadow-lg p-3 z-10"
-          >
+            class="hidden absolute mt-2 w-60 bg-white border border-gray-200 rounded-xl shadow-lg p-3 z-10">
             <p class="text-sm text-gray-500 mb-2">Choose your Avatar:</p>
             <div class="grid grid-cols-3 gap-3">
+              <!-- All avatar options -->
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=peach"
                 data-seed="peach"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=snowflake"
                 data-seed="snowflake"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=twinkle"
                 data-seed="twinkle"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=cool"
                 data-seed="cool"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=blush"
                 data-seed="blush"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=rudolph"
                 data-seed="rudolph"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=lucky"
                 data-seed="lucky"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=kiwi"
                 data-seed="kiwi"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=noel"
                 data-seed="noel"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=holly"
                 data-seed="holly"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=firefly"
                 data-seed="firefly"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <img
                 src="https://api.dicebear.com/7.x/big-smile/svg?seed=happy"
                 data-seed="happy"
-                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"
-              />
+                class="avatar-option w-14 h-14 rounded-full border hover:scale-110 cursor-pointer transition"/>
               <div class="col-span-3 text-center mt-2">
                 <button
                   id="remove-avatar-btn"
-                  class="text-s text-gray-500 underline transition border-none"
-                >
+                  class="text-s text-gray-500 underline transition border-none">
                   I don't want an avatar
                 </button>
               </div>
@@ -134,23 +119,23 @@
           </div>
         </div>
 
+        <!-- Show user name and welcome message -->
         <h2 class="text-2xl font-bold text-[--highlight-text-color]">
           Hello, user_name, Welcome Back!
         </h2>
 
+        <!-- Profile details -->
         <div
-          class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10"
-        >
+          class="w-full text-left space-y-3 text-sm text-[--secondary-text-color] mt-10">
           <p><strong>Email:</strong> <span id="profile-email"></span></p>
           <p><strong>Location:</strong> <span id="profile-location"></span></p>
           <p><strong>Member Since:</strong> <span id="profile-since"></span></p>
         </div>
 
-        <!-- Log Out Button-->
+        <!-- Log Out button-->
         <button
           id="logout-btn"
-          class="mt-6 bg-black text-white px-6 py-2 rounded-lg contrast transition w-full"
-        >
+          class="mt-6 bg-black text-white px-6 py-2 rounded-lg contrast transition w-full">
           Log Out
         </button>
 
@@ -170,19 +155,18 @@
         </div>
 
         <div
-          class="w-full h-[2px] mt-6 bg-gradient-to-r from-[--highlight-bg-color] to-transparent"
-        ></div>
+          class="w-full h-[2px] mt-6 bg-gradient-to-r from-[--highlight-bg-color] to-transparent"></div>
       </aside>
 
       <!--Right Card-->
       <section class="h-full space-y-10">
         <div
-          class="h-full bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]"
-        >
+          class="h-full bg-[--bg-color] shadow-md rounded-2xl p-8 border border-[--secondary-bg-color]">
           <h3 class="text-2xl font-semibold text-[--highlight-text-color] mb-4">
             Edit Your Information
           </h3>
 
+          <!-- Edit Profile Form -->
           <form id="edit-profile-form" class="space-y-4">
             <div>
               <label class="block text-sm text-[--secondary-text-color] mb-1">
@@ -192,8 +176,7 @@
                 id="edit-name"
                 type="text"
                 placeholder="Your name"
-                class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-              />
+                class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"/>
             </div>
             <div>
               <label class="block text-sm text-[--secondary-text-color] mb-1">Birthday:
@@ -202,8 +185,7 @@
                 type="date"
                 id="birthday"
                 class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-                placeholder="Select your birthday"
-              />
+                placeholder="Select your birthday"/>
             </div>
             <div>
               <label class="block text-sm text-[--secondary-text-color] mb-1">
@@ -213,15 +195,13 @@
                 id="edit-location"
                 type="text"
                 placeholder="Enter your city"
-                class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"
-              />
+                class="w-full max-w-md border rounded-lg p-2 bg-[--bg-color] text-[--text-color]"/>
             </div>
             <div class="mt-6 flex flex-col sm:flex-row justify-end gap-4">
               <!-- Save Button -->
               <button
                 type="submit"
-                class="w-full sm:w-auto sm:flex-1 bg-black text-white px-6 py-2 rounded-lg contrast transition"
-              >
+                class="w-full sm:w-auto sm:flex-1 bg-black text-white px-6 py-2 rounded-lg contrast transition">
                 Save Changes
               </button>
 
@@ -229,8 +209,7 @@
               <button
                 id="cancel-btn"
                 type="button"
-                class="w-full sm:w-auto sm:flex-1 px-6 py-2 rounded-lg secondary contrast transition"
-              >
+                class="w-full sm:w-auto sm:flex-1 px-6 py-2 rounded-lg secondary contrast transition">
                 Cancel
               </button>
             </div>
@@ -238,7 +217,9 @@
         </div>
       </section>
     </main>
+    <!-- Profile JS -->
     <script type="module" src="/src/profile.js"></script>
+    <!-- Popup element -->
     <div
       id="popup"
       class="hidden fixed top-[85px] left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-center px-4 py-2 rounded-lg shadow-lg transition-opacity duration-300 w-[50%] max-w-md z-[100]"

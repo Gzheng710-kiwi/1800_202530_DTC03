@@ -24,6 +24,7 @@ const expiringEl = document.getElementById("count-expiring");
 const menu = document.getElementById("avatar-menu");
 const options = document.querySelectorAll(".avatar-option");
 
+// Avatar Menu: Open on Click
 avatarEl.addEventListener("click", (e) => {
   e.stopPropagation();
   menu.classList.toggle("hidden");
@@ -39,6 +40,7 @@ options.forEach((opt) => {
     const user = auth.currentUser;
     if (user) {
       try {
+        // Firestore WRITE: save avatar seed + URL
         await setDoc(
           doc(db, "users", user.uid),
           { avatarSeed: seed, photoURL: url },
@@ -52,6 +54,7 @@ options.forEach((opt) => {
   });
 });
 
+// Remove avatar: revert to default avatar
 document
   .getElementById("remove-avatar-btn")
   .addEventListener("click", async () => {
@@ -79,6 +82,7 @@ document
     }
   });
 
+// Close dropdown when clicking outside
 document.addEventListener("click", (e) => {
   if (!avatarEl.contains(e.target) && !menu.contains(e.target))
     menu.classList.add("hidden");
@@ -93,6 +97,7 @@ onAuthStateChanged(auth, async (user) => {
 
   const userRef = doc(db, "users", user.uid);
 
+  // Firestore READ: load profile in real-time
   onSnapshot(userRef, (snap) => {
     const data = snap.exists() ? snap.data() : {};
 
@@ -136,6 +141,7 @@ onAuthStateChanged(auth, async (user) => {
     });
   }
 
+  // Form submit: update profile fields
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     try {
@@ -157,13 +163,20 @@ onAuthStateChanged(auth, async (user) => {
     }
   });
 
+  // Load real-time food statistics
   listenFoodStats(user);
 });
 
-// Food stats
+/**
+ * Load food statistics for the profile page.
+ * Counts total items, reminders enabled, and soon-to-expire items.
+ *
+ * @param {Object} user - The logged-in Firebase user.
+ */
 function listenFoodStats(user) {
   const foodRef = collection(db, "users", user.uid, "foodlog");
 
+  // Firestore READ: real-time updates for foodlog
   onSnapshot(foodRef, (snapshot) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -179,6 +192,7 @@ function listenFoodStats(user) {
       if (data.reminders) {
         reminderCount++;
 
+        // Determine expiry date format
         let expiry;
         if (data.expDate?.toDate) {
           expiry = data.expDate.toDate();
@@ -202,7 +216,7 @@ function listenFoodStats(user) {
     if (expiringEl) expiringEl.textContent = expiringSoonCount;
   });
 }
-// Log Out
+// Logout button
 document.getElementById("logout-btn").addEventListener("click", () => {
   signOut(auth)
     .then(() => {
@@ -213,7 +227,7 @@ document.getElementById("logout-btn").addEventListener("click", () => {
     });
 });
 
-// Cancel button
+// Cancel button: no changes saved
 document.getElementById("cancel-btn").addEventListener("click", () => {
   successPopup("You didn't make any changes.");
   setTimeout(() => {
