@@ -42,17 +42,50 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 
 ## Project Structure
 
+The following structure represents the intended organization of the project.
+
 ```
-elmo-hikes/
-├── src/
-│   ├── main.js
-├── styles/
-│   └── style.css
+1800_202030_DTC03/
+│
 ├── public/
+│   ├── index.html
+│   ├── login.html
+│   ├── profile.html
+│   ├── addfood.html
+│   ├── foodlog.html
+│   ├── groups.html
+│   └── group.html
+│
+├── src/
+│   ├── firebase/
+│   │   ├── firebaseConfig.js
+│   │   └── authentication.js
+│   │
+│   ├── features/
+│   │   ├── food/
+│   │   │   ├── addfood.js
+│   │   │   └── foodlog.js
+│   │   ├── groups/
+│   │   │   ├── groups.js
+│   │   │   ├── group.js
+│   │   │   └── groupFunctions.js
+│   │   ├── reminders/
+│   │   │   └── calculateDate.js
+│   │   └── profile/
+│   │       └── profile.js
+│   │
+│   ├── components/
+│   │   └── navbar.js
+│   │
+│   └── styles/
+│       └── style.css
+│
 ├── images/
-├── index.html
-├── package.json
+├── .env_template
+├── .gitignore
 ├── README.md
+└── firebase.json
+
 ```
 
 ---
