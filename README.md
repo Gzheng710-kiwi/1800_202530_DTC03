@@ -48,43 +48,56 @@ The following structure represents the intended organization of the project.
 1800_202030_DTC03/
 │
 ├── public/
-│   ├── index.html
-│   ├── login.html
-│   ├── profile.html
-│   ├── addfood.html
-│   ├── foodlog.html
-│   ├── groups.html
-│   └── group.html
+│   └── images/
 │
 ├── src/
 │   ├── firebase/
 │   │   ├── firebaseConfig.js
 │   │   └── authentication.js
 │   │
+│   ├── components/
+│   │   ├── app-navbar.js
+│   │   └── app-popup.js
+│   │
 │   ├── features/
 │   │   ├── food/
 │   │   │   ├── addfood.js
 │   │   │   └── foodlog.js
 │   │   ├── groups/
-│   │   │   ├── groups.js
 │   │   │   ├── group.js
+│   │   │   ├── groups.js
 │   │   │   └── groupFunctions.js
 │   │   ├── reminders/
-│   │   │   └── calculateDate.js
+│   │   │   └── reminder.js
 │   │   └── profile/
 │   │       └── profile.js
 │   │
-│   ├── components/
-│   │   └── navbar.js
+│   ├── styles/
+│   │   └── style.css
 │   │
-│   └── styles/
-│       └── style.css
+│   └── utils.js
 │
 ├── images/
+│
+├── index.html
+├── login.html
+├── profile.html
+├── addfood.html
+├── foodlog.html
+├── group.html
+├── groups.html
+├── reminder.html
+│
+├── .env
 ├── .env_template
 ├── .gitignore
-├── README.md
-└── firebase.json
+├── firebase.json
+├── .firebaserc
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
+
 
 ```
 
