@@ -24,16 +24,19 @@ Developed for the COMP 1800 course, this project applies User-Centred Design pra
 - **Build Tool**: [Vite](https://vitejs.dev/)
 - **Backend**: Firebase Authentication, Firebase for hosting
 - **Database**: Firestore
-- **API**: DiceBear Avatar API
+- **API**: DiceBear Avatar API(https://www.dicebear.com/styles/big-smile/#big-smile)
 
 ---
 
 ## Usage
 
-1. Open your browser and visit `http://localhost:3000`.
-2. Browse the list of hiking trails displayed on the main page.
-3. Click the heart icon (or similar) to mark a trail as a favorite.
-4. View your favorite hikes in the favorites section.
+1. Open your browser and visit the hosted link(https://dtc03-e6c5d.web.app) of the app.
+2. Log in or sign up using your email and password.
+3. Add food items to your fridge by entering the item name and expiry date.
+4. Check the Dashboard for a quick overview of your food items and reminders.
+5. View expiring and expired items in the Reminders section.
+6. Create or join a group to manage a shared fridge with family or roommates.
+7. Edit your profile information and customize your avatar on the Profile page.
 
 ---
 
@@ -64,9 +67,11 @@ elmo-hikes/
 
 ## Acknowledgments
 
-- Trail data and images are for demonstration purposes only.
+- The project logo was designed by Gus.
+- Avatar images are generated using the DiceBear API for user profile customization.
 - Code snippets were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- UI icons used in the project are sourced from publicly available open-source icon sets included in our framework and tools.
+- Special thanks to our instructor and classmates for their feedback during usability testing, which helped inform our UI/UX improvements.
 
 ---
 
@@ -74,17 +79,14 @@ elmo-hikes/
 
 ### Limitations
 
-- Limited trail details (e.g., no live trail conditions).
-- Accessibility features can be further improved.
+- The app does not currently support uploading real food images.
+- Reminder feature can be further improved.
+- Editing food items is limited.
 
 ### Future Work
 
-- Implement map view and trailhead directions.
-- Add filtering and sorting options (e.g., by difficulty, distance).
-- Create a dark mode for better usability in low-light conditions.
+- Add support for uploading real food images.
+- Enhance the Reminder feature with push notifications.
+- Expand food item editing to include additional fields such as quantity, category, and optional photos.
 
 ---
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
