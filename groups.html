@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta name="comp1800 template" content="My 1800 App">
-        <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <title>My BCIT Project</title>
 
-        <!-- Tailwind and JQuery -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Tailwind and JQuery -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-        <!-- Other libraries go here -->
+    <!-- Other libraries go here -->
 
-        <!-- Custom Components -->
-        <script type="module" src="/src/components/app-navbar.js"></script>
+    <!-- Custom Components -->
+    <script type="module" src="/src/components/app-navbar.js"></script>
 
-        <!-- Link to styles of your own -->
-        <link rel="stylesheet" href="./styles/style.css">
-
-    </head>
-    <body class="">
-        <app-navbar></app-navbar>
-        <main>
-            <div id="main-content" class="flex justify-center">
-                <div id="groups-content" class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch gap-[2vh]">
-                    <h1 class="text-4xl font-bold mb-8">Groups</h1>
-                    <!-- Current Groups -->
-                    <div id="available-groups-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg">
-                        <h2 class="text-2xl font-bold mb-4">Your Groups</h2>
-                        <div id="groups-list" class="flex flex-col gap-4">
-                            <!-- Example group item -->
-                            <div class="p-4 border border-[--primary-border-color] rounded-lg shadow-sm flex justify-between items-center">
-                                <h3 class="text-xl font-medium">Family</h3>
-                                <button class="secondary rounded-md py-2 px-4">Go to group</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Join / Create Group -->
-                    <div id="join-group-div" class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg">
-                        <button id="groups-createbutton" class="contrast rounded-md my-2 py-4 text-xl font-bold">Create Group</button>
-                        <button id="groups-joinbutton" class="secondary contrast rounded-md my-2 py-4 text-xl font-bold">Join Group</button>
-                    </div>
-                </div>
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body class="">
+    <app-navbar></app-navbar>
+    <main>
+      <div id="main-content" class="flex justify-center">
+        <div
+          id="groups-content"
+          class="flex-1 my-[5vh] mx-[5vw] max-w-2xl flex flex-col justify-center items-stretch gap-[2vh]"
+        >
+          <h1 class="text-4xl font-bold mb-8">Groups</h1>
+          <!-- Current Groups -->
+          <div
+            id="available-groups-div"
+            class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg"
+          >
+            <h2 class="text-2xl font-bold mb-4">Your Groups</h2>
+            <div id="groups-list" class="flex flex-col gap-4">
+              <!-- Example group item -->
+              <div
+                class="p-4 border border-[--primary-border-color] rounded-lg shadow-sm flex justify-between items-center"
+              >
+                <h3 class="text-xl font-medium">Family</h3>
+                <button class="secondary rounded-md py-2 px-4">
+                  Go to group
+                </button>
+              </div>
             </div>
-        </main>
-        <!-- Empty space so navbar doesnt cover things -->
-        <div class="my-[14vh]"></div>
+          </div>
+          <!-- Join / Create Group -->
+          <div
+            id="join-group-div"
+            class="flex-1 flex flex-col border border-[--secondary-bg-color] border-solid shadow-md p-[4vh] rounded-lg"
+          >
+            <button
+              id="groups-createbutton"
+              class="contrast rounded-md my-2 py-4 text-xl font-bold"
+            >
+              Create Group
+            </button>
+            <button
+              id="groups-joinbutton"
+              class="secondary contrast rounded-md my-2 py-4 text-xl font-bold"
+            >
+              Join Group
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Empty space so navbar doesnt cover things -->
+    <div class="my-[14vh]"></div>
 
-        <!---------------------------------------------->
-        <!-- Your own JavaScript functions go here    -->
-        <!---------------------------------------------->
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
 
-        <!-- Link to scripts of your own -->
-        <script type="module" src="./src/groups.js"></script>
-    </body>
+    <!-- Link to scripts of your own -->
+    <script type="module" src="./src/groups.js"></script>
+  </body>
 </html>

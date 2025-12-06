@@ -1,6 +1,16 @@
-import { collection, addDoc, doc, getDoc, updateDoc, arrayUnion, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  query,
+  where,
+  getDocs,
+} from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
-import { noUser } from './authentication'
+import { noUser } from "./authentication";
 import { db, auth } from "./firebaseConfig";
 import { getGroups } from "./groupFunctions";
 
@@ -8,79 +18,74 @@ const createBtn = document.getElementById("groups-createbutton");
 const joinBtn = document.getElementById("groups-joinbutton");
 const groupsList = document.getElementById("groups-list");
 
-async function loadUserGroups(uid)
-{
-    groupsList.innerHTML = "";
+async function loadUserGroups(uid) {
+  groupsList.innerHTML = "";
 
-    const groups = await getGroups(uid);
-    Object.entries(groups).forEach(([groupId, groupData]) => {
-        // print(groupId, groupData);
-        const div = document.createElement("div");
-        div.className =
-            "p-4 border rounded-lg shadow-sm flex justify-between items-center";
+  const groups = await getGroups(uid);
+  Object.entries(groups).forEach(([groupId, groupData]) => {
+    // print(groupId, groupData);
+    const div = document.createElement("div");
+    div.className =
+      "p-4 border rounded-lg shadow-sm flex justify-between items-center";
 
-        div.innerHTML = `
+    div.innerHTML = `
             <h3 class="text-xl font-medium">${groupData.name}</h3>
             <button class="secondary rounded-md py-2 px-4" onclick="window.location='group.html?id=${groupId}'">Go to group</button>
         `;
 
-        groupsList.appendChild(div);
-    });
+    groupsList.appendChild(div);
+  });
 }
 
-async function createGroup(user)
-{
-    let groupName = window.prompt("Enter group name:");
-    if (!groupName) return;
+async function createGroup(user) {
+  let groupName = window.prompt("Enter group name:");
+  if (!groupName) return;
 
-    const docRef = await addDoc(collection(db, "groups"), {
-        members: [user.uid],
-        name: groupName,
-        createdAt: Date.now()
-    });
+  const docRef = await addDoc(collection(db, "groups"), {
+    members: [user.uid],
+    name: groupName,
+    createdAt: Date.now(),
+  });
 
-    window.location.href = `group.html?id=${docRef.id}`;
+  window.location.href = `group.html?id=${docRef.id}`;
 }
 
-async function joinGroup(user)
-{
-    const code = prompt("Enter group code:");
-    if (!code) return;
+async function joinGroup(user) {
+  const code = prompt("Enter group code:");
+  if (!code) return;
 
-    const groupRef = doc(db, "groups", code);
-    const snap = await getDoc(groupRef);
+  const groupRef = doc(db, "groups", code);
+  const snap = await getDoc(groupRef);
 
-    if (!snap.exists()) {
-        alert("Invalid group code entered.");
-        return;
+  if (!snap.exists()) {
+    alert("Invalid group code entered.");
+    return;
+  }
+
+  await updateDoc(groupRef, {
+    members: arrayUnion(user.uid),
+  });
+
+  window.location.href = `group.html?id=${code}`;
+}
+
+function setup() {
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      noUser("groups-content");
+      return;
     }
 
-    await updateDoc(groupRef, {
-        members: arrayUnion(user.uid)
+    loadUserGroups(user.uid);
+
+    createBtn.addEventListener("click", () => {
+      createGroup(user);
     });
 
-    window.location.href = `group.html?id=${code}`;
-}
-
-function setup()
-{
-    onAuthStateChanged(auth, async (user) => {
-        if (!user)
-        {
-            noUser("groups-content");
-            return;
-        }
-
-        loadUserGroups(user.uid);
-
-        createBtn.addEventListener("click", () => {
-            createGroup(user);
-        });
-
-        joinBtn.addEventListener("click", () => {
-            joinGroup(user);
-        });
+    joinBtn.addEventListener("click", () => {
+      joinGroup(user);
     });
+  });
 }
 
 setup();

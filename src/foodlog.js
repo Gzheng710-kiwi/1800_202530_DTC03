@@ -218,7 +218,6 @@ deleteBtn.addEventListener("click", async () => {
   successPopup("Deleted selected items");
 });
 
-
 function applyFilter() {
   const q = (searchEl?.value || "").trim().toLowerCase();
   if (!q) return render(items);
